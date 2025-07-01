@@ -1,0 +1,5 @@
+{
+	"token": "your-bot-token",
+    "clientId": "client-id",
+    "reactRolesChannelId": "channel-id"
+}
