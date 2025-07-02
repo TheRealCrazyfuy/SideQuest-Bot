@@ -59,7 +59,7 @@ client.on(Events.InteractionCreate, async interaction => {
         } else if (interaction.customId === 'accessoryDropdown') {
             options = rolesData.accessories;
         } else if (interaction.customId === 'pcDropdown') {
-            options = rolesData.pcAccessories;
+            options = rolesData.pcPeripherals;
         }
 
         const selected = interaction.values;
