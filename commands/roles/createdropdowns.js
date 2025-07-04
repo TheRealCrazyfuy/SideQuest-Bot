@@ -4,8 +4,8 @@ const roles = require('../../data/roles.json');
 
 module.exports = {
     data: new SlashCommandBuilder()
-        .setName('createembed')
-        .setDescription('Create the reaction roles embed')
+        .setName('createdropdowns')
+        .setDescription('Create the dropdowns for cosmetic roles')
         .addChannelOption(option =>
             option
                 .setName('channel')
