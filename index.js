@@ -123,6 +123,7 @@ client.on('threadCreate', async thread => {
             console.log(`Starter message content: ${starterMessage.content}`);
             const content = starterMessage.content.toLowerCase();
             let reply = forumReplies[forumReplies.length - 1].reply; // Default reply
+            let afterReply = "\n\nPlease add the solved tag to your post and close it afterwards, when your issue has been resolved.";
 
             for (const entry of forumReplies) {
                 for (const keyword of entry.keywords) {
@@ -134,7 +135,7 @@ client.on('threadCreate', async thread => {
                 //if (reply !== forumReplies[forumReplies.length - 1].reply) break; // stop searching if we found a match
             }
 
-            thread.send(reply);
+            thread.send(reply + afterReply);
         } catch (err) {
             console.error('Error fetching starter message or replying to a thread:', err);
         }
