@@ -1,5 +1,10 @@
 [
     {
+        "name": "Report a bug",
+        "keywords": [],
+        "reply": "Please email the official support (support@redmagic.gg) and additionally file a bug report here: <https://redmagic.gg/pages/redmagic-product-experience-feedback>"
+    },
+    {
         "name": "Fan cleaning tutorial",
         "keywords": [
             "fan"
