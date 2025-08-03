@@ -1,35 +1,35 @@
 const fs = require('node:fs');
 const path = require('node:path');
-const { Client, Collection, Events, GatewayIntentBits, MessageFlags } = require('discord.js');
-const { token } = require('./config.json');
+const { Client, Collection, Events, GatewayIntentBits, MessageFlags, ChannelType } = require('discord.js');
+const { token, clientId, forumChannelId } = require('./config.json');
 
-const client = new Client({ intents: [GatewayIntentBits.Guilds] });
+const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.MessageContent] });
 
 client.commands = new Collection();
 const foldersPath = path.join(__dirname, 'commands');
 const commandFolders = fs.readdirSync(foldersPath);
 
 for (const folder of commandFolders) {
-	const commandsPath = path.join(foldersPath, folder);
-	const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('.js'));
-	for (const file of commandFiles) {
-		const filePath = path.join(commandsPath, file);
-		const command = require(filePath);
-		// Set a new item in the Collection with the key as the command name and the value as the exported module
-		if ('data' in command && 'execute' in command) {
-			client.commands.set(command.data.name, command);
-		} else {
-			console.log(`[WARNING] The command at ${filePath} is missing a required "data" or "execute" property.`);
-		}
-	}
+    const commandsPath = path.join(foldersPath, folder);
+    const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('.js'));
+    for (const file of commandFiles) {
+        const filePath = path.join(commandsPath, file);
+        const command = require(filePath);
+        // Set a new item in the Collection with the key as the command name and the value as the exported module
+        if ('data' in command && 'execute' in command) {
+            client.commands.set(command.data.name, command);
+        } else {
+            console.log(`[WARNING] The command at ${filePath} is missing a required "data" or "execute" property.`);
+        }
+    }
 }
 
 client.once(Events.ClientReady, readyClient => {
-	console.log(`Ready! Logged in as ${readyClient.user.tag}`);
+    console.log(`Ready! Logged in as ${readyClient.user.tag}`);
 });
 
 client.on(Events.InteractionCreate, async interaction => {
-	if (interaction.isChatInputCommand()) {
+    if (interaction.isChatInputCommand()) {
         const command = interaction.client.commands.get(interaction.commandName);
 
         if (!command) {
@@ -93,9 +93,40 @@ client.on(Events.InteractionCreate, async interaction => {
         }
         await interaction.reply({ content: `Updated your roles <:mora_popcorn:1133350731357896744> `, ephemeral: true });
     }
-
-
-	
 });
+
+const forumReplies = require('./data/helpreplies.json');
+
+client.on('threadCreate', async thread => {
+    // make sure the thread is a forum post
+    if (thread.parent && thread.parent.type === ChannelType.GuildForum && thread.parentId == forumChannelId) {
+        console.log(`New forum post created: ${thread.name} in ${thread.parent.name}`);
+
+        try {
+            await new Promise(resolve => setTimeout(resolve, 5000)); // delay because discord dont know how to make a proper api
+            const starterMessage = await thread.fetchStarterMessage();
+            if (!starterMessage) return;
+
+            console.log(`Starter message content: ${starterMessage.content}`);
+            const content = starterMessage.content.toLowerCase();
+            let reply = forumReplies[forumReplies.length - 1].reply; // Default reply
+
+            for (const entry of forumReplies) {
+                for (const keyword of entry.keywords) {
+                    if (keyword && (content.includes(keyword.toLowerCase()) || thread.name.toLowerCase().includes(keyword.toLowerCase()))) {
+                        reply = entry.reply;
+                        break;
+                    }
+                }
+                //if (reply !== forumReplies[forumReplies.length - 1].reply) break; // stop searching if we found a match
+            }
+
+            thread.send(reply);
+        } catch (err) {
+            console.error('Error fetching starter message or replying to a thread:', err);
+        }
+    }
+});
+
 
 client.login(token);

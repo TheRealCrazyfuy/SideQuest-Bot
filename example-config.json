@@ -1,4 +1,5 @@
 {
     "token": "your-bot-token",
-    "clientId": "client-id"
+    "clientId": "client-id",
+    "forumChannelId": 12345678910
 }
