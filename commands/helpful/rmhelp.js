@@ -16,18 +16,23 @@ module.exports = {
         const entry = helpReplies.find(e => e.name && e.name.toLowerCase().includes(nameQuery));
 
         if (entry) {
-            await interaction.reply({ content: entry.reply});
+            await interaction.reply({ content: entry.reply });
         } else {
-            await interaction.reply({ content: 'No help topic found with that name <:Mora_crying:1226126158056132678>.'});
+            await interaction.reply({ content: 'No help topic found with that name <:Mora_crying:1226126158056132678>.' });
         }
     },
     async autocomplete(interaction) {
         const focusedValue = interaction.options.getFocused().toLowerCase();
         const choices = helpReplies
-            .filter(e => e.name)
+            .filter(e =>
+                e.name &&
+                (
+                    e.name.toLowerCase().includes(focusedValue) ||
+                    (Array.isArray(e.keywords) && e.keywords.some(k => k.toLowerCase().includes(focusedValue)))
+                )
+            )
             .map(e => e.name)
-            .filter(name => name.toLowerCase().includes(focusedValue))
-            .slice(0, 25); // 25 choice limit
+            .slice(0, 25);
 
         await interaction.respond(
             choices.map(choice => ({ name: choice, value: choice }))
