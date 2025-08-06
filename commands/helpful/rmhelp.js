@@ -1,5 +1,11 @@
 const { SlashCommandBuilder } = require('discord.js');
 const helpReplies = require('../../data/helpreplies.json');
+const Fuse = require('fuse.js');
+
+const fuse = new Fuse(helpReplies, {
+    keys: ['name', 'keywords'],
+    threshold: 0.4 // decrease threshold for more strict matching
+});
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -23,16 +29,8 @@ module.exports = {
     },
     async autocomplete(interaction) {
         const focusedValue = interaction.options.getFocused().toLowerCase();
-        const choices = helpReplies
-            .filter(e =>
-                e.name &&
-                (
-                    e.name.toLowerCase().includes(focusedValue) ||
-                    (Array.isArray(e.keywords) && e.keywords.some(k => k.toLowerCase().includes(focusedValue)))
-                )
-            )
-            .map(e => e.name)
-            .slice(0, 25);
+        const result = fuse.search(focusedValue, { limit: 25 });
+        const choices = result.map(r => r.item.name).filter(Boolean);
 
         await interaction.respond(
             choices.map(choice => ({ name: choice, value: choice }))
