@@ -29,8 +29,17 @@ module.exports = {
     },
     async autocomplete(interaction) {
         const focusedValue = interaction.options.getFocused().toLowerCase();
-        const result = fuse.search(focusedValue, { limit: 25 });
-        const choices = result.map(r => r.item.name).filter(Boolean);
+        let choices;
+        if (!focusedValue) {
+            // Show all help topics if nothing is typed
+            choices = helpReplies
+                .map(e => e.name)
+                .filter(Boolean)
+                .slice(0, 25);
+        } else {
+            const result = fuse.search(focusedValue, { limit: 25 });
+            choices = result.map(r => r.item.name).filter(Boolean);
+        }
 
         await interaction.respond(
             choices.map(choice => ({ name: choice, value: choice }))
