@@ -45,7 +45,7 @@
         "reply": "# Some Suggestions of Optimizing Battery Life and Extending Standby Time\n\nTo maximize battery efficiency and extend standby duration, we recommend the following measures:\n\n1. Enable Power-Saving Modes:\nActivate Power Saving Mode or Ultra Power Saving Mode via the quick settings panel.\n\n2. Manage Connectivity:\nDisable mobile data and network connections when not required.\n\n3. Optimize Display Settings:\nAvoid using live/dynamic wallpapers.\nReduce screen brightness.\nSet a shorter screen timeout period.\nSelect a lower screen refresh rate (e.g., 60Hz or 90Hz).\n\n4. Manage Applications:\nRegularly close unused background applications to conserve power and free up RAM.\nPerform routine phone memory cleanup.\nNavigate to Palm Manager > Battery Management > App Smart Management to disable auto-start and\nbackground activity permissions for non-essential third-party apps.\n\n5. Control 5G Usage:\nBe aware that 5G connectivity may increase battery consumption; enable it only as needed.\n\n6. Manage Location Services:\n- Disable location services (GPS) when not in use.\nKey Recommendation:\nFor optimal battery performance and extended usage, proactively managing display settings, application behavior, and connectivity options is essential."
     },
     {
-        "name": "Wifi not auto connecting",
+        "name": "Wifi is not auto connecting",
         "keywords": [
             "not connecting",
             "auto connect"
@@ -238,6 +238,7 @@
         "reply": "# OLED screens may suffer from burn-in issues\n\n- The software has optimized the screen burn-in problem, and the problem is covered by the warranty"
     },
     {
+        "name": "Why is the waterproof and dustproof level not higher?",
         "keywords": [
             "waterproof",
             "dustproof",
@@ -248,12 +249,14 @@
         "reply": "# Why is the waterproof and dustproof level My Redmagic 10s Pro not higher?\n\n- The current waterproof and dustproof level is sufficient for daily use.\n- At the same time, due to the existence of the heat dissipation duct, in order to pursue the heat dissipation effect, the protection level will be sacrificed a little.\n"
     },
     {
+        "name": "What type of battery is the REDMAGIC 10s Pro Using?",
         "keywords": [
             "battery type"
         ],
         "reply": "# What type of battery is the REDMAGIC 10s Pro Using?\n\n- We use dual-cell technology for faster charging and a higher output, if you need to power any external devices using your phone's battery\n"
     },
     {
+        "name": "Why does my phone get hot when charging?",
         "keywords": [
             "hot charging",
             "hot when charging",
@@ -262,6 +265,7 @@
         "reply": "# Why does my phone get hot when charging?\n\n- When charging your phone, it will generate a certain amount of heat due to the large current and is normal\n- We also recommended that you turn on fast cooling while charging in:\n- Settings --> Cooling Fan\n- Please charge in an environment with good heat dissipation, and try to\nkeep the screen off during charging."
     },
     {
+        "name": "Charging speed is slow, no fast charging?",
         "keywords": [
             "slow charging",
             "no charging"
@@ -269,12 +273,14 @@
         "reply": "# Charging speed is slow, no fast charging?\n\n- Please confirm whether you are using the original charger and data cable\n- Re-plug the charging cable and try again\n- If the phone temperature is too high, the charging current will be automatically limited, causing the charging to slow down\n- We recommend avoiding using the phone during charging to cause the phone temperature to be too high.\nYou can also charge your phone faster, for the trade off of a little bit more heat:\n- Settings \n- Battery \n- Turn on Fast Charge"
     },
     {
+        "name": "The screen color is uneven or has color cast?",
         "keywords": [
             "bad color",
             "wrong color",
             "uneven color",
             "screen color",
-            "color of the screen"
+            "color of the screen",
+            "color profile"
         ],
         "reply": "# The screen color is uneven or has color cast?\n\n- The mobile phone has been strictly tested before leaving the factory, and the screen display effect is within the normal color coordinate specification range, so please feel free to use it.\nYou can adjust the colors in:\n- Settings\n- Display\n- Screen Display Preferences to make the screen display achieve\nthe effect you need."
     },
@@ -286,6 +292,7 @@
         "reply": "# What should I do if the fingerprint sensor isn't working properly?\n\nAn optical fingerprint sensor has a certain self-learning function, and the unlocking success rate will increase after using it for a period of time.\nIf it doesn't work, please check the following:\n- Do you have a screen protector?\n- Is it a tempered screen protector or a thin film?\n- Is it purchased from a third party or an official one?\n- We recommend that you use the official screen protector (or you don't use a screen protector, resulting in less protection but higher accuracy).\n- Screen breakage or cracking may cause the fingerprint unlocking under the screen to be insensitive or ineffective.\n- We also recommend contacting the official after-sales service.\n- Excessive light may deteriorate the quality of the fingerprint image and affect the fingerprint unlocking.\n- Try using it in a place without direct strong light.\n- Fingers that are too wet or too dry may cause fingerprint recognition to be insensitive\n- Dirt on the fingers or the screen surface may affect the operation of the fingerprint unlocking under the screen.\n- Please keep your fingers and the fingerprint area of the screen clean.\n- Are your fingers peeling or damaged?"
     },
     {
+        "name": "What should I do if dust gets into the fan/air duct?",
         "keywords": [
             "dust",
             "fan"
@@ -293,6 +300,7 @@
         "reply": "# What should I do if dust gets into the fan/air duct?\n\nBecause the fan/air duct cannot be sealed, it must have air inlets and outlets to operate, so dust is normal. Please rest assured.\nHowever, if you find dust at the air-vent of the phone, you can follow our cleaning tutorial.\nLink:\nhttps://discord.com/channels/897390969744424980/1241039607747973271/1241040000993198120\n"
     },
     {
+        "name": "The fan is not working?",
         "keywords": [
             "fan not working",
             "fan not spinning"
@@ -300,6 +308,7 @@
         "reply": "# The fan is not working?\n\n- Go to Settings \n- Cooling Fan\n- slide to turn on Cooling Fan\n- select Fast Cooling or Automatic\n- or simply restart the phone\n--> lastly, check whether the fan is working properly now.\n- If the fan does not rotate, try blowing air into the air outlet\n(above the power button on the right side of the phone) or shake the phone to see if it can be revived.\n"
     },
     {
+        "name": "Image quality of the front camera poor or unclear",
         "keywords": [
             "front camera"
         ],
@@ -313,6 +322,7 @@
         "reply": "# Why is the flash prominently positioned or raised?\n\n- The flash design is intentionally raised to help protect the camera lens from scratches."
     },
     {
+        "name": "Phone gets hot or warm while gaming",
         "keywords": [
             "warm",
             "hot",
@@ -321,6 +331,7 @@
         "reply": "# Why does my phone get warm while gaming?\n\nIt's normal if you're playing demanding games.\nTo reduce heat:\n- In Game Space, open the control center and try Balance mode\n--> all apps outside of Game Space run on balance!!\n- Turn on the internal cooling fan.\n- Lower the screen refresh rate (for example, to 60Hz or 90Hz).\n- Disable features like REDMAGIC Moment or screen recording.\n- Avoid charging while gaming or use [Charging Separation] in Game Space.\n- Use a heat dissipation back clip.\n## Long-term overheating can damage internal components."
     },
     {
+        "name": "Game lags or has frame drops",
         "keywords": [
             "lag",
             "stutter",
@@ -345,13 +356,15 @@
         "reply": "# Why does game sound come from the phone speaker instead of Bluetooth headphones?\n\n- If you connect Bluetooth after entering a game, the sound may not get through properly.\n- Connect Bluetooth headphones before launching the game.\n- If already in-game, close the game completely, reconnect Bluetooth, then relaunch the game.\n"
     },
     {
+        "name": "The shoulder (touch) buttons aren't working",
         "keywords": [
             "shoulder",
             "triggers"
         ],
-        "reply": "# The shoulder (touch) buttons aren’t working—what should I do?\n\n- Clean off any sweat, water, or dirt from the button surface.\n- In Game Space\n- Game Settings\n- increase the touch sensitivity.\n\n# Why do the shoulder buttons trigger automatically while gaming?\n\n- Moisture or dirt on the button surface can cause accidental touches.\n- Avoid blowing air on the buttons.\n- Clean them and adjust sensitivity in Game Space > Control Center.\n\n# My shoulder buttons have delayed response—what can I do?\n\n- Again, clean the surface.\n- Increase sensitivity in Game Space > Control Center.\n"
+        "reply": "# The shoulder (touch) buttons aren't working—what should I do?\n\n- Clean off any sweat, water, or dirt from the button surface.\n- In Game Space\n- Game Settings\n- increase the touch sensitivity.\n\n# Why do the shoulder buttons trigger automatically while gaming?\n\n- Moisture or dirt on the button surface can cause accidental touches.\n- Avoid blowing air on the buttons.\n- Clean them and adjust sensitivity in Game Space > Control Center.\n\n# My shoulder buttons have delayed response—what can I do?\n\n- Again, clean the surface.\n- Increase sensitivity in Game Space > Control Center.\n"
     },
     {
+        "name": "Why are the competitive keys loose",
         "keywords": [
             "loose",
             "red switch",
@@ -361,6 +374,7 @@
         "reply": "# Why are the competitive keys loose?\n\n- Slight looseness is by design to prevent the keys from sticking. It's normal and safe to use.\n"
     },
     {
+        "name": "Why is there no aiming assist when I scope in",
         "keywords": [
             "aim assist",
             "scope in"
