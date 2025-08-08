@@ -47,7 +47,7 @@
     {
         "name": "Wifi is not auto connecting",
         "keywords": [
-            "not connecting",
+            "connecting",
             "auto connect"
         ],
         "reply": "# Troubleshooting: Device Not Auto-Connecting to Specific Hotspot Network\nCause Analysis:\n\n- Your device may disable automatic connections to a particular network due to persistent connectivity failures and repeated unsuccessful reconnection attempts following previous disconnections\nResolution Steps:\n- Manually reconnect to the network through your device's Hotspot settings\n- Verify network functionality after reconnection\n- The network should resume automatic connections if successfully established"
@@ -268,7 +268,7 @@
         "name": "Charging speed is slow, no fast charging?",
         "keywords": [
             "slow charging",
-            "no charging"
+            "charging"
         ],
         "reply": "# Charging speed is slow, no fast charging?\n\n- Please confirm whether you are using the original charger and data cable\n- Re-plug the charging cable and try again\n- If the phone temperature is too high, the charging current will be automatically limited, causing the charging to slow down\n- We recommend avoiding using the phone during charging to cause the phone temperature to be too high.\nYou can also charge your phone faster, for the trade off of a little bit more heat:\n- Settings \n- Battery \n- Turn on Fast Charge"
     },
