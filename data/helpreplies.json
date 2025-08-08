@@ -9,7 +9,7 @@
         "keywords": [
             "fan"
         ],
-        "reply": "Fan cleaning tutorial here: https://discord.com/channels/897390969744424980/1241039607747973271/1241040000993198120"
+        "reply": "## 🧼 Redmagic Internal Fan Cleaning Tutorial by <@292308639316967435> \n\nWant to keep your Redmagic cool and clean? Here's how to safely clean the internal fan! 🌀\n\n---\n\n### 🔧 What You’ll Need:\n- 🪥 *Dry toothbrush* (optional, for dust buildup)\n- 💨 *Canned air* (or similar air pressure)\n- 📱 Your Redmagic phone\n\n---\n\n### 🪛 Steps:\n\n1. 🔌 **Turn the phone OFF**  \n   Make sure the device is powered down to avoid any damage.\n\n2. 📦 **Remove the phone case** *(if you have one)*\n\n3. 🪥 **Brush off dust**  \n   Gently use a toothbrush to remove **larger particles** from the **intake vent**  \n   - 🧩 *On the 7 series: it's on the back*  \n   - 📏 *On other models: it's on the side*  \n   *(You can skip this step if your fan isn't too dusty)*\n\n4. ↘️ **Tilt the phone sideways**  \n   Make sure the **air outtake vent points DOWNWARD** — this helps dust fall out more easily!\n\n5. 💨 **Blow air into the intake vent**  \n   Use **short, strong bursts** with canned air. Repeat a few times until clean.\n\n6. 🔄 **Turn the phone back ON**  \n   Set the **internal fan to MAX RPM** for about **10 seconds** to flush out any remaining dust.\n\n---\n\n### 🎉 Aaaand your done!\nCleaning regularly helps performance and fan longevity!\n\n---\n\n📹 **Video Tutorial (by someone else):**  \n[Watch on YouTube](https://youtu.be/XcpJrl9gWN0?si=xd-_vml4wXZO5fch)"
     },
     {
         "name": "Shipping times",
@@ -110,7 +110,7 @@
             "update policy",
             "policy"
         ],
-        "reply": "# Questions about software maintenance\n\n5 years bugfix/security and 3 android updates for 10s pro, 10 air, astra and upcoming devices\n\nall earlier released models from 10 pro over nova, 9 series and 8 series have 3 years with 2 android\n\nall even older have 2 years with 1 android\n(include these)"
+        "reply": "# How many software updates will be there for REDMAGIC phones?\n\n**📱 REDMAGIC Software Support Overview (Updated as of June 20, 2025)**\n\n🔧 **Update Frequency:** Every 1–2 months  \nIncludes: Bug fixes, security patches, system optimizations, and overall performance improvements\n\n---\n\n__**🇪🇺 EU Customers**__  \n📆 **Support Duration:** 5 years (bug fixes + security updates)  \n📲 **Android OS Upgrades:** 3 major updates  \n✅ In compliance with EU regulations effective June 20, 2025\n\n__**🌍 Global (Non-EU) Customers**__  \n📆 **Support Duration:** 3 years (bug fixes + security updates)  \n📲 **Android OS Upgrades:** 2 major updates  \n\n📌 **Applies to:**  \n🔹 REDMAGIC 10S Pro  \n🔹 REDMAGIC ASTRA  \n🔹 All upcoming REDMAGIC models\n\n---\n\n__**📦 Older Device Support**__\n\n📱 **10 Pro, 10 Air, Nova, 9 Series, 8 Series**  \n📆 3 years of support  \n📲 2 major Android updates  \n\n📱 **7 Series and earlier**  \n📆 2 years of support  \n📲 1 major Android update\n---> __EOL, wont get Updates anymore__\n\n---\n\n🛠️ REDMAGIC adapts its update cycles and support durations based on:  \n• Local laws and regulations  \n• Product lifecycle and technical requirements  \n• Commitment to delivering a high-quality, stable user experience globally\n\nThere is also a Beta testing program where you can test the upcoming Software Updates before they are out for everyone. You can sign up here: https://redmagic.gg/blogs/news/introducing-the-redmagic-beta-testing-program/\n\nEdit: Beta Program currently is only for Redmagic 8s pro"
     },
     {
         "name": "How to lock the screen refresh rate",
@@ -130,7 +130,7 @@
         "reply": "# How to control my REDMAGIC device with a computer?\n\nTo control the mobile phone with a computer, you need to use the REDMAGIC screencasting client.\n\n- Download the REDMAGIC screencasting client from the REDMAGIC community\nhttps://redmagic.gg/pages/smartcast-studio\n- Install and open the client\n- use the mobile screencasting app to scan the code or connect the USB to the computer to cast the screen\n\nAfter the screencasting is successful, you can use the mouse to click on the screen in the computer projection to operate the mobile phone\n\n- Turn on the keyboard mapping function after entering the game, and you can use the keyboard and mouse to control the game\n-The software has built - in default keyboard schemes for some games, and you can also adjust the key layout according\nto your own gaming habits.\n"
     },
     {
-        "name":"How to activate Diablo Mode",
+        "name": "How to activate Diablo Mode",
         "keywords": [
             "diablo"
         ],
@@ -399,7 +399,14 @@
             "performance",
             "fps"
         ],
-        "reply": "# Redmagic Performance Modes\n\nEco:\nLimits to 60hz and sacrifices performance for efficiency \n\nBalance:\nAs the name suggests, it balances Battery life and Performance.\n__Also all Apps outside of Game Space run on Balance Mode__\n\nRise:\nIt sacrifices battery life for better performance.\n--> We suggest this for demanding games\n\nDiablo Mode:\nLocks the SoC clock speeds to the maximum and ignores thermal safety measures.\nThis might give you the very best Performance, but the downsides are:\n- Huge Battery consumption \n- Very high temperatures! (90°C and higher aren't uncommon)\n\nWe ONLY recommend this if you:\n- Emulate Games\n- Are next to a power outlet \n- Use an external cooler on top of the internal\n\nhttps://global.redmagic.gg/blogs/game-space/unlock-your-potential-a-reintroduction-to-redmagic-s-game-space"
+        "reply": "## ⚙️ REDMAGIC Performance Modes Explained\n\nREDMAGIC gives you multiple performance modes so you can control battery life, heat, and raw power — depending on what you’re doing.  \nHere’s a quick breakdown of what each mode does and when to use it! 🎮🔋🔥\n\n---\n\n### 🌿 **Eco Mode**  \n- ✅ Limits refresh rate to **60Hz**  \n- 🔋 Prioritizes **battery life and efficiency**  \n- 💤 Best for casual use or when you’re running low on battery  \n\n---\n\n### ⚖️ **Balance Mode** *(Default outside Game Space)*  \n- ⚡ A mix of **performance and battery savings**  \n- 🔋 Great for everyday use  \n- 📱 *All apps outside of Game Space run in this mode by default*\n\n---\n\n### 📈 **Rise Mode**  \n- ⚡ Cranks up performance — at the cost of some battery life  \n- 🎮 Recommended for **demanding games**  \n- 🧊 Might get warm, but nothing extreme\n\n---\n\n### 🔥 **Diablo Mode** *(Extreme Performance)*  \n- 🚀 Locks CPU/GPU clock speeds to the **maximum**  \n- ❌ Ignores thermal safety limits (yes, seriously)  \n- ⚠️ Temps of **90°C+** are not unusual!\n\n## ⚠️ Use ONLY if:\n- 🎮 You’re **emulating heavy games**  \n- 🔌 You're **plugged into a power outlet**  \n- ❄️ You're using an **external cooler** (on top of the internal one!)\n\n---\n\n🔗 **More info from REDMAGIC themselves:**  \n[🔗 Unlock Your Potential – Game Space Guide](https://global.redmagic.gg/blogs/game-space/unlock-your-potential-a-reintroduction-to-redmagic-s-game-space)"
+    },
+    {
+        "name": "What's the warranty on REDMAGIC devices",
+        "keywords": [
+            "warranty"
+        ],
+        "reply": "# What´s the warranty on REDMAGIC devices?\n\nAll REDMAGIC smartphones and accessories purchased from [redmagic.gg](https://www.redmagic.gg) come with:\n🔹 **2-year limited warranty** for smartphones, Tablets and Laptops\n🔹 **1-year limited warranty** for accessories  \n*Warranty starts from the date of delivery.*\n\n🛍️ **Return Policy:**  \nYou can return your device for a **full refund within 15 days** of purchase.\n\n💬 **Need help?**  \nContact support at **[support@redmagic.gg](mailto:support@redmagic.gg)**\n\n🔧 **Cracked screen or repair issue?**  \nCheck this guide: [📎 How can I fix a cracked screen?] (https://help.redmagic.gg/hc/en-us/articles/360030687412-I-ve-cracked-my-screen-How-can-I-fix-it)"
     },
     {
         "keywords": [],
