@@ -1,7 +1,7 @@
 const fs = require('node:fs');
 const path = require('node:path');
 const { Client, Collection, Events, GatewayIntentBits, MessageFlags, ChannelType, ActionRowBuilder, ButtonBuilder, ButtonStyle } = require('discord.js');
-const { token, clientId, forumChannelId } = require('./config.json');
+const { token, clientId, forumChannelId, solvedTagId } = require('./config.json');
 const Fuse = require('fuse.js');
 
 const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.MessageContent] });
@@ -155,11 +155,34 @@ client.on(Events.InteractionCreate, async interaction => {
             await interaction.reply({ content: 'Help topic not found.', flags: MessageFlags.Ephemeral });
         }
         return;
+    } else if (interaction.isButton() && interaction.customId === 'close_thread') {
+        // Close the thread
+        if (interaction.channel.isThread()) {
+            try {
+                if (interaction.user.id == interaction.channel.ownerId || interaction.member.permissions.has('ManageThreads')) {
+                    // add tag to the thread while keeping the already applied tags
+                    const currentTags = interaction.channel.appliedTags || [];
+                    // make sure we dont have 5 tags already
+                    if (currentTags.length >= 5) {
+                        await interaction.channel.setAppliedTags(currentTags.slice(0, 4)); // keep only the first 4 tags
+                    }
+                    await interaction.channel.setAppliedTags([...currentTags, solvedTagId]);
+
+                    await interaction.channel.setLocked(true);
+                    await interaction.reply({ content: 'Thread has been closed successfully <:Mora_Agree:1380160309771374624>.' });
+                } else {
+                    await interaction.reply({ content: 'You do not have permission to close this thread <:MoraCabbage:1222196835142205471>.', flags: MessageFlags.Ephemeral });
+                }
+            } catch (err) {
+                console.error('Error closing thread:', err);
+                await interaction.reply({ content: 'There was an error closing the thread.', flags: MessageFlags.Ephemeral });
+            }
+        } else {
+            await interaction.reply({ content: 'This command can only be used in a thread <:Mora_Scream:1388103624181158020>.', flags: MessageFlags.Ephemeral });
+        }
     }
 
 });
-
-
 
 client.on('threadCreate', async thread => {
     // make sure the thread is a forum post
@@ -179,7 +202,7 @@ client.on('threadCreate', async thread => {
 
             let reply = ""
             let preReply = "Hey there thank you for making a post in the forum! A User or member of our team will respond to your post as soon as possible.\n\n";
-            let afterReply = "Please add the solved tag to your post and close it afterwards, when your issue has been resolved.";
+            let afterReply = "When your issue is resolved, please remember to close the thread by clicking the 'Close Thread' button below or doing `/close` command, thank you <:mora_cheer:925660965448609842>.\n\n";
 
             if (possibleHelpTopics.length > 0) {
                 preReply += `**Looking through your post I found some help topics that could be helpful for you:**\n`;
@@ -192,16 +215,28 @@ client.on('threadCreate', async thread => {
                     possibleHelpTopics.map((topic, idx) =>
                         new ButtonBuilder()
                             .setCustomId(`forum_help_${idx}`)
-                            .setLabel(`View help ${idx + 1}`)
+                            .setLabel(`📝View help ${idx + 1}`)
                             .setStyle(ButtonStyle.Primary)
                     )
+                        .concat(
+                            new ButtonBuilder()
+                                .setCustomId('close_thread')
+                                .setLabel('✅Close Thread')
+                                .setStyle(ButtonStyle.Success)
+                        )
                 );
 
                 reply = preReply + "\n" + afterReply;
                 await thread.send({ content: reply, components: [row] });
             } else {
+                const row = new ActionRowBuilder().addComponents(
+                    new ButtonBuilder()
+                        .setCustomId('close_thread')
+                        .setLabel('✅Close Thread')
+                        .setStyle(ButtonStyle.Success)
+                );
                 // No matches, just send the default reply
-                await thread.send(preReply + afterReply);
+                await thread.send(preReply + afterReply, { components: [row] });
             }
         } catch (err) {
             console.error('Error fetching starter message or replying to a thread:', err);
