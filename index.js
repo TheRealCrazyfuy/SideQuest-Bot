@@ -13,7 +13,7 @@ const commandFolders = fs.readdirSync(foldersPath);
 const helpReplies = require('./data/helpreplies.json');
 const fuse = new Fuse(helpReplies, {
     keys: ['keywords', 'name', 'reply'],
-    threshold: 0.8 // decrease threshold for more strict matching
+    threshold: 0.6 // decrease threshold for more strict matching
 });
 
 for (const folder of commandFolders) {
