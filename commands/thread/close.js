@@ -10,13 +10,20 @@ module.exports = {
         if (interaction.channel.isThread()) {
             try {
                 if (interaction.user.id == interaction.channel.ownerId || interaction.member.permissions.has('ManageThreads')) {
-                    // add tag to the thread while keeping the already applied tags
-                    const currentTags = interaction.channel.appliedTags || [];
-                    // make sure we dont have 5 tags already
-                    if (currentTags.length >= 5) {
-                        await interaction.channel.setAppliedTags(currentTags.slice(0, 4)); // keep only the first 4 tags
+                    // find the solved tag in the parent channel from tag id
+                    const solvedTag = interaction.channel.parent.availableTags.find(
+                        t => t.id == solvedTagId
+                    );
+
+                    // get current tags and add the solved tag if it's not already there
+                    let updatedTags = [...(interaction.channel.appliedTags || [])];
+                    if (updatedTags.length >= 5) {
+                        updatedTags = updatedTags.slice(0, 4); // remove the last tag if there are already 5 tags
                     }
-                    await interaction.channel.setAppliedTags([...currentTags, solvedTagId]);
+                    if (!updatedTags.includes(solvedTag.id)) {
+                        updatedTags.push(solvedTag.id);
+                    }
+                    await interaction.channel.setAppliedTags(updatedTags);
 
                     await interaction.channel.setLocked(true);
                     await interaction.reply({ content: 'Thread has been closed successfully <:Mora_Agree:1380160309771374624>.' });
