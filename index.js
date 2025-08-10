@@ -177,6 +177,7 @@ client.on(Events.InteractionCreate, async interaction => {
 
                     await interaction.channel.setLocked(true);
                     await interaction.reply({ content: 'Thread has been closed successfully <:Mora_Agree:1380160309771374624>.' });
+                    await interaction.channel.setArchived(true);
                 } else {
                     await interaction.reply({ content: 'You do not have permission to close this thread <:MoraCabbage:1222196835142205471>.', flags: MessageFlags.Ephemeral });
                 }
