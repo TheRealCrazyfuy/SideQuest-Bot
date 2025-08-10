@@ -243,7 +243,7 @@ client.on('threadCreate', async thread => {
                         .setStyle(ButtonStyle.Success)
                 );
                 // No matches, just send the default reply
-                await thread.send(preReply + afterReply, { components: [row] });
+                await thread.send({ content: preReply + afterReply, components: [row] });
             }
         } catch (err) {
             console.error('Error fetching starter message or replying to a thread:', err);
