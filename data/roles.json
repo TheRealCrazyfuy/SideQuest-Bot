@@ -19,6 +19,7 @@
     { "label": "REDMAGIC 3/3S", "value": "rm3", "roleId": "897403266500026408" },
     { "label": "REDMAGIC Mars", "value": "rmmars", "roleId": "897402944218091520" },
     { "label": "REDMAGIC 1", "value": "rm1", "roleId": "917702694548934658" },
+    { "label": "Other", "value": "other", "roleId": "973471738543349781" },
     { "label": "Remove all", "value": "removeall", "roleId": null }
   ],
   "accessories": [
