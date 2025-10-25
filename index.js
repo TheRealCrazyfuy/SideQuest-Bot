@@ -84,6 +84,8 @@ client.on(Events.InteractionCreate, async interaction => {
             options = rolesData.accessories;
         } else if (interaction.customId === 'pcDropdown') {
             options = rolesData.pcPeripherals;
+        } else if (interaction.customId === 'gameNightDropdown') {
+            options = rolesData.gameNightEvent;
         }
 
         const selected = interaction.values;

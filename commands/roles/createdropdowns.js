@@ -52,6 +52,15 @@ module.exports = {
                 .addOptions(roles.pcPeripherals.map(opt => ({ label: opt.label, value: opt.value, description: opt.description || undefined })))
         );
 
+        const gameNightDropdowns = new ActionRowBuilder().addComponents(
+            new StringSelectMenuBuilder()
+                .setCustomId('gameNightDropdown')
+                .setPlaceholder('Choose an event role')
+                .setMinValues(1)
+                .setMaxValues(2)
+                .addOptions(roles.gameNightEvent.map(opt => ({ label: opt.label, value: opt.value, description: opt.description || undefined })))
+        );
+
         await channel.send({
             content: `Please take your cosmetic Roles here.
 In case you own more devices, feel free to ask a Mod.
@@ -61,6 +70,7 @@ To remove all your roles choose the "Remove all" option in the dropdown.
         await channel.send({ content: '-# You can choose up to 3 Phone roles', components: [phoneDropdown] });
         await channel.send({ content: '-# You can choose up to 1 Accessory roles', components: [accessoryDropdown] });
         await channel.send({ content: '-# You can choose up to 2 PC peripheral roles', components: [pcDropdown] });
+        await channel.send({ content: '-# You can choose up to 2 event roles', components: [gameNightDropdowns] });
 
         await interaction.reply({ content: 'Done!', ephemeral: true });
     },

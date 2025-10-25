@@ -28,5 +28,10 @@
     { "label": "REDMAGIC Titan 16 Pro", "value": "redmagictitan16pro", "roleId": "1287164601544478730"},
     { "label": "REDMAGIC Peripherals", "value": "peripherals",  "description": "PC accesories like the gaming mouse, keyboard, monitor etc", "roleId": "1290323123987550218"},
     { "label": "Remove all", "value": "removeall", "roleId": null }
+  ],
+  "gameNightEvent": [
+    { "label": "Game Night", "value": "gamenight", "description": "Sign up for game night pings","roleId": "1407810304817107127"},
+    { "label": "Movie Night", "value": "movienight",  "description": "Sign up for movie night pings", "roleId": "1407810413856428124"},
+    { "label": "Remove all", "description": "Disable all night event pings","value": "removeall", "roleId": null }
   ]
 }
