@@ -2,6 +2,7 @@
   "phones": [
     { "label": "REDMAGIC Astra", "value": "rmastra", "roleId": "1389289382485426269" },
     { "label": "REDMAGIC Nova", "value": "rmnova", "roleId": "1287164838753206405" },
+    { "label": "REDMAGIC 11 Pro", "value": "rm11pro", "roleId": "1431737274512441395" },
     { "label": "REDMAGIC 10s Pro", "value": "rm10spro", "roleId": "1376510975112642661" },
     { "label": "REDMAGIC 10 Pro", "value": "rm10pro", "roleId": "1305946911764648046" },
     { "label": "REDMAGIC 10 Air", "value": "rm10air", "roleId": "1365447040326303886" },
@@ -16,9 +17,7 @@
     { "label": "REDMAGIC 6/6Pro", "value": "rm6pro", "roleId": "897403271986176081" },
     { "label": "REDMAGIC 6R", "value": "rm6r", "roleId": "897403274284634112" },
     { "label": "REDMAGIC 5G/5S", "value": "rm5g", "roleId": "897403269553471498" },
-    { "label": "REDMAGIC 3/3S", "value": "rm3", "roleId": "897403266500026408" },
-    { "label": "REDMAGIC Mars", "value": "rmmars", "roleId": "897402944218091520" },
-    { "label": "REDMAGIC 1", "value": "rm1", "roleId": "917702694548934658" },
+    { "label": "REDMAGIC OG", "value": "rmog", "description": "REDMAGIC 1, Mars and 3 series", "roleId": "1431748322925740093" },
     { "label": "Other", "value": "other", "roleId": "973471738543349781" },
     { "label": "Remove all", "value": "removeall", "roleId": null }
   ],
