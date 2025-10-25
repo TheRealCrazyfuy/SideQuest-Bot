@@ -34,6 +34,15 @@ module.exports = {
                 .addOptions(roles.phones.map(opt => ({ label: opt.label, value: opt.value, description: opt.description || undefined })))
         );
 
+        const tabletDropdown = new ActionRowBuilder().addComponents(
+            new StringSelectMenuBuilder()
+                .setCustomId('tabletDropdown')
+                .setPlaceholder('Choose a tablet')
+                .setMinValues(1)
+                .setMaxValues(2)
+                .addOptions(roles.tablets.map(opt => ({ label: opt.label, value: opt.value, description: opt.description || undefined })))
+        );
+
         const accessoryDropdown = new ActionRowBuilder().addComponents(
             new StringSelectMenuBuilder()
                 .setCustomId('accessoryDropdown')
@@ -68,6 +77,7 @@ In case you own more devices, feel free to ask a Mod.
 To remove all your roles choose the "Remove all" option in the dropdown.
 ` });
         await channel.send({ content: '-# You can choose up to 3 Phone roles', components: [phoneDropdown] });
+        await channel.send({ content: '-# You can choose up to 2 Tablet roles', components: [tabletDropdown] });
         await channel.send({ content: '-# You can choose up to 1 Accessory roles', components: [accessoryDropdown] });
         await channel.send({ content: '-# You can choose up to 2 PC peripheral roles', components: [pcDropdown] });
         await channel.send({ content: '-# You can choose up to 2 event roles', components: [gameNightDropdowns] });

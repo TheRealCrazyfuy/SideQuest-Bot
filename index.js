@@ -80,6 +80,8 @@ client.on(Events.InteractionCreate, async interaction => {
         // Check which menu was used
         if (interaction.customId === 'phoneDropdown') {
             options = rolesData.phones;
+        } else if (interaction.customId === 'tabletDropdown') {
+            options = rolesData.tablets;
         } else if (interaction.customId === 'accessoryDropdown') {
             options = rolesData.accessories;
         } else if (interaction.customId === 'pcDropdown') {
