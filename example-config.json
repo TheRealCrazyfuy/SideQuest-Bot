@@ -2,5 +2,6 @@
     "token": "your-bot-token",
     "clientId": "client-id",
     "forumChannelId": 12345678910,
-    "solvedTagId": 12345678910
+    "solvedTagId": 12345678910,
+    "verificationRoleId": "12345678910"
 }
