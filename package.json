@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
   },
   "author": "",
   "license": "ISC",
@@ -11,5 +13,8 @@
   "dependencies": {
     "discord.js": "^14.21.0",
     "fuse.js": "^7.1.0"
+  },
+  "devDependencies": {
+    "prettier": "^3.7.4"
   }
 }
