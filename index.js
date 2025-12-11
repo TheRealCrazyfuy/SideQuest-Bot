@@ -11,6 +11,7 @@ const foldersPath = path.join(__dirname, 'commands');
 const commandFolders = fs.readdirSync(foldersPath);
 
 const helpReplies = require('./data/helpreplies.json');
+const { logStandardMessage, logSetRoles, logErrorMessage, logThreadCreation, logThreadClosure } = require('./utils/logging');
 const fuse = new Fuse(helpReplies, {
     keys: ['keywords', 'name', 'reply'],
     threshold: 0.6 // decrease threshold for more strict matching
@@ -51,6 +52,7 @@ function searchHelpTopics(fuse, content, threadName, limit = 4) {
 
 client.once(Events.ClientReady, readyClient => {
     console.log(`Ready! Logged in as ${readyClient.user.tag}`);
+    logStandardMessage(`${readyClient.user.tag} restarted and is now online.`, readyClient);
 });
 
 client.on(Events.InteractionCreate, async interaction => {
@@ -69,6 +71,7 @@ client.on(Events.InteractionCreate, async interaction => {
             if (interaction.replied || interaction.deferred) {
                 await interaction.followUp({ content: 'There was an error while executing this command!', flags: MessageFlags.Ephemeral });
             } else {
+                logErrorMessage(`Error executing command ${interaction.commandName} for user ${interaction.user.id}: ${error}`, interaction.client);
                 await interaction.reply({ content: 'There was an error while executing this command!', flags: MessageFlags.Ephemeral });
             }
         }
@@ -117,8 +120,10 @@ client.on(Events.InteractionCreate, async interaction => {
                 await member.roles.add(roleId);
             } catch (err) {
                 console.error(`Failed to add role ${roleId}:`, err);
+                logErrorMessage(`Failed to add role ${roleId} to user ${member.id}: ${err}`, interaction.client);
             }
         }
+        logSetRoles(member, roleIds, interaction.client);
         await interaction.reply({ content: `Updated your roles <:mora_popcorn:1133350731357896744> `, ephemeral: true });
     } else if (interaction.isAutocomplete()) {
         const command = interaction.client.commands.get(interaction.commandName);
@@ -154,6 +159,7 @@ client.on(Events.InteractionCreate, async interaction => {
 
         const topic = possibleHelpTopics[idx];
         if (topic) {
+            logStandardMessage(`Provided help topic "${topic.name}" to user <@${interaction.user.id}> in thread "${interaction.channel.url}".`, interaction.client);
             await interaction.reply({ content: topic.reply, flags: MessageFlags.Ephemeral });
         } else {
             await interaction.reply({ content: 'Help topic not found.', flags: MessageFlags.Ephemeral });
@@ -175,7 +181,7 @@ client.on(Events.InteractionCreate, async interaction => {
                     await interaction.reply({ content: 'You do not have permission to close this thread <:MoraCabbage:1222196835142205471>.', flags: MessageFlags.Ephemeral });
                 }
             } catch (err) {
-                console.error('Error closing thread:', err);
+                logErrorMessage(`Error sending closing confirmation on ${interaction.channel.url}: ${err}`, interaction.client);
                 await interaction.reply({ content: 'There was an error closing the thread.', flags: MessageFlags.Ephemeral });
             }
         } else {
@@ -202,10 +208,12 @@ client.on(Events.InteractionCreate, async interaction => {
                 await interaction.channel.setLocked(true);
                 await interaction.reply({ content: 'Thread has been closed successfully <:Mora_Agree:1380160309771374624>.' });
                 await interaction.channel.setArchived(true);
+                logThreadClosure(interaction.channel, interaction.user, interaction.client);
             } else {
                 await interaction.reply({ content: 'You do not have permission to close this thread <:MoraCabbage:1222196835142205471>.', flags: MessageFlags.Ephemeral });
             }
         } catch (err) {
+            logErrorMessage(`Error closing thread ${interaction.channel.url}: ${err}`, interaction.client);
             console.error('Error closing thread:', err);
             await interaction.reply({ content: 'There was an error closing the thread.', flags: MessageFlags.Ephemeral });
         }
@@ -217,6 +225,7 @@ client.on('threadCreate', async thread => {
     // make sure the thread is a forum post
     if (thread.parent && thread.parent.type === ChannelType.GuildForum && thread.parentId == forumChannelId) {
         console.log(`New forum post created: ${thread.name} in ${thread.parent.name}`);
+        logThreadCreation(thread, thread.client);
 
         try {
             await new Promise(resolve => setTimeout(resolve, 5000)); // delay because discord dont know how to make a proper api
@@ -268,6 +277,7 @@ client.on('threadCreate', async thread => {
                 await thread.send({ content: preReply + afterReply, components: [row] });
             }
         } catch (err) {
+            logErrorMessage(`Error replying to thread ${thread.url}: ${err}`, thread.client);
             console.error('Error fetching starter message or replying to a thread:', err);
         }
     }
