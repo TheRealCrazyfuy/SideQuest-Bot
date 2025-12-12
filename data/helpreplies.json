@@ -1,271 +1,419 @@
 [
-  {
-    "name": "Report a bug",
-    "keywords": [],
-    "reply": "Please email the official support (support@redmagic.gg) and additionally file a bug report here: <https://redmagic.gg/pages/redmagic-product-experience-feedback>"
-  },
-  {
-    "name": "Fan cleaning tutorial",
-    "keywords": ["fan"],
-    "reply": "## 🧼 Redmagic Internal Fan Cleaning Tutorial by <@292308639316967435> \n\nWant to keep your Redmagic cool and clean? Here's how to safely clean the internal fan! 🌀\n\n---\n\n### 🔧 What You’ll Need:\n- 🪥 *Dry toothbrush* (optional, for dust buildup)\n- 💨 *Canned air* (or similar air pressure)\n- 📱 Your Redmagic phone\n\n---\n\n### 🪛 Steps:\n\n1. 🔌 **Turn the phone OFF**  \n   Make sure the device is powered down to avoid any damage.\n\n2. 📦 **Remove the phone case** *(if you have one)*\n\n3. 🪥 **Brush off dust**  \n   Gently use a toothbrush to remove **larger particles** from the **intake vent**  \n   - 🧩 *On the 7 series: it's on the back*  \n   - 📏 *On other models: it's on the side*  \n   *(You can skip this step if your fan isn't too dusty)*\n\n4. ↘️ **Tilt the phone sideways**  \n   Make sure the **air outtake vent points DOWNWARD** — this helps dust fall out more easily!\n\n5. 💨 **Blow air into the intake vent**  \n   Use **short, strong bursts** with canned air. Repeat a few times until clean.\n\n6. 🔄 **Turn the phone back ON**  \n   Set the **internal fan to MAX RPM** for about **10 seconds** to flush out any remaining dust.\n\n---\n\n### 🎉 Aaaand your done!\nCleaning regularly helps performance and fan longevity!\n\n---\n\n📹 **Video Tutorial (by someone else):**  \n[Watch on YouTube](https://youtu.be/XcpJrl9gWN0?si=xd-_vml4wXZO5fch)"
-  },
-  {
-    "name": "Shipping times",
-    "keywords": ["shipping", "arrive"],
-    "reply": "https://discord.com/channels/897390969744424980/1241039607747973271/1247976138509254657, https://discord.com/channels/897390969744424980/1241039607747973271/1248141549313986571"
-  },
-  {
-    "name": "Latest Question and answers",
-    "keywords": ["QnA"],
-    "reply": "Check our our Latest QnA here: https://discord.com/channels/897390969744424980/1241039607747973271/1385427470488174733"
-  },
-  {
-    "name": "Charge separation/bypass",
-    "keywords": ["charge sep", "charge bypass", "bypass"],
-    "reply": "# Charge Separation (bypass charging) feature things to know\n\n- The Charge Separation feature operates under the following conditions:\nManual Reactivation Required:\n- If the charger cable is disconnected while Charge Separation is active, the feature will automatically deactivate.\n\nSubsequent reconnection of the charger will not automatically reactivate Charge Separation:\n--> manual re-enablement is required.\n\nDeactivation Upon Charger Connection:\n- When connecting a charger after activating Charge Separation, the feature will automatically deactivate. To continue using charge separation, you must manually re-enable the function.\nAutomatic Time Limit:\n- The charge separation function automatically deactivates after 12 hours of continuous operation."
-  },
-  {
-    "name": "Improve battery life",
-    "keywords": ["battery", "battery health", "sot"],
-    "reply": "# Some Suggestions of Optimizing Battery Life and Extending Standby Time\n\nTo maximize battery efficiency and extend standby duration, we recommend the following measures:\n\n1. Enable Power-Saving Modes:\nActivate Power Saving Mode or Ultra Power Saving Mode via the quick settings panel.\n\n2. Manage Connectivity:\nDisable mobile data and network connections when not required.\n\n3. Optimize Display Settings:\nAvoid using live/dynamic wallpapers.\nReduce screen brightness.\nSet a shorter screen timeout period.\nSelect a lower screen refresh rate (e.g., 60Hz or 90Hz).\n\n4. Manage Applications:\nRegularly close unused background applications to conserve power and free up RAM.\nPerform routine phone memory cleanup.\nNavigate to Palm Manager > Battery Management > App Smart Management to disable auto-start and\nbackground activity permissions for non-essential third-party apps.\n\n5. Control 5G Usage:\nBe aware that 5G connectivity may increase battery consumption; enable it only as needed.\n\n6. Manage Location Services:\n- Disable location services (GPS) when not in use.\nKey Recommendation:\nFor optimal battery performance and extended usage, proactively managing display settings, application behavior, and connectivity options is essential."
-  },
-  {
-    "name": "Wifi is not auto connecting",
-    "keywords": ["connecting", "auto connect"],
-    "reply": "# Troubleshooting: Device Not Auto-Connecting to Specific Hotspot Network\nCause Analysis:\n\n- Your device may disable automatic connections to a particular network due to persistent connectivity failures and repeated unsuccessful reconnection attempts following previous disconnections\nResolution Steps:\n- Manually reconnect to the network through your device's Hotspot settings\n- Verify network functionality after reconnection\n- The network should resume automatic connections if successfully established"
-  },
-  {
-    "name": "HDMI/DP external display characteristics",
-    "keywords": ["hdmi", "projection"],
-    "reply": "# What are the characteristics of DP/HDMI screen projection? How to maximize the screen projection effect?\n\n1. Enhanced Connectivity:\n- Equipped with USB 3.2 Gen 2 technology, the REDMAGIC 10S Pro supports display mirroring at refresh rates up to 144Hz.\n- Optimal performance requires certified data cables and compatible high-refresh-rate monitors.\n\n2. Customizable Display Output:\n- Users may freely configure both resolution and refresh rate settings for projected content according to their preferences.\n\n3. High Refresh Rate Compatibility Requirements:\nAchieving seamless high-refresh-rate projection necessitates simultaneous compatibility across all components (data cables, expansion docks, and display/capture devices).\n each meeting high-refresh specifications."
-  },
-  {
-    "name": "About the front camera",
-    "keywords": ["front cam", "udc", "selfie", "selfie cam"],
-    "reply": "The latest REDMAGIC devices employ an under-display front camera solution, which differs fundamentally from traditional punch-hole designs. The under-display technology requires an additional layer to allow light transmission, resulting in imaging characteristics that may vary compared to devices with conventional front camera implementations.\n\nFor optimal results when using the front camera:\n1. Ensure adequate ambient lighting\n2. Keep the screen area above the camera clean and unobstructed\n3. Avoid environments with intense direct light sources or strong backlighting\n"
-  },
-  {
-    "name": "App crashing issue",
-    "keywords": ["translation", "crash"],
-    "reply": "# App Crash/translation issues\n\nIf you encounter software-related issues such as crashes, freezes, installation errors, or translation inconsistencies, please ensure your apps are updated to support the latest service architecture.\n- Qualcomm and Android have officially discontinued support for legacy 32-bit software services, which may cause compatibility issues with older apps.\n- For apps experiencing crashes or malfunctions unrelated to 32-bit architecture, we recommend contacting the respective software developer to request device-specific optimization for the REDMAGIC series.\n- Our team is actively collaborating with developers to improve software compatibility and localization.\n- We appreciate your patience and feedback as we work to enhance your experience. Please don’t hesitate to reach out if you need additional assistance at support@redmagic.gg\n"
-  },
-  {
-    "name": "Wireless charging",
-    "keywords": ["wireless charging"],
-    "reply": "# No wireless charging\n\n- The current REDMAGIC series does not include hardware support for wireless charging and relies exclusively on wired charging solutions.\n- This design decision aligns with our focus on maximizing performance and thermal efficiency for gaming-centric devices.\n- In addition, our wired charging has the advantages of low heat generation and fast speed.\n"
-  },
-  {
-    "name": "eSIM and sd cards",
-    "keywords": ["esim", "sd card"],
-    "reply": "# No eSIM or expandable storage\n\nREDMAGIC smartphones currently do not support eSIM functionality or expandable storage (micro-SD cards).\n"
-  },
-  {
-    "name": "About smart cast and wireless screen mirroring",
-    "keywords": ["mirroring", "usb screen", "smartcast"],
-    "reply": "# What is USB Screen Mirroring?\n\nUSB screen projection is to use a USB cable to connect the computer and the phone to project the screen. You can choose a Type-C to USB-A cable or a dual Type-C cable."
-  },
-  {
-    "name": "Software updates policy",
-    "keywords": [
-      "software update",
-      "software support",
-      "update policy",
-      "policy"
-    ],
-    "reply": "# How many software updates will be there for REDMAGIC phones?\n\n**📱 REDMAGIC Software Support Overview (Updated as of June 20, 2025)**\n\n🔧 **Update Frequency:** Every 1–2 months  \nIncludes: Bug fixes, security patches, system optimizations, and overall performance improvements\n\n---\n\n__**🇪🇺 EU Customers**__  \n📆 **Support Duration:** 5 years (bug fixes + security updates)  \n📲 **Android OS Upgrades:** 3 major updates  \n✅ In compliance with EU regulations effective June 20, 2025\n\n__**🌍 Global (Non-EU) Customers**__  \n📆 **Support Duration:** 3 years (bug fixes + security updates)  \n📲 **Android OS Upgrades:** 2 major updates  \n\n📌 **Applies to:**  \n🔹 REDMAGIC 10S Pro  \n🔹 REDMAGIC ASTRA  \n🔹 All upcoming REDMAGIC models\n\n---\n\n__**📦 Older Device Support**__\n\n📱 **10 Pro, 10 Air, Nova, 9 Series, 8 Series**  \n📆 3 years of support  \n📲 2 major Android updates  \n\n📱 **7 Series and earlier**  \n📆 2 years of support  \n📲 1 major Android update\n---> __EOL, wont get Updates anymore__\n\n---\n\n🛠️ REDMAGIC adapts its update cycles and support durations based on:  \n• Local laws and regulations  \n• Product lifecycle and technical requirements  \n• Commitment to delivering a high-quality, stable user experience globally\n\nThere is also a Beta testing program where you can test the upcoming Software Updates before they are out for everyone. You can sign up here: https://redmagic.gg/blogs/news/introducing-the-redmagic-beta-testing-program/\n\nEdit: Beta Program currently is only for Redmagic 8s pro"
-  },
-  {
-    "name": "How to lock the screen refresh rate",
-    "keywords": ["refresh rate", "60hz", "60"],
-    "reply": "# How do I lock the screen refresh rate?\n\n- Settings\n- Updates\n- Developer Options (please click the version number 7 times in a row to turn on the developer options)\n- Scroll down until you find the Lock Refresh Rate button and activate it\n(Please note: When selecting a high refresh rate, power consumption and heat generation will increase greatly. In addition, some games and applications may have compatibility issues, which may cause freezes and impaired picture quality.)"
-  },
-  {
-    "name": "Screen share to computer",
-    "keywords": ["smartcast", "studio"],
-    "reply": "# How to control my REDMAGIC device with a computer?\n\nTo control the mobile phone with a computer, you need to use the REDMAGIC screencasting client.\n\n- Download the REDMAGIC screencasting client from the REDMAGIC community\nhttps://redmagic.gg/pages/smartcast-studio\n- Install and open the client\n- use the mobile screencasting app to scan the code or connect the USB to the computer to cast the screen\n\nAfter the screencasting is successful, you can use the mouse to click on the screen in the computer projection to operate the mobile phone\n\n- Turn on the keyboard mapping function after entering the game, and you can use the keyboard and mouse to control the game\n-The software has built - in default keyboard schemes for some games, and you can also adjust the key layout according\nto your own gaming habits.\n"
-  },
-  {
-    "name": "How to activate Diablo Mode",
-    "keywords": ["diablo"],
-    "reply": "# How to activate Diablo Mode?\n\n- While in-game, swipe 2x from the corner of your screen to the middle.\n- Scroll the now-opened gaming mode on the left side down until you see the Diablo Mode tile and press it\nNote: Power consumption and heat generation will increase significantly. Please be careful when using this feature!\n"
-  },
-  {
-    "name": "Can Ram extension technology be turned off",
-    "keywords": ["ram extension", "virtual memory", "virtual storage"],
-    "reply": "# Can Ram extension technology be turned off?\n\n- Go to Settings\n- About phone \n- RAM capacity \n- Switch Ram Extension off\n"
-  },
-  {
-    "name": "Why is the desktop locked to 60hz",
-    "keywords": ["low brightness"],
-    "reply": "# Why is the desktop locked to 60hz?\n\n- Is it low brightness?\nIf it is in low brightness and the scrolling is also 60 Hz:\n- Developer-Options \n- Smart Refresh Rate Switch \n- Turn it off."
-  },
-  {
-    "name": "The application cannot be installed",
-    "keywords": ["apk", "sideload", "32 bit", "cannot be installed"],
-    "reply": "# The application cannot be installed\nThis could mean the following:\n1.    The App does not support 64 Bit (arm64-v8a) Processors \n2.    The App supports only certain android versions (e.g. android 5-11)\n3.    The user is trying to downgrade the app (not supported since Android 14)\n4.    The signature verification does not match the app \n--> Devices with Qualcomm Snapdragon 8 Gen 3 and later (including Snapdragon 8 Elite) support only 64-bit apps.\nTo fix this issue, install the 64-bit version of the app.\n"
-  },
-  {
-    "name": "About Wifi 7",
-    "keywords": ["wifi 7", "wi-fi 7"],
-    "reply": "# Can Wi-Fi certification be publicly promoted?\n\n- Wi-Fi 7 has not yet been fully certified, so it will not be actively mentioned in official promotional documents.\n"
-  },
-  {
-    "name": "Why can't I access the Internet sometimes",
-    "keywords": ["network error", "internet", "internet error"],
-    "reply": "# Why can't I access the Internet sometimes?\n\nIf a single APP application cannot access the Internet:\n--> clear the background and network data and try again\nYou can also check whether the mobile manager has disabled the network connection of the application\n\n- If all applications cannot access the Internet, please switch to network or flight mode and try again\n- If you are connecting to a 5G network to access the Internet, please turn off the 5G switch and try again. It may be caused\nby network instability."
-  },
-  {
-    "name": "Why Is My Internet Speed Slow or Unavailable",
-    "keywords": ["slow network", "network", "network slow", "network is slow"],
-    "reply": "# Why Is My Internet Speed Slow or Unavailable?\n\nIf you're experiencing slow internet or can't access the internet at all, here are a few common causes and solutions:\nNetwork Type (4G/5G):\nIf your phone shows a 4G icon, your speed may not be as fast as it used to be.\n- Sometimes, your mobile operator may limit speed temporarily.\n- Try switching to 5G if available, as it may offer better performance.\n- If 5G is unstable or under construction in your area, try using 4G instead.\nSwitch Network Settings:\n- Turn off Smart 5G (if enabled).\n- Try toggling off 5G completely to force the phone to use 4G.\nThese steps can help if 5G coverage is weak or inconsistent.\n\nApp Issues:\n- close all apps that is running in the background and restart the affected app.\n- Check if all apps can't access the internet or if it's just one specific app.\nIf it's only one app, the issue might be with the app’s server, not your phone or connection.\nCheck Real-Time Speed:\nFor example, while watching TikTok, enable the notification & status bar in settings.\n- If it shows around 1MB/s, your connection is generally good for videos and browsing."
-  },
-  {
-    "name": "Why Is My Signal Poor or Unstable",
-    "keywords": ["signal", "poor signal", "slow data"],
-    "reply": "# Why Is My Signal Poor or Unstable?\n\n- Signal strength can vary based on your location and network type.\nKey Factors:\nNetwork Coverage:\n- Signal strength depends heavily on the local mobile network coverage.\n- 5G base stations have shorter range and faster signal drop compared to 4G.\nMovement and Signal Drop:\n- On 5G, even small movements can lead to signal fluctuation or drop, especially indoors or in rural areas.\n\nDevice Performance:\n- Phones undergo strict antenna testing before leaving the factory.\n- You can compare your phone's signal with another device on the same network (e.g., both using 4G or both using 5G).\n--> Signal Bars ≠ Performance:\n- Even if 5G shows only 2–3 bars, it should still support calls and internet access reliably under normal conditions."
-  },
-  {
-    "name": "REDMAGIC 10S Pro supported GPS bands",
-    "keywords": ["gps"],
-    "reply": "# REDMAGIC 10S Pro supported GPS bands\n\n- GPS supports three frequencies: L1, L2 and L5.\n"
-  },
-  {
-    "name": "Which frequencies does the REDMAGIC 10S Pro support",
-    "keywords": ["frequency", "frequencies", "bands"],
-    "reply": "# Which frequencies does the REDMAGIC 10S Pro support?\n\nNetwork\nSIM: Dual nano-SIM\n5G Network\nModes: SA (Standalone) & NSA (Non-Standalone)\n5G Bands (NR): n1 / n2 / n3 / n5 / n7 / n8 / n20 / n26 / n28 / n38 / n40 / n41 / n66 / n71 / n77 / n78\n4G LTE\nFDD-LTE: B1 / B2 / B3 / B4 / B5 / B7 / B8 / B12 / B17 / B18 / B19 / B20 / B26 / B28A / B28B / B66\nTDD-LTE: B34 / B38 / B39 / B40 / B41 / B42\n3G\nWCDMA / UMTS: B1 / B2 / B4 / B5 / B6 / B8 / B19\n2G\nGSM: 850 / 900 / 1800 / 1900 MHz (B2 / B3 / B5 / B8)\nCDMA: BC0 / BC1\nCarrier Aggregation\n5G NR CA: n1 / n3 / n8 / n20 / n28 / n40 / n41 / n71 / n77 / n78\n5G EN-DC (NSA): n1 / n7 / n28 / n38 / n40 / n41 / n71 / n77 / n78\n4G LTE CA:\nDownlink: B1 / B2 / B3 / B4 / B5 / B7 / B8 / B20 / B28 / B38 / B39 / B40 / B41 / B42 (JP)\nUplink: CA_3C / CA_7C / CA_38C / CA_39C / CA_40C / CA_41C\nWi-Fi: 802.11 a/b/g/n/ac/ax\nTri-band (2.4GHz / 5GHz / 6GHz)\nFeatures: HBS (High Band Simultaneous) Support\nBluetooth: Bluetooth 5.4\nGPS: Dual GPS (L1+L5)\nNFC: Yes\nHDMI: Converter Needed\nDP, Supports 4K HD Video\n"
-  },
-  {
-    "keywords": ["cant connect", "can't connect"],
-    "reply": "# Cannot connect to Router\n\n- We recommend that users check whether the router has blacklist and whitelist control set up.\n- If yes, please modify it accordingly.\n- It may also be that the router is not compatible with mobile phones with Wi-Fi 7 function.\n- We also highly recommended that users check whether the router has upgradeable firmware.\n- If yes, you can try to upgrade it.\n- If the router has been used for many years, it is recommended to replace it with a new one."
-  },
-  {
-    "keywords": ["touch screen", "touchscreen", "goodix"],
-    "reply": "# Is the touch chip of the Redmagic 10S Pro still from Goodix?\n\n- Yes, but we have optimized the touch control to the best state.\n- Goodix chips and other friendly peer chips have very good performance."
-  },
-  {
-    "name": "OLED screen burn",
-    "keywords": ["oled burn", "burn"],
-    "reply": "# OLED screens may suffer from burn-in issues\n\n- The software has optimized the screen burn-in problem, and the problem is covered by the warranty"
-  },
-  {
-    "name": "Why is the waterproof and dustproof level not higher?",
-    "keywords": [
-      "waterproof",
-      "dustproof",
-      "water resistant",
-      "water proof",
-      "dust proof"
-    ],
-    "reply": "# Why is the waterproof and dustproof level My Redmagic 10s Pro not higher?\n\n- The current waterproof and dustproof level is sufficient for daily use.\n- At the same time, due to the existence of the heat dissipation duct, in order to pursue the heat dissipation effect, the protection level will be sacrificed a little.\n"
-  },
-  {
-    "name": "What type of battery is the REDMAGIC 10s Pro Using?",
-    "keywords": ["battery type"],
-    "reply": "# What type of battery is the REDMAGIC 10s Pro Using?\n\n- We use dual-cell technology for faster charging and a higher output, if you need to power any external devices using your phone's battery\n"
-  },
-  {
-    "name": "Why does my phone get hot when charging?",
-    "keywords": ["hot charging", "hot when charging", "charge hot"],
-    "reply": "# Why does my phone get hot when charging?\n\n- When charging your phone, it will generate a certain amount of heat due to the large current and is normal\n- We also recommended that you turn on fast cooling while charging in:\n- Settings --> Cooling Fan\n- Please charge in an environment with good heat dissipation, and try to\nkeep the screen off during charging."
-  },
-  {
-    "name": "Charging speed is slow, no fast charging?",
-    "keywords": ["slow charging", "charging"],
-    "reply": "# Charging speed is slow, no fast charging?\n\n- Please confirm whether you are using the original charger and data cable\n- Re-plug the charging cable and try again\n- If the phone temperature is too high, the charging current will be automatically limited, causing the charging to slow down\n- We recommend avoiding using the phone during charging to cause the phone temperature to be too high.\nYou can also charge your phone faster, for the trade off of a little bit more heat:\n- Settings \n- Battery \n- Turn on Fast Charge"
-  },
-  {
-    "name": "The screen color is uneven or has color cast?",
-    "keywords": [
-      "bad color",
-      "wrong color",
-      "uneven color",
-      "screen color",
-      "color of the screen",
-      "color profile"
-    ],
-    "reply": "# The screen color is uneven or has color cast?\n\n- The mobile phone has been strictly tested before leaving the factory, and the screen display effect is within the normal color coordinate specification range, so please feel free to use it.\nYou can adjust the colors in:\n- Settings\n- Display\n- Screen Display Preferences to make the screen display achieve\nthe effect you need."
-  },
-  {
-    "name": "What should I do if the fingerprint sensor isn't working properly",
-    "keywords": ["fingerprint"],
-    "reply": "# What should I do if the fingerprint sensor isn't working properly?\n\nAn optical fingerprint sensor has a certain self-learning function, and the unlocking success rate will increase after using it for a period of time.\nIf it doesn't work, please check the following:\n- Do you have a screen protector?\n- Is it a tempered screen protector or a thin film?\n- Is it purchased from a third party or an official one?\n- We recommend that you use the official screen protector (or you don't use a screen protector, resulting in less protection but higher accuracy).\n- Screen breakage or cracking may cause the fingerprint unlocking under the screen to be insensitive or ineffective.\n- We also recommend contacting the official after-sales service.\n- Excessive light may deteriorate the quality of the fingerprint image and affect the fingerprint unlocking.\n- Try using it in a place without direct strong light.\n- Fingers that are too wet or too dry may cause fingerprint recognition to be insensitive\n- Dirt on the fingers or the screen surface may affect the operation of the fingerprint unlocking under the screen.\n- Please keep your fingers and the fingerprint area of the screen clean.\n- Are your fingers peeling or damaged?"
-  },
-  {
-    "name": "What should I do if dust gets into the fan/air duct?",
-    "keywords": ["dust", "fan"],
-    "reply": "# What should I do if dust gets into the fan/air duct?\n\nBecause the fan/air duct cannot be sealed, it must have air inlets and outlets to operate, so dust is normal. Please rest assured.\nHowever, if you find dust at the air-vent of the phone, you can follow our cleaning tutorial.\nLink:\nhttps://discord.com/channels/897390969744424980/1241039607747973271/1241040000993198120\n"
-  },
-  {
-    "name": "The fan is not working?",
-    "keywords": ["fan not working", "fan not spinning"],
-    "reply": "# The fan is not working?\n\n- Go to Settings \n- Cooling Fan\n- slide to turn on Cooling Fan\n- select Fast Cooling or Automatic\n- or simply restart the phone\n--> lastly, check whether the fan is working properly now.\n- If the fan does not rotate, try blowing air into the air outlet\n(above the power button on the right side of the phone) or shake the phone to see if it can be revived.\n"
-  },
-  {
-    "name": "Image quality of the front camera poor or unclear",
-    "keywords": ["front camera"],
-    "reply": "# Is the image quality of the front camera poor or unclear?\n\n- The REDMAGIC 10S Pro uses a seventh-generation under-screen camera with high-transmittance material.\n- However, the image quality may appear slightly poor in backlit or dark environments.\n- Adjusting the shooting angle can help improve results.\n- We are also continuously optimizing this through software updates.\n\n# Why are front camera photos or videos blurry?\n\n- Since the REDMAGIC 10S Pro uses an under-screen camera, some imaging limitations may occur.\n- However, the imaging has been optimized to industry-leading levels.\n- AI algorithms are also used to further enhance the clarity of photos and videos.\n\n# Can you see a circle or difference at the front camera position?\n\n- Yes, you might notice a slight difference in the camera area compared to the rest of the screen.\n- This is due to special driving circuit designs required for the under-screen camera to function properly.\n--> It’s a result of current technical limitations, not a fault.\n- Increasing screen brightness can help minimize this visual difference.\n\n# Why does the front camera area have a color difference?\n\n- The slight color difference is due to the same special driving circuits used for the under-screen camera.\n- It helps enable both display and camera functionality in the same area. This is a known limitation of current under-screen technology and not a defect.\n- Increasing brightness can help reduce its visibility.\n"
-  },
-  {
-    "name": "Why is the flash prominently positioned or raised",
-    "keywords": ["flash"],
-    "reply": "# Why is the flash prominently positioned or raised?\n\n- The flash design is intentionally raised to help protect the camera lens from scratches."
-  },
-  {
-    "name": "Phone gets hot or warm while gaming",
-    "keywords": ["warm", "hot", "heat"],
-    "reply": "# Why does my phone get warm while gaming?\n\nIt's normal if you're playing demanding games.\nTo reduce heat:\n- In Game Space, open the control center and try Balance mode\n--> all apps outside of Game Space run on balance!!\n- Turn on the internal cooling fan.\n- Lower the screen refresh rate (for example, to 60Hz or 90Hz).\n- Disable features like REDMAGIC Moment or screen recording.\n- Avoid charging while gaming or use [Charging Separation] in Game Space.\n- Use a heat dissipation back clip.\n## Long-term overheating can damage internal components."
-  },
-  {
-    "name": "Game lags or has frame drops",
-    "keywords": ["lag", "stutter", "frame drop"],
-    "reply": "# My game lags or has frame drops.\n\n- Use Rise Mode in Game Space for maximum performance (note: this increases heat and battery use).\n- Turn off features like REDMAGIC Moment and screen recording.\n- Avoid charging while gaming to prevent overheating and performance throttling.\n- Ensure your battery is adequately charged to avoid power-saving throttles.\n- Minor frame drops in game menus or loading screens are normal.\n- Try Diablo Mode for even better performance, but more heat and battery consumption as trade off"
-  },
-  {
-    "name": "How do I live stream mobile games",
-    "keywords": ["stream", "live"],
-    "reply": "# How do I live stream mobile games?\n\n- Method 1: Cast your phone screen to a computer, then stream via PC software.\n- Method 2: Stream directly from your phone using supported mobile apps."
-  },
-  {
-    "name": "Why does game sound come from the phone speaker instead of Bluetooth headphones",
-    "keywords": ["bluetooth", "headphones"],
-    "reply": "# Why does game sound come from the phone speaker instead of Bluetooth headphones?\n\n- If you connect Bluetooth after entering a game, the sound may not get through properly.\n- Connect Bluetooth headphones before launching the game.\n- If already in-game, close the game completely, reconnect Bluetooth, then relaunch the game.\n"
-  },
-  {
-    "name": "The shoulder (touch) buttons aren't working",
-    "keywords": ["shoulder", "triggers"],
-    "reply": "# The shoulder (touch) buttons aren't working—what should I do?\n\n- Clean off any sweat, water, or dirt from the button surface.\n- In Game Space\n- Game Settings\n- increase the touch sensitivity.\n\n# Why do the shoulder buttons trigger automatically while gaming?\n\n- Moisture or dirt on the button surface can cause accidental touches.\n- Avoid blowing air on the buttons.\n- Clean them and adjust sensitivity in Game Space > Control Center.\n\n# My shoulder buttons have delayed response—what can I do?\n\n- Again, clean the surface.\n- Increase sensitivity in Game Space > Control Center.\n"
-  },
-  {
-    "name": "Why are the competitive keys loose",
-    "keywords": ["loose", "red switch", "switch", "competitive key"],
-    "reply": "# Why are the competitive keys loose?\n\n- Slight looseness is by design to prevent the keys from sticking. It's normal and safe to use.\n"
-  },
-  {
-    "name": "Why is there no aiming assist when I scope in",
-    "keywords": ["aim assist", "scope in"],
-    "reply": "# Why is there no aiming assist when I scope in?\n\n- Crosshair assist is meant for quick close-range shooting without a scope.\n- It’s not active when aiming with a scope to avoid interfering with precision.\n"
-  },
-  {
-    "name": "Touch screen jitters when playing",
-    "keywords": ["jitter", "shake", "shaking"],
-    "reply": "# Touch screen jitters when playing?\n\n- In Game Space, set Touch Sensitivity to -2."
-  },
-  {
-    "name": "About the Redmagic Performance Modes",
-    "keywords": ["eco", "balance", "rise", "performance", "fps"],
-    "reply": "## ⚙️ REDMAGIC Performance Modes Explained\n\nREDMAGIC gives you multiple performance modes so you can control battery life, heat, and raw power — depending on what you’re doing.  \nHere’s a quick breakdown of what each mode does and when to use it! 🎮🔋🔥\n\n---\n\n### 🌿 **Eco Mode**  \n- ✅ Limits refresh rate to **60Hz**  \n- 🔋 Prioritizes **battery life and efficiency**  \n- 💤 Best for casual use or when you’re running low on battery  \n\n---\n\n### ⚖️ **Balance Mode** *(Default outside Game Space)*  \n- ⚡ A mix of **performance and battery savings**  \n- 🔋 Great for everyday use  \n- 📱 *All apps outside of Game Space run in this mode by default*\n\n---\n\n### 📈 **Rise Mode**  \n- ⚡ Cranks up performance — at the cost of some battery life  \n- 🎮 Recommended for **demanding games**  \n- 🧊 Might get warm, but nothing extreme\n\n---\n\n### 🔥 **Diablo Mode** *(Extreme Performance)*  \n- 🚀 Locks CPU/GPU clock speeds to the **maximum**  \n- ❌ Ignores thermal safety limits (yes, seriously)  \n- ⚠️ Temps of **90°C+** are not unusual!\n\n## ⚠️ Use ONLY if:\n- 🎮 You’re **emulating heavy games**  \n- 🔌 You're **plugged into a power outlet**  \n- ❄️ You're using an **external cooler** (on top of the internal one!)\n\n---\n\n🔗 **More info from REDMAGIC themselves:**  \n[🔗 Unlock Your Potential – Game Space Guide](https://global.redmagic.gg/blogs/game-space/unlock-your-potential-a-reintroduction-to-redmagic-s-game-space)"
-  },
-  {
-    "name": "What's the warranty on REDMAGIC devices",
-    "keywords": ["warranty"],
-    "reply": "# What´s the warranty on REDMAGIC devices?\n\nAll REDMAGIC smartphones and accessories purchased from [redmagic.gg](https://www.redmagic.gg) come with:\n🔹 **2-year limited warranty** for smartphones, Tablets and Laptops\n🔹 **1-year limited warranty** for accessories  \n*Warranty starts from the date of delivery.*\n\n🛍️ **Return Policy:**  \nYou can return your device for a **full refund within 15 days** of purchase.\n\n💬 **Need help?**  \nContact support at **[support@redmagic.gg](mailto:support@redmagic.gg)**\n\n🔧 **Cracked screen or repair issue?**  \nCheck this guide: [📎 How can I fix a cracked screen?] (https://help.redmagic.gg/hc/en-us/articles/360030687412-I-ve-cracked-my-screen-How-can-I-fix-it)"
-  },
-  {
-    "keywords": [],
-    "reply": ""
-  },
-  {
-    "keywords": [],
-    "reply": "Hey there thank you for making a post in the forum! A User or member of our team will respond to your post as soon as possible. In the meantime, please check out our <#1241039607747973271> section for common questions and answers."
-  }
+    {
+        "name": "Report a bug",
+        "keywords": [],
+        "reply": "Please email the official support (support@redmagic.gg) and additionally file a bug report here: <https://redmagic.gg/pages/redmagic-product-experience-feedback>"
+    },
+    {
+        "name": "Fan cleaning tutorial",
+        "keywords": [
+            "fan"
+        ],
+        "reply": "## 🧼 Redmagic Internal Fan Cleaning Tutorial by <@292308639316967435> \n\nWant to keep your Redmagic cool and clean? Here's how to safely clean the internal fan! 🌀\n\n---\n\n### 🔧 What You’ll Need:\n- 🪥 *Dry toothbrush* (optional, for dust buildup)\n- 💨 *Canned air* (or similar air pressure)\n- 📱 Your Redmagic phone\n\n---\n\n### 🪛 Steps:\n\n1. 🔌 **Turn the phone OFF**  \n   Make sure the device is powered down to avoid any damage.\n\n2. 📦 **Remove the phone case** *(if you have one)*\n\n3. 🪥 **Brush off dust**  \n   Gently use a toothbrush to remove **larger particles** from the **intake vent**  \n   - 🧩 *On the 7 series: it's on the back*  \n   - 📏 *On other models: it's on the side*  \n   *(You can skip this step if your fan isn't too dusty)*\n\n4. ↘️ **Tilt the phone sideways**  \n   Make sure the **air outtake vent points DOWNWARD** — this helps dust fall out more easily!\n\n5. 💨 **Blow air into the intake vent**  \n   Use **short, strong bursts** with canned air. Repeat a few times until clean.\n\n6. 🔄 **Turn the phone back ON**  \n   Set the **internal fan to MAX RPM** for about **10 seconds** to flush out any remaining dust.\n\n---\n\n### 🎉 Aaaand your done!\nCleaning regularly helps performance and fan longevity!\n\n---\n\n📹 **Video Tutorial (by someone else):**  \n[Watch on YouTube](https://youtu.be/XcpJrl9gWN0?si=xd-_vml4wXZO5fch)"
+    },
+    {
+        "name": "Shipping times",
+        "keywords": [
+            "shipping",
+            "arrive"
+        ],
+        "reply": "https://discord.com/channels/897390969744424980/1241039607747973271/1247976138509254657, https://discord.com/channels/897390969744424980/1241039607747973271/1248141549313986571"
+    },
+    {
+        "name": "Latest Question and answers",
+        "keywords": [
+            "QnA"
+        ],
+        "reply": "Check our our Latest QnA here: https://discord.com/channels/897390969744424980/1241039607747973271/1385427470488174733"
+    },
+    {
+        "name": "Charge separation/bypass",
+        "keywords": [
+            "charge sep",
+            "charge bypass",
+            "bypass"
+        ],
+        "reply": "# Charge Separation (bypass charging) feature things to know\n\n- The Charge Separation feature operates under the following conditions:\nManual Reactivation Required:\n- If the charger cable is disconnected while Charge Separation is active, the feature will automatically deactivate.\n\nSubsequent reconnection of the charger will not automatically reactivate Charge Separation:\n--> manual re-enablement is required.\n\nDeactivation Upon Charger Connection:\n- When connecting a charger after activating Charge Separation, the feature will automatically deactivate. To continue using charge separation, you must manually re-enable the function.\nAutomatic Time Limit:\n- The charge separation function automatically deactivates after 12 hours of continuous operation."
+    },
+    {
+        "name": "Improve battery life",
+        "keywords": [
+            "battery",
+            "battery health",
+            "sot"
+        ],
+        "reply": "# Some Suggestions of Optimizing Battery Life and Extending Standby Time\n\nTo maximize battery efficiency and extend standby duration, we recommend the following measures:\n\n1. Enable Power-Saving Modes:\nActivate Power Saving Mode or Ultra Power Saving Mode via the quick settings panel.\n\n2. Manage Connectivity:\nDisable mobile data and network connections when not required.\n\n3. Optimize Display Settings:\nAvoid using live/dynamic wallpapers.\nReduce screen brightness.\nSet a shorter screen timeout period.\nSelect a lower screen refresh rate (e.g., 60Hz or 90Hz).\n\n4. Manage Applications:\nRegularly close unused background applications to conserve power and free up RAM.\nPerform routine phone memory cleanup.\nNavigate to Palm Manager > Battery Management > App Smart Management to disable auto-start and\nbackground activity permissions for non-essential third-party apps.\n\n5. Control 5G Usage:\nBe aware that 5G connectivity may increase battery consumption; enable it only as needed.\n\n6. Manage Location Services:\n- Disable location services (GPS) when not in use.\nKey Recommendation:\nFor optimal battery performance and extended usage, proactively managing display settings, application behavior, and connectivity options is essential."
+    },
+    {
+        "name": "Wifi is not auto connecting",
+        "keywords": [
+            "connecting",
+            "auto connect"
+        ],
+        "reply": "# Troubleshooting: Device Not Auto-Connecting to Specific Hotspot Network\nCause Analysis:\n\n- Your device may disable automatic connections to a particular network due to persistent connectivity failures and repeated unsuccessful reconnection attempts following previous disconnections\nResolution Steps:\n- Manually reconnect to the network through your device's Hotspot settings\n- Verify network functionality after reconnection\n- The network should resume automatic connections if successfully established"
+    },
+    {
+        "name": "HDMI/DP external display characteristics",
+        "keywords": [
+            "hdmi",
+            "projection"
+        ],
+        "reply": "# What are the characteristics of DP/HDMI screen projection? How to maximize the screen projection effect?\n\n1. Enhanced Connectivity:\n- Equipped with USB 3.2 Gen 2 technology, the REDMAGIC 10S Pro supports display mirroring at refresh rates up to 144Hz.\n- Optimal performance requires certified data cables and compatible high-refresh-rate monitors.\n\n2. Customizable Display Output:\n- Users may freely configure both resolution and refresh rate settings for projected content according to their preferences.\n\n3. High Refresh Rate Compatibility Requirements:\nAchieving seamless high-refresh-rate projection necessitates simultaneous compatibility across all components (data cables, expansion docks, and display/capture devices).\n each meeting high-refresh specifications."
+    },
+    {
+        "name": "About the front camera",
+        "keywords": [
+            "front cam",
+            "udc",
+            "selfie",
+            "selfie cam"
+        ],
+        "reply": "The latest REDMAGIC devices employ an under-display front camera solution, which differs fundamentally from traditional punch-hole designs. The under-display technology requires an additional layer to allow light transmission, resulting in imaging characteristics that may vary compared to devices with conventional front camera implementations.\n\nFor optimal results when using the front camera:\n1. Ensure adequate ambient lighting\n2. Keep the screen area above the camera clean and unobstructed\n3. Avoid environments with intense direct light sources or strong backlighting\n"
+    },
+    {
+        "name": "App crashing issue",
+        "keywords": [
+            "translation",
+            "crash"
+        ],
+        "reply": "# App Crash/translation issues\n\nIf you encounter software-related issues such as crashes, freezes, installation errors, or translation inconsistencies, please ensure your apps are updated to support the latest service architecture.\n- Qualcomm and Android have officially discontinued support for legacy 32-bit software services, which may cause compatibility issues with older apps.\n- For apps experiencing crashes or malfunctions unrelated to 32-bit architecture, we recommend contacting the respective software developer to request device-specific optimization for the REDMAGIC series.\n- Our team is actively collaborating with developers to improve software compatibility and localization.\n- We appreciate your patience and feedback as we work to enhance your experience. Please don’t hesitate to reach out if you need additional assistance at support@redmagic.gg\n"
+    },
+    {
+        "name": "Wireless charging",
+        "keywords": [
+            "wireless charging"
+        ],
+        "reply": "# No wireless charging\n\n- The current REDMAGIC series does not include hardware support for wireless charging and relies exclusively on wired charging solutions.\n- This design decision aligns with our focus on maximizing performance and thermal efficiency for gaming-centric devices.\n- In addition, our wired charging has the advantages of low heat generation and fast speed.\n"
+    },
+    {
+        "name": "eSIM and sd cards",
+        "keywords": [
+            "esim",
+            "sd card"
+        ],
+        "reply": "# No eSIM or expandable storage\n\nREDMAGIC smartphones currently do not support eSIM functionality or expandable storage (micro-SD cards).\n"
+    },
+    {
+        "name": "About smart cast and wireless screen mirroring",
+        "keywords": [
+            "mirroring",
+            "usb screen",
+            "smartcast"
+        ],
+        "reply": "# What is USB Screen Mirroring?\n\nUSB screen projection is to use a USB cable to connect the computer and the phone to project the screen. You can choose a Type-C to USB-A cable or a dual Type-C cable."
+    },
+    {
+        "name": "Software updates policy",
+        "keywords": [
+            "software update",
+            "software support",
+            "update policy",
+            "policy"
+        ],
+        "reply": "# How many software updates will be there for REDMAGIC phones?\n\n**📱 REDMAGIC Software Support Overview (Updated as of June 20, 2025)**\n\n🔧 **Update Frequency:** Every 1–2 months  \nIncludes: Bug fixes, security patches, system optimizations, and overall performance improvements\n\n---\n\n__**🇪🇺 EU Customers**__  \n📆 **Support Duration:** 5 years (bug fixes + security updates)  \n📲 **Android OS Upgrades:** 3 major updates  \n✅ In compliance with EU regulations effective June 20, 2025\n\n__**🌍 Global (Non-EU) Customers**__  \n📆 **Support Duration:** 3 years (bug fixes + security updates)  \n📲 **Android OS Upgrades:** 2 major updates  \n\n📌 **Applies to:**  \n🔹 REDMAGIC 10S Pro  \n🔹 REDMAGIC ASTRA  \n🔹 All upcoming REDMAGIC models\n\n---\n\n__**📦 Older Device Support**__\n\n📱 **10 Pro, 10 Air, Nova, 9 Series, 8 Series**  \n📆 3 years of support  \n📲 2 major Android updates  \n\n📱 **7 Series and earlier**  \n📆 2 years of support  \n📲 1 major Android update\n---> __EOL, wont get Updates anymore__\n\n---\n\n🛠️ REDMAGIC adapts its update cycles and support durations based on:  \n• Local laws and regulations  \n• Product lifecycle and technical requirements  \n• Commitment to delivering a high-quality, stable user experience globally\n\nThere is also a Beta testing program where you can test the upcoming Software Updates before they are out for everyone. You can sign up here: https://redmagic.gg/blogs/news/introducing-the-redmagic-beta-testing-program/\n\nEdit: Beta Program currently is only for Redmagic 8s pro"
+    },
+    {
+        "name": "How to lock the screen refresh rate",
+        "keywords": [
+            "refresh rate",
+            "60hz",
+            "60"
+        ],
+        "reply": "# How do I lock the screen refresh rate?\n\n- Settings\n- Updates\n- Developer Options (please click the version number 7 times in a row to turn on the developer options)\n- Scroll down until you find the Lock Refresh Rate button and activate it\n(Please note: When selecting a high refresh rate, power consumption and heat generation will increase greatly. In addition, some games and applications may have compatibility issues, which may cause freezes and impaired picture quality.)"
+    },
+    {
+        "name": "Screen share to computer",
+        "keywords": [
+            "smartcast",
+            "studio"
+        ],
+        "reply": "# How to control my REDMAGIC device with a computer?\n\nTo control the mobile phone with a computer, you need to use the REDMAGIC screencasting client.\n\n- Download the REDMAGIC screencasting client from the REDMAGIC community\nhttps://redmagic.gg/pages/smartcast-studio\n- Install and open the client\n- use the mobile screencasting app to scan the code or connect the USB to the computer to cast the screen\n\nAfter the screencasting is successful, you can use the mouse to click on the screen in the computer projection to operate the mobile phone\n\n- Turn on the keyboard mapping function after entering the game, and you can use the keyboard and mouse to control the game\n-The software has built - in default keyboard schemes for some games, and you can also adjust the key layout according\nto your own gaming habits.\n"
+    },
+    {
+        "name": "How to activate Diablo Mode",
+        "keywords": [
+            "diablo"
+        ],
+        "reply": "# How to activate Diablo Mode?\n\n- While in-game, swipe 2x from the corner of your screen to the middle.\n- Scroll the now-opened gaming mode on the left side down until you see the Diablo Mode tile and press it\nNote: Power consumption and heat generation will increase significantly. Please be careful when using this feature!\n"
+    },
+    {
+        "name": "Can Ram extension technology be turned off",
+        "keywords": [
+            "ram extension",
+            "virtual memory",
+            "virtual storage"
+        ],
+        "reply": "# Can Ram extension technology be turned off?\n\n- Go to Settings\n- About phone \n- RAM capacity \n- Switch Ram Extension off\n"
+    },
+    {
+        "name": "Why is the desktop locked to 60hz",
+        "keywords": [
+            "low brightness"
+        ],
+        "reply": "# Why is the desktop locked to 60hz?\n\n- Is it low brightness?\nIf it is in low brightness and the scrolling is also 60 Hz:\n- Developer-Options \n- Smart Refresh Rate Switch \n- Turn it off."
+    },
+    {
+        "name": "The application cannot be installed",
+        "keywords": [
+            "apk",
+            "sideload",
+            "32 bit",
+            "cannot be installed"
+        ],
+        "reply": "# The application cannot be installed\nThis could mean the following:\n1.    The App does not support 64 Bit (arm64-v8a) Processors \n2.    The App supports only certain android versions (e.g. android 5-11)\n3.    The user is trying to downgrade the app (not supported since Android 14)\n4.    The signature verification does not match the app \n--> Devices with Qualcomm Snapdragon 8 Gen 3 and later (including Snapdragon 8 Elite) support only 64-bit apps.\nTo fix this issue, install the 64-bit version of the app.\n"
+    },
+    {
+        "name": "About Wifi 7",
+        "keywords": [
+            "wifi 7",
+            "wi-fi 7"
+        ],
+        "reply": "# Can Wi-Fi certification be publicly promoted?\n\n- Wi-Fi 7 has not yet been fully certified, so it will not be actively mentioned in official promotional documents.\n"
+    },
+    {
+        "name": "Why can't I access the Internet sometimes",
+        "keywords": [
+            "network error",
+            "internet",
+            "internet error"
+        ],
+        "reply": "# Why can't I access the Internet sometimes?\n\nIf a single APP application cannot access the Internet:\n--> clear the background and network data and try again\nYou can also check whether the mobile manager has disabled the network connection of the application\n\n- If all applications cannot access the Internet, please switch to network or flight mode and try again\n- If you are connecting to a 5G network to access the Internet, please turn off the 5G switch and try again. It may be caused\nby network instability."
+    },
+    {
+        "name": "Why Is My Internet Speed Slow or Unavailable",
+        "keywords": [
+            "slow network",
+            "network",
+            "network slow",
+            "network is slow"
+        ],
+        "reply": "# Why Is My Internet Speed Slow or Unavailable?\n\nIf you're experiencing slow internet or can't access the internet at all, here are a few common causes and solutions:\nNetwork Type (4G/5G):\nIf your phone shows a 4G icon, your speed may not be as fast as it used to be.\n- Sometimes, your mobile operator may limit speed temporarily.\n- Try switching to 5G if available, as it may offer better performance.\n- If 5G is unstable or under construction in your area, try using 4G instead.\nSwitch Network Settings:\n- Turn off Smart 5G (if enabled).\n- Try toggling off 5G completely to force the phone to use 4G.\nThese steps can help if 5G coverage is weak or inconsistent.\n\nApp Issues:\n- close all apps that is running in the background and restart the affected app.\n- Check if all apps can't access the internet or if it's just one specific app.\nIf it's only one app, the issue might be with the app’s server, not your phone or connection.\nCheck Real-Time Speed:\nFor example, while watching TikTok, enable the notification & status bar in settings.\n- If it shows around 1MB/s, your connection is generally good for videos and browsing."
+    },
+    {
+        "name": "Why Is My Signal Poor or Unstable",
+        "keywords": [
+            "signal",
+            "poor signal",
+            "slow data"
+        ],
+        "reply": "# Why Is My Signal Poor or Unstable?\n\n- Signal strength can vary based on your location and network type.\nKey Factors:\nNetwork Coverage:\n- Signal strength depends heavily on the local mobile network coverage.\n- 5G base stations have shorter range and faster signal drop compared to 4G.\nMovement and Signal Drop:\n- On 5G, even small movements can lead to signal fluctuation or drop, especially indoors or in rural areas.\n\nDevice Performance:\n- Phones undergo strict antenna testing before leaving the factory.\n- You can compare your phone's signal with another device on the same network (e.g., both using 4G or both using 5G).\n--> Signal Bars ≠ Performance:\n- Even if 5G shows only 2–3 bars, it should still support calls and internet access reliably under normal conditions."
+    },
+    {
+        "name": "REDMAGIC 10S Pro supported GPS bands",
+        "keywords": [
+            "gps"
+        ],
+        "reply": "# REDMAGIC 10S Pro supported GPS bands\n\n- GPS supports three frequencies: L1, L2 and L5.\n"
+    },
+    {
+        "name": "Which frequencies does the REDMAGIC 10S Pro support",
+        "keywords": [
+            "frequency",
+            "frequencies",
+            "bands"
+        ],
+        "reply": "# Which frequencies does the REDMAGIC 10S Pro support?\n\nNetwork\nSIM: Dual nano-SIM\n5G Network\nModes: SA (Standalone) & NSA (Non-Standalone)\n5G Bands (NR): n1 / n2 / n3 / n5 / n7 / n8 / n20 / n26 / n28 / n38 / n40 / n41 / n66 / n71 / n77 / n78\n4G LTE\nFDD-LTE: B1 / B2 / B3 / B4 / B5 / B7 / B8 / B12 / B17 / B18 / B19 / B20 / B26 / B28A / B28B / B66\nTDD-LTE: B34 / B38 / B39 / B40 / B41 / B42\n3G\nWCDMA / UMTS: B1 / B2 / B4 / B5 / B6 / B8 / B19\n2G\nGSM: 850 / 900 / 1800 / 1900 MHz (B2 / B3 / B5 / B8)\nCDMA: BC0 / BC1\nCarrier Aggregation\n5G NR CA: n1 / n3 / n8 / n20 / n28 / n40 / n41 / n71 / n77 / n78\n5G EN-DC (NSA): n1 / n7 / n28 / n38 / n40 / n41 / n71 / n77 / n78\n4G LTE CA:\nDownlink: B1 / B2 / B3 / B4 / B5 / B7 / B8 / B20 / B28 / B38 / B39 / B40 / B41 / B42 (JP)\nUplink: CA_3C / CA_7C / CA_38C / CA_39C / CA_40C / CA_41C\nWi-Fi: 802.11 a/b/g/n/ac/ax\nTri-band (2.4GHz / 5GHz / 6GHz)\nFeatures: HBS (High Band Simultaneous) Support\nBluetooth: Bluetooth 5.4\nGPS: Dual GPS (L1+L5)\nNFC: Yes\nHDMI: Converter Needed\nDP, Supports 4K HD Video\n"
+    },
+    {
+        "keywords": [
+            "cant connect",
+            "can't connect"
+        ],
+        "reply": "# Cannot connect to Router\n\n- We recommend that users check whether the router has blacklist and whitelist control set up.\n- If yes, please modify it accordingly.\n- It may also be that the router is not compatible with mobile phones with Wi-Fi 7 function.\n- We also highly recommended that users check whether the router has upgradeable firmware.\n- If yes, you can try to upgrade it.\n- If the router has been used for many years, it is recommended to replace it with a new one."
+    },
+    {
+        "keywords": [
+            "touch screen",
+            "touchscreen",
+            "goodix"
+        ],
+        "reply": "# Is the touch chip of the Redmagic 10S Pro still from Goodix?\n\n- Yes, but we have optimized the touch control to the best state.\n- Goodix chips and other friendly peer chips have very good performance."
+    },
+    {
+        "name": "OLED screen burn",
+        "keywords": [
+            "oled burn",
+            "burn"
+        ],
+        "reply": "# OLED screens may suffer from burn-in issues\n\n- The software has optimized the screen burn-in problem, and the problem is covered by the warranty"
+    },
+    {
+        "name": "Why is the waterproof and dustproof level not higher?",
+        "keywords": [
+            "waterproof",
+            "dustproof",
+            "water resistant",
+            "water proof",
+            "dust proof"
+        ],
+        "reply": "# Why is the waterproof and dustproof level My Redmagic 10s Pro not higher?\n\n- The current waterproof and dustproof level is sufficient for daily use.\n- At the same time, due to the existence of the heat dissipation duct, in order to pursue the heat dissipation effect, the protection level will be sacrificed a little.\n"
+    },
+    {
+        "name": "What type of battery is the REDMAGIC 10s Pro Using?",
+        "keywords": [
+            "battery type"
+        ],
+        "reply": "# What type of battery is the REDMAGIC 10s Pro Using?\n\n- We use dual-cell technology for faster charging and a higher output, if you need to power any external devices using your phone's battery\n"
+    },
+    {
+        "name": "Why does my phone get hot when charging?",
+        "keywords": [
+            "hot charging",
+            "hot when charging",
+            "charge hot"
+        ],
+        "reply": "# Why does my phone get hot when charging?\n\n- When charging your phone, it will generate a certain amount of heat due to the large current and is normal\n- We also recommended that you turn on fast cooling while charging in:\n- Settings --> Cooling Fan\n- Please charge in an environment with good heat dissipation, and try to\nkeep the screen off during charging."
+    },
+    {
+        "name": "Charging speed is slow, no fast charging?",
+        "keywords": [
+            "slow charging",
+            "charging"
+        ],
+        "reply": "# Charging speed is slow, no fast charging?\n\n- Please confirm whether you are using the original charger and data cable\n- Re-plug the charging cable and try again\n- If the phone temperature is too high, the charging current will be automatically limited, causing the charging to slow down\n- We recommend avoiding using the phone during charging to cause the phone temperature to be too high.\nYou can also charge your phone faster, for the trade off of a little bit more heat:\n- Settings \n- Battery \n- Turn on Fast Charge"
+    },
+    {
+        "name": "The screen color is uneven or has color cast?",
+        "keywords": [
+            "bad color",
+            "wrong color",
+            "uneven color",
+            "screen color",
+            "color of the screen",
+            "color profile"
+        ],
+        "reply": "# The screen color is uneven or has color cast?\n\n- The mobile phone has been strictly tested before leaving the factory, and the screen display effect is within the normal color coordinate specification range, so please feel free to use it.\nYou can adjust the colors in:\n- Settings\n- Display\n- Screen Display Preferences to make the screen display achieve\nthe effect you need."
+    },
+    {
+        "name": "What should I do if the fingerprint sensor isn't working properly",
+        "keywords": [
+            "fingerprint"
+        ],
+        "reply": "# What should I do if the fingerprint sensor isn't working properly?\n\nAn optical fingerprint sensor has a certain self-learning function, and the unlocking success rate will increase after using it for a period of time.\nIf it doesn't work, please check the following:\n- Do you have a screen protector?\n- Is it a tempered screen protector or a thin film?\n- Is it purchased from a third party or an official one?\n- We recommend that you use the official screen protector (or you don't use a screen protector, resulting in less protection but higher accuracy).\n- Screen breakage or cracking may cause the fingerprint unlocking under the screen to be insensitive or ineffective.\n- We also recommend contacting the official after-sales service.\n- Excessive light may deteriorate the quality of the fingerprint image and affect the fingerprint unlocking.\n- Try using it in a place without direct strong light.\n- Fingers that are too wet or too dry may cause fingerprint recognition to be insensitive\n- Dirt on the fingers or the screen surface may affect the operation of the fingerprint unlocking under the screen.\n- Please keep your fingers and the fingerprint area of the screen clean.\n- Are your fingers peeling or damaged?"
+    },
+    {
+        "name": "What should I do if dust gets into the fan/air duct?",
+        "keywords": [
+            "dust",
+            "fan"
+        ],
+        "reply": "# What should I do if dust gets into the fan/air duct?\n\nBecause the fan/air duct cannot be sealed, it must have air inlets and outlets to operate, so dust is normal. Please rest assured.\nHowever, if you find dust at the air-vent of the phone, you can follow our cleaning tutorial.\nLink:\nhttps://discord.com/channels/897390969744424980/1241039607747973271/1241040000993198120\n"
+    },
+    {
+        "name": "The fan is not working?",
+        "keywords": [
+            "fan not working",
+            "fan not spinning"
+        ],
+        "reply": "# The fan is not working?\n\n- Go to Settings \n- Cooling Fan\n- slide to turn on Cooling Fan\n- select Fast Cooling or Automatic\n- or simply restart the phone\n--> lastly, check whether the fan is working properly now.\n- If the fan does not rotate, try blowing air into the air outlet\n(above the power button on the right side of the phone) or shake the phone to see if it can be revived.\n"
+    },
+    {
+        "name": "Image quality of the front camera poor or unclear",
+        "keywords": [
+            "front camera"
+        ],
+        "reply": "# Is the image quality of the front camera poor or unclear?\n\n- The REDMAGIC 10S Pro uses a seventh-generation under-screen camera with high-transmittance material.\n- However, the image quality may appear slightly poor in backlit or dark environments.\n- Adjusting the shooting angle can help improve results.\n- We are also continuously optimizing this through software updates.\n\n# Why are front camera photos or videos blurry?\n\n- Since the REDMAGIC 10S Pro uses an under-screen camera, some imaging limitations may occur.\n- However, the imaging has been optimized to industry-leading levels.\n- AI algorithms are also used to further enhance the clarity of photos and videos.\n\n# Can you see a circle or difference at the front camera position?\n\n- Yes, you might notice a slight difference in the camera area compared to the rest of the screen.\n- This is due to special driving circuit designs required for the under-screen camera to function properly.\n--> It’s a result of current technical limitations, not a fault.\n- Increasing screen brightness can help minimize this visual difference.\n\n# Why does the front camera area have a color difference?\n\n- The slight color difference is due to the same special driving circuits used for the under-screen camera.\n- It helps enable both display and camera functionality in the same area. This is a known limitation of current under-screen technology and not a defect.\n- Increasing brightness can help reduce its visibility.\n"
+    },
+    {
+        "name": "Why is the flash prominently positioned or raised",
+        "keywords": [
+            "flash"
+        ],
+        "reply": "# Why is the flash prominently positioned or raised?\n\n- The flash design is intentionally raised to help protect the camera lens from scratches."
+    },
+    {
+        "name": "Phone gets hot or warm while gaming",
+        "keywords": [
+            "warm",
+            "hot",
+            "heat"
+        ],
+        "reply": "# Why does my phone get warm while gaming?\n\nIt's normal if you're playing demanding games.\nTo reduce heat:\n- In Game Space, open the control center and try Balance mode\n--> all apps outside of Game Space run on balance!!\n- Turn on the internal cooling fan.\n- Lower the screen refresh rate (for example, to 60Hz or 90Hz).\n- Disable features like REDMAGIC Moment or screen recording.\n- Avoid charging while gaming or use [Charging Separation] in Game Space.\n- Use a heat dissipation back clip.\n## Long-term overheating can damage internal components."
+    },
+    {
+        "name": "Game lags or has frame drops",
+        "keywords": [
+            "lag",
+            "stutter",
+            "frame drop"
+        ],
+        "reply": "# My game lags or has frame drops.\n\n- Use Rise Mode in Game Space for maximum performance (note: this increases heat and battery use).\n- Turn off features like REDMAGIC Moment and screen recording.\n- Avoid charging while gaming to prevent overheating and performance throttling.\n- Ensure your battery is adequately charged to avoid power-saving throttles.\n- Minor frame drops in game menus or loading screens are normal.\n- Try Diablo Mode for even better performance, but more heat and battery consumption as trade off"
+    },
+    {
+        "name": "How do I live stream mobile games",
+        "keywords": [
+            "stream",
+            "live"
+        ],
+        "reply": "# How do I live stream mobile games?\n\n- Method 1: Cast your phone screen to a computer, then stream via PC software.\n- Method 2: Stream directly from your phone using supported mobile apps."
+    },
+    {
+        "name": "Why does game sound come from the phone speaker instead of Bluetooth headphones",
+        "keywords": [
+            "bluetooth",
+            "headphones"
+        ],
+        "reply": "# Why does game sound come from the phone speaker instead of Bluetooth headphones?\n\n- If you connect Bluetooth after entering a game, the sound may not get through properly.\n- Connect Bluetooth headphones before launching the game.\n- If already in-game, close the game completely, reconnect Bluetooth, then relaunch the game.\n"
+    },
+    {
+        "name": "The shoulder (touch) buttons aren't working",
+        "keywords": [
+            "shoulder",
+            "triggers"
+        ],
+        "reply": "# The shoulder (touch) buttons aren't working—what should I do?\n\n- Clean off any sweat, water, or dirt from the button surface.\n- In Game Space\n- Game Settings\n- increase the touch sensitivity.\n\n# Why do the shoulder buttons trigger automatically while gaming?\n\n- Moisture or dirt on the button surface can cause accidental touches.\n- Avoid blowing air on the buttons.\n- Clean them and adjust sensitivity in Game Space > Control Center.\n\n# My shoulder buttons have delayed response—what can I do?\n\n- Again, clean the surface.\n- Increase sensitivity in Game Space > Control Center.\n"
+    },
+    {
+        "name": "Why are the competitive keys loose",
+        "keywords": [
+            "loose",
+            "red switch",
+            "switch",
+            "competitive key"
+        ],
+        "reply": "# Why are the competitive keys loose?\n\n- Slight looseness is by design to prevent the keys from sticking. It's normal and safe to use.\n"
+    },
+    {
+        "name": "Why is there no aiming assist when I scope in",
+        "keywords": [
+            "aim assist",
+            "scope in"
+        ],
+        "reply": "# Why is there no aiming assist when I scope in?\n\n- Crosshair assist is meant for quick close-range shooting without a scope.\n- It’s not active when aiming with a scope to avoid interfering with precision.\n"
+    },
+    {
+        "name": "Touch screen jitters when playing",
+        "keywords": [
+            "jitter",
+            "shake",
+            "shaking"
+        ],
+        "reply": "# Touch screen jitters when playing?\n\n- In Game Space, set Touch Sensitivity to -2."
+    },
+    {
+        "name": "About the Redmagic Performance Modes",
+        "keywords": [
+            "eco",
+            "balance",
+            "rise",
+            "performance",
+            "fps"
+        ],
+        "reply": "## ⚙️ REDMAGIC Performance Modes Explained\n\nREDMAGIC gives you multiple performance modes so you can control battery life, heat, and raw power — depending on what you’re doing.  \nHere’s a quick breakdown of what each mode does and when to use it! 🎮🔋🔥\n\n---\n\n### 🌿 **Eco Mode**  \n- ✅ Limits refresh rate to **60Hz**  \n- 🔋 Prioritizes **battery life and efficiency**  \n- 💤 Best for casual use or when you’re running low on battery  \n\n---\n\n### ⚖️ **Balance Mode** *(Default outside Game Space)*  \n- ⚡ A mix of **performance and battery savings**  \n- 🔋 Great for everyday use  \n- 📱 *All apps outside of Game Space run in this mode by default*\n\n---\n\n### 📈 **Rise Mode**  \n- ⚡ Cranks up performance — at the cost of some battery life  \n- 🎮 Recommended for **demanding games**  \n- 🧊 Might get warm, but nothing extreme\n\n---\n\n### 🔥 **Diablo Mode** *(Extreme Performance)*  \n- 🚀 Locks CPU/GPU clock speeds to the **maximum**  \n- ❌ Ignores thermal safety limits (yes, seriously)  \n- ⚠️ Temps of **90°C+** are not unusual!\n\n## ⚠️ Use ONLY if:\n- 🎮 You’re **emulating heavy games**  \n- 🔌 You're **plugged into a power outlet**  \n- ❄️ You're using an **external cooler** (on top of the internal one!)\n\n---\n\n🔗 **More info from REDMAGIC themselves:**  \n[🔗 Unlock Your Potential – Game Space Guide](https://global.redmagic.gg/blogs/game-space/unlock-your-potential-a-reintroduction-to-redmagic-s-game-space)"
+    },
+    {
+        "name": "What's the warranty on REDMAGIC devices",
+        "keywords": [
+            "warranty"
+        ],
+        "reply": "# What´s the warranty on REDMAGIC devices?\n\nAll REDMAGIC smartphones and accessories purchased from [redmagic.gg](https://www.redmagic.gg) come with:\n🔹 **2-year limited warranty** for smartphones, Tablets and Laptops\n🔹 **1-year limited warranty** for accessories  \n*Warranty starts from the date of delivery.*\n\n🛍️ **Return Policy:**  \nYou can return your device for a **full refund within 15 days** of purchase.\n\n💬 **Need help?**  \nContact support at **[support@redmagic.gg](mailto:support@redmagic.gg)**\n\n🔧 **Cracked screen or repair issue?**  \nCheck this guide: [📎 How can I fix a cracked screen?] (https://help.redmagic.gg/hc/en-us/articles/360030687412-I-ve-cracked-my-screen-How-can-I-fix-it)"
+    },
+    {
+        "keywords": [],
+        "reply": ""
+    },
+    {
+        "keywords": [],
+        "reply": "Hey there thank you for making a post in the forum! A User or member of our team will respond to your post as soon as possible. In the meantime, please check out our <#1241039607747973271> section for common questions and answers."
+    }
 ]
