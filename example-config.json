@@ -1,7 +1,7 @@
 {
-    "token": "your-bot-token",
-    "clientId": "client-id",
-    "forumChannelId": 12345678910,
-    "solvedTagId": 12345678910,
-    "logChannelId": "12345678910"
+  "token": "your-bot-token",
+  "clientId": "client-id",
+  "forumChannelId": 12345678910,
+  "solvedTagId": 12345678910,
+  "logChannelId": "12345678910"
 }
