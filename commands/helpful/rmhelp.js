@@ -1,6 +1,7 @@
 const { SlashCommandBuilder } = require('discord.js');
 const helpReplies = require('../../data/helpreplies.json');
 const Fuse = require('fuse.js');
+const { logStandardMessage } = require('../../utils/logging');
 
 const fuse = new Fuse(helpReplies, {
     keys: ['name', 'keywords'],
@@ -23,6 +24,7 @@ module.exports = {
 
         if (entry) {
             await interaction.reply({ content: entry.reply });
+            logStandardMessage(`Help topic "${entry.name}" provided to user <@${interaction.user.id}>.`, interaction.client);
         } else {
             await interaction.reply({ content: 'No help topic found with that name <:Mora_crying:1226126158056132678>.' });
         }

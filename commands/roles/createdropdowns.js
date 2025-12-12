@@ -1,6 +1,7 @@
 const { SlashCommandBuilder, ActionRowBuilder, StringSelectMenuBuilder } = require('discord.js');
 const config = require('../../config.json');
 const roles = require('../../data/roles.json');
+const { logStandardMessage } = require('../../utils/logging');
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -83,5 +84,7 @@ To remove all your roles choose the "Remove all" option in the dropdown.
         await channel.send({ content: '-# You can choose up to 2 event roles', components: [gameNightDropdowns] });
 
         await interaction.reply({ content: 'Done!', ephemeral: true });
+
+        logStandardMessage(`Roles dropdowns created in <#${channel.id}> by <@${interaction.user.id}>.`, interaction.client);
     },
 };
