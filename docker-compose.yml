@@ -1,0 +1,9 @@
+services:
+  discord-bot:
+    build: .
+    container_name: sidequest-bot
+    restart: unless-stopped
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+    command: node index.js
