@@ -234,7 +234,8 @@ client.on('threadCreate', async thread => {
 
             console.log(`Starter message content: ${starterMessage.content}`);
             let preReply = "Hey there thank you for making a post in the forum! A User or member of our team will respond to your post as soon as possible.\n\n";
-            let afterReply = "When your issue is resolved, please remember to close the thread by clicking the 'Close Thread' button below or doing `/close` command, thank you <:mora_cheer:925660965448609842>.\n\n";
+            let middleReply = "Dont forget to read through our dedicated https://discord.com/channels/897390969744424980/1241039607747973271, which answers the most common Questions.\n\n"
+            let afterReply = "When your issue is resolved, please remember to close the thread by clicking the 'Close Thread' button below or using the `/close` command, thank you <:mora_cheer:925660965448609842>.\n\n";
 
             const row = new ActionRowBuilder().addComponents(
                 new ButtonBuilder()
@@ -242,7 +243,7 @@ client.on('threadCreate', async thread => {
                     .setLabel('✅Close Thread')
                     .setStyle(ButtonStyle.Success)
             );
-            await thread.send({ content: preReply + afterReply, components: [row] }); 
+            await thread.send({ content: preReply + middleReply + afterReply, components: [row] }); 
         } catch (err) {
             logErrorMessage(`Error replying to thread ${thread.url}: ${err}`, thread.client);
             console.error('Error fetching starter message or replying to a thread:', err);
