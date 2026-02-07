@@ -89,8 +89,6 @@ client.on(Events.InteractionCreate, async interaction => {
             options = rolesData.accessories;
         } else if (interaction.customId === 'pcDropdown') {
             options = rolesData.pcPeripherals;
-        } else if (interaction.customId === 'gameNightDropdown') {
-            options = rolesData.gameNightEvent;
         }
 
         const selected = interaction.values;
@@ -239,49 +237,24 @@ client.on('threadCreate', async thread => {
             if (!starterMessage) return;
 
             console.log(`Starter message content: ${starterMessage.content}`);
-            const content = starterMessage.content.toLowerCase();
-            const threadName = thread.name.toLowerCase();
+            let reply = `
+Hey there thank you for making a post in the forum! A User or member of our team will respond to your post as soon as possible.
+Please be aware, that the Mods arent Customer Service
+Our Customer Service can be contacted via email to support@redmagic.gg
+Bug report page here: https://redmagic.gg/pages/redmagic-product-experience-feedback
 
-            const possibleHelpTopics = searchHelpTopics(fuse, content, threadName, 4);
+Dont forget to read through our dedicated https://discord.com/channels/897390969744424980/1241039607747973271, which answers the most common Questions.
 
-            let reply = ""
-            let preReply = "Hey there thank you for making a post in the forum! A User or member of our team will respond to your post as soon as possible.\n\n";
-            let afterReply = "When your issue is resolved, please remember to close the thread by clicking the 'Close Thread' button below or doing `/close` command, thank you <:mora_cheer:925660965448609842>.\n\n";
+When your issue is resolved, please remember to close the thread by clicking the \`Close Thread\` button below or using the \`/close\` command, thank you.
+            `
 
-            if (possibleHelpTopics.length > 0) {
-                preReply += `**Looking through your post I found some help topics that could be helpful for you:**\n`;
-                for (let i = 0; i < possibleHelpTopics.length; i++) {
-                    preReply += `**${i + 1}.** ${possibleHelpTopics[i].name}\n`;
-                }
-
-                // Create buttons for each topic
-                const row = new ActionRowBuilder().addComponents(
-                    possibleHelpTopics.map((topic, idx) =>
-                        new ButtonBuilder()
-                            .setCustomId(`forum_help_${idx}`)
-                            .setLabel(`📝View help ${idx + 1}`)
-                            .setStyle(ButtonStyle.Primary)
-                    )
-                        .concat(
-                            new ButtonBuilder()
-                                .setCustomId('close_thread')
-                                .setLabel('✅Close Thread')
-                                .setStyle(ButtonStyle.Success)
-                        )
-                );
-
-                reply = preReply + "\n" + afterReply;
-                await thread.send({ content: reply, components: [row] });
-            } else {
-                const row = new ActionRowBuilder().addComponents(
-                    new ButtonBuilder()
-                        .setCustomId('close_thread')
-                        .setLabel('✅Close Thread')
-                        .setStyle(ButtonStyle.Success)
-                );
-                // No matches, just send the default reply
-                await thread.send({ content: preReply + afterReply, components: [row] });
-            }
+            const row = new ActionRowBuilder().addComponents(
+                new ButtonBuilder()
+                    .setCustomId('close_thread')
+                    .setLabel('✅Close Thread')
+                    .setStyle(ButtonStyle.Success)
+            );
+            await thread.send({ content: reply, components: [row] });
         } catch (err) {
             logErrorMessage(`Error replying to thread ${thread.url}: ${err}`, thread.client);
             console.error('Error fetching starter message or replying to a thread:', err);
