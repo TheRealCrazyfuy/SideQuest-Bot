@@ -1,10 +1,10 @@
 const fs = require('node:fs');
 const path = require('node:path');
 const { Client, Collection, Events, GatewayIntentBits, MessageFlags, ChannelType, ActionRowBuilder, ButtonBuilder, ButtonStyle } = require('discord.js');
-const { token, clientId, forumChannelId, solvedTagId } = require('./config.json');
+const { token, clientId, forumChannelId, solvedTagId, heuristicsGuildId } = require('./config.json');
 const Fuse = require('fuse.js');
 
-const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.MessageContent] });
+const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.MessageContent, GatewayIntentBits.GuildPresences] });
 
 client.commands = new Collection();
 const foldersPath = path.join(__dirname, 'commands');
@@ -256,5 +256,17 @@ When your issue is resolved, please remember to close the thread by clicking the
     }
 });
 
+client.on('guildMemberAdd', async member => {
+    if (member.guild.id !== heuristicsGuildId) return;
+    try {
+        const heuristics = require('./utils/heuristics');
+        const score = heuristics.calculateHeuristicScore(member.user, member.client);
+        if (score >= 5) {
+            logHeuristicWarning(member.user, score, member.client);
+        }
+    } catch (err) {
+        logErrorMessage(`Error handling guild member add: ${err}`, member.client);
+    }
+});
 
 client.login(token);
