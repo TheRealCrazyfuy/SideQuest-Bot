@@ -1,9 +1,9 @@
 const fs = require('node:fs');
 const path = require('node:path');
 const { Client, Collection, Events, GatewayIntentBits, MessageFlags, ChannelType, ActionRowBuilder, ButtonBuilder, ButtonStyle } = require('discord.js');
-const { token, clientId, forumChannelId, solvedTagId } = require('./config.json');
+const { token, forumChannelId, solvedTagId } = require('./config.json');
 const Fuse = require('fuse.js');
-
+const { createVerificationModal, handleVerificationResponse } = require('./utils/user_verifications');
 const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.MessageContent] });
 
 client.commands = new Collection();
@@ -215,6 +215,12 @@ client.on(Events.InteractionCreate, async interaction => {
             console.error('Error closing thread:', err);
             await interaction.reply({ content: 'There was an error closing the thread.', flags: MessageFlags.Ephemeral });
         }
+    } else if (interaction.isButton() && interaction.customId === 'verify_button') {
+        await createVerificationModal(interaction);
+        return;
+    } else if (interaction.isModalSubmit() && interaction.customId.startsWith('verification_modal_')) {
+        await handleVerificationResponse(interaction);
+        return;
     }
 
 });
