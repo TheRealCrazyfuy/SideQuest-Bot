@@ -1,5 +1,6 @@
 const { SlashCommandBuilder, EmbedBuilder, MessageFlags } = require('discord.js');
 const { calculateHeuristicScore } = require('../../utils/heuristics');
+const { whitelistedRoleIds } = require('../../config.json');
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -10,7 +11,7 @@ module.exports = {
                 .setDescription('The user to analyze')
                 .setRequired(true)),
     async execute(interaction) {
-        if (!interaction.member.permissions.has('ManageRoles') || !interaction.member.permissions.has('ManageMessages')) {
+        if (!interaction.member.permissions.has('ManageRoles') || !interaction.member.roles.cache.some(role => whitelistedRoleIds.includes(role.id))) {
             return interaction.reply({ content: `Good try, but you can't use this bot <a:myredmagicreaction:1313432136367472681> `, flags: MessageFlags.Ephemeral });
         }
         const targetUser = interaction.options.getUser('target');

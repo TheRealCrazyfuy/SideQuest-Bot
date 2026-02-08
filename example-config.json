@@ -4,5 +4,9 @@
     "forumChannelId": 12345678910,
     "solvedTagId": 12345678910,
     "logChannelId": "12345678910",
-    "heuristicsGuildId": "12345678910"
+    "heuristicsGuildId": "12345678910",
+    "whitelistedRoleIds": [
+        "12345678910",
+        "12345678910"
+    ]
 }
