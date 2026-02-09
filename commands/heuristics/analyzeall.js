@@ -97,7 +97,7 @@ module.exports = {
 
                 analyzed++;
 
-                if (analyzed % 5 === 0 || analyzed === total) {
+                if (analyzed % 20 === 0 || analyzed === total) {
                     embed.setFields(
                         { name: 'Total', value: `${total}`, inline: true },
                         { name: ':white_check_mark: Analyzed', value: `${analyzed - failedCount}`, inline: true },
@@ -106,8 +106,11 @@ module.exports = {
                         { name: ':x: High Risk', value: `${highRiskCount}`, inline: true },
                         { name: ':no_entry: Failed', value: `${failedCount}`, inline: true }
                     );
-                    await interaction.editReply({ embeds: [embed] });
-                }
+                    try {
+                        await interaction.editReply({ embeds: [embed] });
+                    } catch (err) {
+                        console.error("Error editing reply:", err);
+                    }
 
                 // rate limit
                 await new Promise(resolve => setTimeout(resolve, 100));
