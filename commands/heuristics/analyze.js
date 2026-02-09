@@ -24,7 +24,15 @@ module.exports = {
 
         await interaction.reply({ embeds: [row] });
 
-        const score = calculateHeuristicScore(targetUser, interaction.client);
+        const score = await calculateHeuristicScore(targetUser, interaction.client);
+        let stringScore = score.toString();
+        if (score >= 7) {
+            stringScore = `**:x: ${score}**`;
+        } else if (score >= 5) {
+            stringScore = `**:warning: ${score}**`;
+        } else {
+            stringScore = `**${score}**`;
+        }
 
         const row2 = new EmbedBuilder()
             .setColor('#FF4500')
@@ -33,7 +41,7 @@ module.exports = {
                 { name: 'User name', value: targetUser.tag, inline: true },
                 { name: 'User', value: `<@${targetUser.id}>`, inline: true },
                 { name: 'User ID', value: targetUser.id, inline: true },
-                { name: 'Risk Score', value: score.toString(), inline: true }
+                { name: 'Risk Score', value: stringScore, inline: true }
             )
             .setFooter({ text: 'Powered by AbejAI analyzer engine (Beta)' })
             .setThumbnail(targetUser.displayAvatarURL())

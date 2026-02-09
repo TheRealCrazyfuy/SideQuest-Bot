@@ -1,10 +1,11 @@
 const { UserFlags } = require("discord.js");
 const { logStandardMessage } = require('./logging');
+const { heuristicsGuildId } = require('../config.json');
 
-function calculateHeuristicScore(user, client) {
+async function calculateHeuristicScore(user, client) {
     let score = 0;
 
-    score += accountAgeHeuristic(user);
+    score += await accountAgeHeuristic(user, client);
     score += usernameHeuristic(user);
     score += avatarHeuristic(user);
     score += flagsHeuristic(user);
@@ -24,20 +25,36 @@ function calculateHeuristicScore(user, client) {
     return score;
 }
 
-function accountAgeHeuristic(user) {
-    const accountAgeInDays = (Date.now() - user.createdTimestamp) / (1000 * 60 * 60 * 24);
-    if (accountAgeInDays < 1) {
-        return 4;
-    } else if (accountAgeInDays < 7) {
-        return 3;
-    } else if (accountAgeInDays < 30) {
-        return 2;
-    } else if (accountAgeInDays < 90) {
-        return 1;
-    } else {
-        return 0;
+async function accountAgeHeuristic(user, client) {
+  try {
+    const guild = client.guilds.cache.get(heuristicsGuildId);
+    if (!guild) {
+      console.log('Guild not found:', heuristicsGuildId);
+      return 0;
     }
+
+    const cachedMember = guild.members.cache.get(user.id);
+    const member = cachedMember || await guild.members.fetch(user.id);
+    
+    if (!member || !member.joinedTimestamp) {
+      console.log('Member not found or no join timestamp:', user.id);
+      return 0;
+    }
+
+    const accountAgeInDaysWhenJoined = 
+      (member.joinedTimestamp - user.createdTimestamp) / (1000 * 60 * 60 * 24);
+
+    if (accountAgeInDaysWhenJoined < 1) return 4;
+    if (accountAgeInDaysWhenJoined < 7) return 3;
+    if (accountAgeInDaysWhenJoined < 30) return 2;
+    if (accountAgeInDaysWhenJoined < 90) return 1;
+    return 0;
+  } catch (error) {
+    console.error('accountAgeHeuristic error:', error);
+    return 0;
+  }
 }
+
 
 function usernameHeuristic(user) {
     if (/\d{5,}$/.test(user.username)) {

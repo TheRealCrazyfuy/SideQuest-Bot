@@ -4,14 +4,14 @@ const { Client, Collection, Events, GatewayIntentBits, MessageFlags, ChannelType
 const { token, clientId, forumChannelId, solvedTagId, heuristicsGuildId } = require('./config.json');
 const Fuse = require('fuse.js');
 
-const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.MessageContent, GatewayIntentBits.GuildPresences] });
+const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.MessageContent, GatewayIntentBits.GuildPresences, GatewayIntentBits.GuildMembers] });
 
 client.commands = new Collection();
 const foldersPath = path.join(__dirname, 'commands');
 const commandFolders = fs.readdirSync(foldersPath);
 
 const helpReplies = require('./data/helpreplies.json');
-const { logStandardMessage, logSetRoles, logErrorMessage, logThreadCreation, logThreadClosure } = require('./utils/logging');
+const { logStandardMessage, logSetRoles, logErrorMessage, logThreadCreation, logThreadClosure, logHeuristicWarning } = require('./utils/logging');
 const fuse = new Fuse(helpReplies, {
     keys: ['keywords', 'name', 'reply'],
     threshold: 0.6 // decrease threshold for more strict matching

@@ -83,6 +83,14 @@ function logThreadClosure(thread, closer, client) {
 }
 
 function logHeuristicWarning(user, score, client) {
+    let scoreString;
+    if (score >= 7) {
+        scoreString = `**:x: ${score}**`;
+    } else if (score >= 5) {
+        scoreString = `**:warning: ${score}**`;
+    } else {
+        scoreString = `**${score}**`;
+    }
     const row = new EmbedBuilder()
         .setColor('#FF4500')
         .setTitle('Risk user detected')
@@ -90,7 +98,7 @@ function logHeuristicWarning(user, score, client) {
             { name: 'User name', value: user.tag, inline: true },
             { name: 'User', value: `<@${user.id}>`, inline: true },
             { name: 'User ID', value: user.id, inline: true },
-            { name: 'Heuristic Score', value: score.toString(), inline: true }
+            { name: 'Heuristic Score', value: scoreString, inline: true }
         )
         .setFooter({ text: 'Powered by AbejAI analyzer engine (Beta)' })
         .setThumbnail(user.displayAvatarURL())
@@ -106,5 +114,6 @@ module.exports = {
     logErrorMessage,
     logSetRoles,
     logThreadCreation,
-    logThreadClosure
+    logThreadClosure,
+    logHeuristicWarning
 };
