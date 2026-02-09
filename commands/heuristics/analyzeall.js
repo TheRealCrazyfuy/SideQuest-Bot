@@ -110,7 +110,7 @@ module.exports = {
                 }
 
                 // rate limit
-                await new Promise(resolve => setTimeout(resolve, 500));
+                await new Promise(resolve => setTimeout(resolve, 100));
             }
 
             // Generate CSV content
