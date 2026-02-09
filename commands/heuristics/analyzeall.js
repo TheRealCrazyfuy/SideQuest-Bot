@@ -48,7 +48,7 @@ module.exports = {
                 .setTimestamp();
 
 
-            await interaction.reply({ embeds: [embed] });
+            let messageSent = await interaction.reply({ embeds: [embed] });
 
             const fetched = await guild.members.fetch();
 
@@ -107,7 +107,7 @@ module.exports = {
                         { name: ':no_entry: Failed', value: `${failedCount}`, inline: true }
                     );
                     try {
-                        await interaction.editReply({ embeds: [embed] });
+                        await messageSent.edit({ embeds: [embed] });
                     } catch (err) {
                         console.error("Error editing reply:", err);
                     }
@@ -162,12 +162,11 @@ module.exports = {
 
             // Send CSV as attachment
             const attachment = new AttachmentBuilder(csvFilePath, { name: `members-risk-${timestamp}.csv` });
-            await interaction.editReply({ embeds: [embed], files: [attachment] });
+            await messageSent.edit({ embeds: [embed], files: [attachment] });
 
         } catch (err) {
             console.error("Error fetching members for heuristic scoring:", err);
             logErrorMessage(`Error fetching server members: ${err.message}`, interaction.client);
-            interaction.editReply({ content: 'An error occurred while fetching members. Please check the logs for details.' });
         }
 
 
