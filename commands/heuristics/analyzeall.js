@@ -3,6 +3,7 @@ const { calculateHeuristicScore, calculateHeuristicScoreDetailed } = require("..
 const fs = require('fs');
 const path = require('path');
 const { logErrorMessage } = require('../../utils/logging');
+const { whitelistedRoleIds } = require('../../config.json');
 
 module.exports = {
     data: new SlashCommandBuilder()
