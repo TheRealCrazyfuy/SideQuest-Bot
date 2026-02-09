@@ -112,6 +112,7 @@ module.exports = {
                         console.error("Error editing reply:", err);
                     }
 
+                }
                 // rate limit
                 await new Promise(resolve => setTimeout(resolve, 100));
             }
