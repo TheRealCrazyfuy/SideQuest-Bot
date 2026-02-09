@@ -47,8 +47,16 @@ module.exports = {
                 .setFooter({ text: 'Powered by AbejAI analyzer engine (Beta)' })
                 .setTimestamp();
 
+            let messageSent;
 
-            let messageSent = await interaction.reply({ embeds: [embed] });
+            try {
+                messageSent = await interaction.channel.send({ embeds: [embed] });
+            } catch (err) {
+                logErrorMessage(`Cannot start full member analysis: ${err.message}`, interaction.client);
+                return interaction.reply({ content: `Cannot start ${err.message}` });
+            }
+
+            await interaction.reply({ content: 'Starting analysis of all server members.' });
 
             const fetched = await guild.members.fetch();
 
@@ -144,6 +152,10 @@ module.exports = {
 
             // Save CSV to file
             const dataDir = path.join(__dirname, '../../data/csv');
+
+            if (!fs.existsSync(dataDir)) {
+                fs.mkdirSync(dataDir, { recursive: true });
+            }
 
             const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
             const csvFilePath = path.join(dataDir, `members-risk-${timestamp}.csv`);
