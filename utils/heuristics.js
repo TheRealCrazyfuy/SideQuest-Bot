@@ -26,33 +26,33 @@ async function calculateHeuristicScore(user, client) {
 }
 
 async function accountAgeHeuristic(user, client) {
-  try {
-    const guild = client.guilds.cache.get(heuristicsGuildId);
-    if (!guild) {
-      console.log('Guild not found:', heuristicsGuildId);
-      return 0;
+    try {
+        const guild = client.guilds.cache.get(heuristicsGuildId);
+        if (!guild) {
+            console.log('Guild not found:', heuristicsGuildId);
+            return 0;
+        }
+
+        const cachedMember = guild.members.cache.get(user.id);
+        const member = cachedMember || await guild.members.fetch(user.id);
+
+        if (!member || !member.joinedTimestamp) {
+            console.log('Member not found or no join timestamp:', user.id);
+            return 0;
+        }
+
+        const accountAgeInDaysWhenJoined =
+            (member.joinedTimestamp - user.createdTimestamp) / (1000 * 60 * 60 * 24);
+
+        if (accountAgeInDaysWhenJoined < 1) return 4;
+        if (accountAgeInDaysWhenJoined < 7) return 3;
+        if (accountAgeInDaysWhenJoined < 30) return 2;
+        if (accountAgeInDaysWhenJoined < 90) return 1;
+        return 0;
+    } catch (error) {
+        console.error('accountAgeHeuristic error:', error);
+        return 0;
     }
-
-    const cachedMember = guild.members.cache.get(user.id);
-    const member = cachedMember || await guild.members.fetch(user.id);
-    
-    if (!member || !member.joinedTimestamp) {
-      console.log('Member not found or no join timestamp:', user.id);
-      return 0;
-    }
-
-    const accountAgeInDaysWhenJoined = 
-      (member.joinedTimestamp - user.createdTimestamp) / (1000 * 60 * 60 * 24);
-
-    if (accountAgeInDaysWhenJoined < 1) return 4;
-    if (accountAgeInDaysWhenJoined < 7) return 3;
-    if (accountAgeInDaysWhenJoined < 30) return 2;
-    if (accountAgeInDaysWhenJoined < 90) return 1;
-    return 0;
-  } catch (error) {
-    console.error('accountAgeHeuristic error:', error);
-    return 0;
-  }
 }
 
 
@@ -104,6 +104,29 @@ function cosmeticsHeuristic(user) {
     return 1;
 }
 
+async function calculateHeuristicScoreDetailed(user, client) {
+    const accountAge = await accountAgeHeuristic(user, client);
+    const username = usernameHeuristic(user);
+    const avatar = avatarHeuristic(user);
+    const flags = flagsHeuristic(user);
+    const raid = raidWaveHeuristic();
+    const cosmetics = cosmeticsHeuristic(user);
+    const total = accountAge + username + avatar + flags + raid + cosmetics;
+
+    return {
+        total,
+        accountAge,
+        username,
+        avatar,
+        flags,
+        raid,
+        cosmetics,
+        accountCreatedAt: user.createdAt,
+        hasAvatar: !!user.avatar,
+    };
+}
+
 module.exports = {
     calculateHeuristicScore,
+    calculateHeuristicScoreDetailed
 };

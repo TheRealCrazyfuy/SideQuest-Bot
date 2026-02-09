@@ -1,5 +1,8 @@
-const { SlashCommandBuilder, EmbedBuilder, MessageFlags } = require('discord.js');
-const { calculateHeuristicScore } = require("../../utils/heuristics");
+const { SlashCommandBuilder, EmbedBuilder, MessageFlags, AttachmentBuilder } = require('discord.js');
+const { calculateHeuristicScore, calculateHeuristicScoreDetailed } = require("../../utils/heuristics");
+const fs = require('fs');
+const path = require('path');
+const { logErrorMessage } = require('../../utils/logging');
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -27,6 +30,7 @@ module.exports = {
             let mediumRiskCount = 0;
             let highRiskCount = 0;
             let failedCount = 0;
+            const memberData = [];
 
             const embed = new EmbedBuilder()
                 .setTitle('<a:loading:1469839628533109021> Analyzing server members')
@@ -41,7 +45,7 @@ module.exports = {
                 )
                 .setFooter({ text: 'Powered by AbejAI analyzer engine (Beta)' })
                 .setTimestamp();
-                
+
 
             await interaction.reply({ embeds: [embed] });
 
@@ -49,15 +53,44 @@ module.exports = {
 
             for (const member of fetched.values()) {
                 try {
-                    const score = await calculateHeuristicScore(member.user, interaction.client);
+                    const scoreDetail = await calculateHeuristicScoreDetailed(member.user, interaction.client);
+                    const score = scoreDetail.total;
+
                     if (score >= 7) {
                         highRiskCount++;
                     } else if (score >= 5) {
                         mediumRiskCount++;
                     }
+
+                    memberData.push({
+                        userId: member.user.id,
+                        username: member.user.username,
+                        tag: member.user.tag,
+                        displayName: member.displayName || member.user.username,
+                        riskScore: score,
+                        riskLevel: score >= 7 ? 'HIGH' : score >= 5 ? 'MEDIUM' : 'LOW',
+                        accountAge: scoreDetail.accountAge,
+                        suspiciousUsername: scoreDetail.username,
+                        noAvatar: scoreDetail.avatar,
+                        noFlags: scoreDetail.flags,
+                        raidWave: scoreDetail.raid,
+                        noCosmetics: scoreDetail.cosmetics,
+                        accountCreatedAt: member.user.createdAt.toISOString(),
+                        joinedServerAt: member.joinedAt ? member.joinedAt.toISOString() : 'N/A',
+                        roles: member.roles.cache.map(r => r.name).join('; ') || 'No roles'
+                    });
+
                     console.log(`Calculated heuristic score for ${member.user.tag} (${member.user.id}): ${score}`);
                 } catch (err) {
                     console.error(`Error scoring ${member.user.tag} (${member.user.id}):`, err);
+                    memberData.push({
+                        userId: member.user.id,
+                        username: member.user.username,
+                        tag: member.user.tag,
+                        riskScore: 'ERROR',
+                        riskLevel: 'ERROR',
+                        error: err.message
+                    });
                     failedCount++;
                 }
 
@@ -79,19 +112,56 @@ module.exports = {
                 await new Promise(resolve => setTimeout(resolve, 500));
             }
 
+            // Generate CSV content
+            const csvHeaders = ['User ID', 'Username', 'Tag', 'Display Name', 'Risk Score', 'Risk Level', 'Account Age Score', 'Suspicious Username', 'No Avatar', 'No Flags', 'Raid Wave Score', 'No Cosmetics', 'Account Created', 'Joined Server', 'Roles'];
+            const csvRows = memberData.map(row => [
+                row.userId,
+                `"${row.username.replace(/"/g, '""')}"`,
+                `"${row.tag.replace(/"/g, '""')}"`,
+                `"${(row.displayName || '').replace(/"/g, '""')}"`,
+                row.riskScore,
+                row.riskLevel,
+                row.accountAge || 0,
+                row.suspiciousUsername || 0,
+                row.noAvatar || 0,
+                row.noFlags || 0,
+                row.raidWave || 0,
+                row.noCosmetics || 0,
+                row.accountCreatedAt,
+                row.joinedServerAt,
+                `"${(row.roles || '').replace(/"/g, '""')}"`
+            ]);
+
+            const csvContent = [
+                csvHeaders.join(','),
+                ...csvRows.map(row => row.join(','))
+            ].join('\n');
+
+            // Save CSV to file
+            const dataDir = path.join(__dirname, '../../data/csv');
+
+            const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
+            const csvFilePath = path.join(dataDir, `members-risk-${timestamp}.csv`);
+            fs.writeFileSync(csvFilePath, csvContent);
+
             embed.setFields(
                 { name: 'Total', value: `${total}`, inline: true },
                 { name: ':white_check_mark: Analyzed', value: `${analyzed - failedCount}`, inline: true },
                 { name: ':hammer: Pending', value: `0`, inline: true },
                 { name: ':warning: Medium Risk', value: `${mediumRiskCount}`, inline: true },
                 { name: ':x: High Risk', value: `${highRiskCount}`, inline: true },
-                { name: ':no_entry: Failed', value: `${failedCount}`, inline: true }
+                { name: ':no_entry: Failed', value: `${failedCount}`, inline: true },
+                { name: 'CSV Export', value: `Saved to \`${path.basename(csvFilePath)}\``, inline: false }
             );
             embed.setTitle('Analysis complete');
-            await interaction.editReply({ embeds: [embed] });
+
+            // Send CSV as attachment
+            const attachment = new AttachmentBuilder(csvFilePath, { name: `members-risk-${timestamp}.csv` });
+            await interaction.editReply({ embeds: [embed], files: [attachment] });
 
         } catch (err) {
             console.error("Error fetching members for heuristic scoring:", err);
+            logErrorMessage(`Error fetching server members: ${err.message}`, interaction.client);
             interaction.editReply({ content: 'An error occurred while fetching members. Please check the logs for details.' });
         }
 
