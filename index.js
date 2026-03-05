@@ -2,7 +2,6 @@ const fs = require('node:fs');
 const path = require('node:path');
 const { Client, Collection, Events, GatewayIntentBits, MessageFlags, ChannelType, ActionRowBuilder, ButtonBuilder, ButtonStyle } = require('discord.js');
 const { token, clientId, forumChannelId, solvedTagId } = require('./config.json');
-const Fuse = require('fuse.js');
 
 const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.MessageContent] });
 
@@ -10,12 +9,7 @@ client.commands = new Collection();
 const foldersPath = path.join(__dirname, 'commands');
 const commandFolders = fs.readdirSync(foldersPath);
 
-const helpReplies = require('./data/helpreplies.json');
 const { logStandardMessage, logSetRoles, logErrorMessage, logThreadCreation, logThreadClosure } = require('./utils/logging');
-const fuse = new Fuse(helpReplies, {
-    keys: ['keywords', 'name', 'reply'],
-    threshold: 0.6 // decrease threshold for more strict matching
-});
 
 for (const folder of commandFolders) {
     const commandsPath = path.join(foldersPath, folder);
@@ -30,24 +24,6 @@ for (const folder of commandFolders) {
             console.log(`[WARNING] The command at ${filePath} is missing a required "data" or "execute" property.`);
         }
     }
-}
-
-function searchHelpTopics(fuse, content, threadName, limit = 4) {
-    const text = (content + ' ' + threadName).toLowerCase();
-
-    let results = fuse.search(text, { limit });
-    let uniqueResults = [];
-    const seen = new Set();
-
-    for (const result of results) {
-        if (!seen.has(result.item.name)) {
-            seen.add(result.item.name);
-            uniqueResults.push(result);
-        }
-        if (uniqueResults.length >= limit) break;
-    }
-
-    return uniqueResults.slice(0, limit).map(r => r.item);
 }
 
 client.once(Events.ClientReady, readyClient => {
@@ -123,46 +99,6 @@ client.on(Events.InteractionCreate, async interaction => {
         }
         logSetRoles(member, roleIds, interaction.client);
         await interaction.reply({ content: `Updated your roles <:mora_popcorn:1133350731357896744> `, ephemeral: true });
-    } else if (interaction.isAutocomplete()) {
-        const command = interaction.client.commands.get(interaction.commandName);
-
-        if (!command) {
-            console.error(`No command matching ${interaction.commandName} was found.`);
-            return;
-        }
-
-        try {
-            await command.autocomplete(interaction);
-        } catch (error) {
-            console.error(error);
-        }
-    } else if (interaction.isButton() && interaction.customId.startsWith('forum_help_')) {
-        // Find the thread and the possibleHelpTopics again
-        const idx = parseInt(interaction.customId.replace('forum_help_', ''), 10);
-
-        // Fetch the thread's starter message to get the content
-        let starterMessage;
-        try {
-            starterMessage = await interaction.channel.fetchStarterMessage();
-        } catch (e) {
-            console.error('Error fetching starter message:', e);
-            await interaction.reply({ content: 'Sorry the initial thread message got deleted.', flags: MessageFlags.Ephemeral });
-            return;
-        }
-        const content = starterMessage ? starterMessage.content.toLowerCase() : '';
-        const threadName = interaction.channel.name.toLowerCase();
-
-        // Use Fuse to get up to 4 best matches
-        const possibleHelpTopics = searchHelpTopics(fuse, content, threadName, 4);
-
-        const topic = possibleHelpTopics[idx];
-        if (topic) {
-            logStandardMessage(`Provided help topic "${topic.name}" to user <@${interaction.user.id}> in thread "${interaction.channel.url}".`, interaction.client);
-            await interaction.reply({ content: topic.reply, flags: MessageFlags.Ephemeral });
-        } else {
-            await interaction.reply({ content: 'Help topic not found.', flags: MessageFlags.Ephemeral });
-        }
-        return;
     } else if (interaction.isButton() && interaction.customId === 'close_thread') {
         // Close the thread
         if (interaction.channel.isThread()) {
