@@ -98,7 +98,13 @@ client.on(Events.InteractionCreate, async interaction => {
             }
         }
         logSetRoles(member, roleIds, interaction.client);
-        await interaction.reply({ content: `Updated your roles <:mora_popcorn:1133350731357896744> `, ephemeral: true });
+        try {
+            await interaction.reply({ content: `Updated your roles <:mora_popcorn:1133350731357896744> `, flags: MessageFlags.Ephemeral });
+        } catch (err) {
+            console.error('Error sending role update confirmation:', err);
+            logErrorMessage(`Error sending role update confirmation to user ${member.id}: ${err}`, interaction.client);
+        }
+
     } else if (interaction.isButton() && interaction.customId === 'close_thread') {
         // Close the thread
         if (interaction.channel.isThread()) {
@@ -119,7 +125,13 @@ client.on(Events.InteractionCreate, async interaction => {
                 await interaction.reply({ content: 'There was an error closing the thread.', flags: MessageFlags.Ephemeral });
             }
         } else {
-            await interaction.reply({ content: 'This command can only be used in a thread <:Mora_Scream:1388103624181158020>.', flags: MessageFlags.Ephemeral });
+            try {
+                await interaction.reply({ content: 'This command can only be used in a thread <:Mora_Scream:1388103624181158020>.', flags: MessageFlags.Ephemeral });
+            } catch (err) {
+                console.error('Error sending not a thread message:', err);
+                logErrorMessage(`Error sending not a thread message: ${err}`, interaction.client);
+            }
+
         }
     } else if (interaction.isButton() && interaction.customId === 'confirm_close_thread') {
         try {
@@ -203,6 +215,12 @@ client.on('guildMemberAdd', async member => {
     } catch (err) {
         logErrorMessage(`Error handling guild member add: ${err}`, member.client);
     }
+});
+
+// handle any uncaught discord API errors
+process.on('unhandledRejection', error => {
+    console.error('Unhandled promise rejection:', error);
+    logErrorMessage(`Unhandled promise rejection: ${error}`, client);
 });
 
 client.login(token);
