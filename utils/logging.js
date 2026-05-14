@@ -98,7 +98,7 @@ function logHeuristicWarning(user, score, client) {
             { name: 'User name', value: user.tag, inline: true },
             { name: 'User', value: `<@${user.id}>`, inline: true },
             { name: 'User ID', value: user.id, inline: true },
-            { name: 'Heuristic Score', value: scoreString, inline: true }
+            { name: 'Risk Score', value: scoreString, inline: true }
         )
         .setFooter({ text: 'Powered by AbejAI analyzer engine (Beta)' })
         .setThumbnail(user.displayAvatarURL())
