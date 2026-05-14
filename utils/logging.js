@@ -1,7 +1,20 @@
 const { EmbedBuilder } = require("discord.js");
 const config = require("../config.json");
 
-function logStandardMessage(message, client) {
+async function sendLogEmbed(client, embed) {
+    const channel = client.channels.cache.get(config.logChannelId);
+    try {
+        if (channel) {
+            await channel.send({ embeds: [embed] });
+        } else {
+            console.error('Log channel not found');
+        }
+    } catch (error) {
+        console.error('Failed to send log message:', error);
+    }
+}
+
+async function logStandardMessage(message, client) {
     console.log(`[INFO]: ${message}`);
     const row = new EmbedBuilder()
         .setColor('#00FF00')
@@ -9,26 +22,20 @@ function logStandardMessage(message, client) {
         .setDescription(message)
         .setTimestamp();
 
-    const channel = client.channels.cache.get(config.logChannelId);
-    if (channel) {
-        channel.send({ embeds: [row] });
-    }
+    await sendLogEmbed(client, row);
 }
 
-function logErrorMessage(error, client) {
+async function logErrorMessage(error, client) {
     console.error(`[ERROR]: ${error}`);
     const row = new EmbedBuilder()
         .setColor('#FF0000')
         .setTitle('Error')
         .setDescription(error)
         .setTimestamp();
-    const channel = client.channels.cache.get(config.logChannelId);
-    if (channel) {
-        channel.send({ embeds: [row] });
-    }
+    await sendLogEmbed(client, row);
 }
 
-function logSetRoles(member, roles, client) {
+async function logSetRoles(member, roles, client) {
     console.log(roles)
     const roleList = roles.map(role => `<@&${role}>`).join(', ') || 'No roles assigned';
     const row = new EmbedBuilder()
@@ -41,13 +48,11 @@ function logSetRoles(member, roles, client) {
         )
         .setThumbnail(member.displayAvatarURL())
         .setTimestamp();
-    const channel = client.channels.cache.get(config.logChannelId);
-    if (channel) {
-        channel.send({ embeds: [row] });
-    }
+
+    await sendLogEmbed(client, row);
 }
 
-function logThreadCreation(thread, client) {
+async function logThreadCreation(thread, client) {
     const row = new EmbedBuilder()
         .setColor('#FFFF00')
         .setTitle('Thread Created')
@@ -58,13 +63,11 @@ function logThreadCreation(thread, client) {
             { name: 'link', value: thread.url, inline: true }
         )
         .setTimestamp();
-    const channel = client.channels.cache.get(config.logChannelId);
-    if (channel) {
-        channel.send({ embeds: [row] });
-    }
+
+    await sendLogEmbed(client, row);
 }
 
-function logThreadClosure(thread, closer, client) {
+async function logThreadClosure(thread, closer, client) {
     const row = new EmbedBuilder()
         .setColor('#FFA500')
         .setTitle('Thread Closed')
@@ -76,13 +79,11 @@ function logThreadClosure(thread, closer, client) {
             { name: 'link', value: thread.url, inline: true }
         )
         .setTimestamp();
-    const channel = client.channels.cache.get(config.logChannelId);
-    if (channel) {
-        channel.send({ embeds: [row] });
-    }
+
+    await sendLogEmbed(client, row);
 }
 
-function logHeuristicWarning(user, score, client) {
+async function logHeuristicWarning(user, score, client) {
     let scoreString;
     if (score >= 7) {
         scoreString = `**:x: ${score}**`;
@@ -103,10 +104,8 @@ function logHeuristicWarning(user, score, client) {
         .setFooter({ text: 'Powered by AbejAI analyzer engine (Beta)' })
         .setThumbnail(user.displayAvatarURL())
         .setTimestamp();
-    const channel = client.channels.cache.get(config.logChannelId);
-    if (channel) {
-        channel.send({ embeds: [row] });
-    }
+
+    await sendLogEmbed(client, row);
 }
 
 module.exports = {
