@@ -9,7 +9,6 @@ async function calculateHeuristicScore(user, client) {
     score += usernameHeuristic(user);
     score += avatarHeuristic(user);
     score += flagsHeuristic(user);
-    score += raidWaveHeuristic();
     score += cosmeticsHeuristic(user);
 
     /*     logStandardMessage(`Calculated heuristic score for ${user.tag} (${user.id}):
@@ -82,21 +81,6 @@ function flagsHeuristic(user) {
     return 0;
 }
 
-const recentJoins = [];
-
-function raidWaveHeuristic() {
-    const now = Date.now();
-
-    while (recentJoins.length && now - recentJoins[0] > 60000) {
-        recentJoins.shift();
-    }
-
-    if (recentJoins.length > 10) return 5;
-    if (recentJoins.length > 5) return 3;
-
-    return 0;
-}
-
 function cosmeticsHeuristic(user) {
     if (user.collectibles || user.avatarDecorationData) {
         return 0;
@@ -104,29 +88,6 @@ function cosmeticsHeuristic(user) {
     return 1;
 }
 
-async function calculateHeuristicScoreDetailed(user, client) {
-    const accountAge = await accountAgeHeuristic(user, client);
-    const username = usernameHeuristic(user);
-    const avatar = avatarHeuristic(user);
-    const flags = flagsHeuristic(user);
-    const raid = raidWaveHeuristic();
-    const cosmetics = cosmeticsHeuristic(user);
-    const total = accountAge + username + avatar + flags + raid + cosmetics;
-
-    return {
-        total,
-        accountAge,
-        username,
-        avatar,
-        flags,
-        raid,
-        cosmetics,
-        accountCreatedAt: user.createdAt,
-        hasAvatar: !!user.avatar,
-    };
-}
-
 module.exports = {
     calculateHeuristicScore,
-    calculateHeuristicScoreDetailed
 };
