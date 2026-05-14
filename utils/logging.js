@@ -99,6 +99,7 @@ async function logHeuristicWarning(user, score, client) {
             { name: 'User name', value: user.tag, inline: true },
             { name: 'User', value: `<@${user.id}>`, inline: true },
             { name: 'User ID', value: user.id, inline: true },
+            { name: 'Account age (days)', value: `${Math.floor((Date.now() - user.createdTimestamp) / (1000 * 60 * 60 * 24))}`, inline: true },
             { name: 'Risk Score', value: scoreString, inline: true }
         )
         .setFooter({ text: 'Powered by AbejAI analyzer engine (Beta)' })
