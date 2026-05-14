@@ -28,7 +28,7 @@ module.exports = {
         const phoneDropdown = new ActionRowBuilder().addComponents(
             new StringSelectMenuBuilder()
                 .setCustomId('phoneDropdown')
-                .setPlaceholder('Choose a phone')
+                .setPlaceholder('اختر هاتفك')
                 .setMinValues(1)
                 .setMaxValues(3)
                 .addOptions(roles.phones.map(opt => ({ label: opt.label, value: opt.value, description: opt.description || undefined })))
@@ -37,7 +37,7 @@ module.exports = {
         const tabletDropdown = new ActionRowBuilder().addComponents(
             new StringSelectMenuBuilder()
                 .setCustomId('tabletDropdown')
-                .setPlaceholder('Choose a tablet')
+                .setPlaceholder('اختر تابلتك')
                 .setMinValues(1)
                 .setMaxValues(2)
                 .addOptions(roles.tablets.map(opt => ({ label: opt.label, value: opt.value, description: opt.description || undefined })))
@@ -46,7 +46,7 @@ module.exports = {
         const accessoryDropdown = new ActionRowBuilder().addComponents(
             new StringSelectMenuBuilder()
                 .setCustomId('accessoryDropdown')
-                .setPlaceholder('Choose an accesory')
+                .setPlaceholder('اختر إكسسوارك')
                 .setMinValues(1)
                 .setMaxValues(1)
                 .addOptions(roles.accessories.map(opt => ({ label: opt.label, value: opt.value, description: opt.description || undefined })))
@@ -55,22 +55,22 @@ module.exports = {
         const pcDropdown = new ActionRowBuilder().addComponents(
             new StringSelectMenuBuilder()
                 .setCustomId('pcDropdown')
-                .setPlaceholder('Choose a PC peripheral')
+                .setPlaceholder('اختر ملحق الكمبيوتر الخاص بك')
                 .setMinValues(1)
                 .setMaxValues(2)
                 .addOptions(roles.pcPeripherals.map(opt => ({ label: opt.label, value: opt.value, description: opt.description || undefined })))
         );
 
         await channel.send({
-            content: `Please take your cosmetic Roles here.
-In case you own more devices, feel free to ask a Mod.
+            content: `هنا يمكنك اختيار أدوارك الشخصية.
+إذا كنت تمتلك أكثر من جهاز، لا تتردد في التواصل مع أحد المشرفين.
 
-To remove all your roles choose the "Remove all" option in the dropdown.
+لإزالة جميع أدوارك، اختر خيار "إزالة الكل" من القائمة.
 ` });
-        await channel.send({ content: '-# You can choose up to 3 Phone roles', components: [phoneDropdown] });
-        await channel.send({ content: '-# You can choose up to 2 Tablet roles', components: [tabletDropdown] });
-        await channel.send({ content: '-# You can choose up to 1 Accessory roles', components: [accessoryDropdown] });
-        await channel.send({ content: '-# You can choose up to 2 PC peripheral roles', components: [pcDropdown] });
+        await channel.send({ content: '-# يمكنك اختيار ما يصل إلى 3 أدوار للهواتف', components: [phoneDropdown] });
+        await channel.send({ content: '-# يمكنك اختيار ما يصل إلى 2 أدوار للتابلت', components: [tabletDropdown] });
+        await channel.send({ content: '-# يمكنك اختيار ما يصل إلى 1 دور للإكسسوارات', components: [accessoryDropdown] });
+        await channel.send({ content: '-# يمكنك اختيار ما يصل إلى 2 أدوار لملحقات الكمبيوتر', components: [pcDropdown] });
 
         await interaction.reply({ content: 'Done!', flags: MessageFlags.Ephemeral });
     },
