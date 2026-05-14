@@ -31,7 +31,7 @@ module.exports = {
                 .setPlaceholder('اختر هاتفك')
                 .setMinValues(1)
                 .setMaxValues(3)
-                .addOptions(roles.phones.map(opt => ({ label: opt.label, value: opt.value, description: opt.description || undefined })))
+                .addOptions(roles.phones.map(opt => ({ label: opt.label, value: opt.value, description: opt.description || undefined, emoji: opt.emoji ? { id: opt.emoji } : undefined })))
         );
 
         const tabletDropdown = new ActionRowBuilder().addComponents(
@@ -40,7 +40,7 @@ module.exports = {
                 .setPlaceholder('اختر تابلتك')
                 .setMinValues(1)
                 .setMaxValues(2)
-                .addOptions(roles.tablets.map(opt => ({ label: opt.label, value: opt.value, description: opt.description || undefined })))
+                .addOptions(roles.tablets.map(opt => ({ label: opt.label, value: opt.value, description: opt.description || undefined, emoji: opt.emoji ? { id: opt.emoji } : undefined })))
         );
 
         const accessoryDropdown = new ActionRowBuilder().addComponents(
@@ -49,7 +49,7 @@ module.exports = {
                 .setPlaceholder('اختر إكسسوارك')
                 .setMinValues(1)
                 .setMaxValues(1)
-                .addOptions(roles.accessories.map(opt => ({ label: opt.label, value: opt.value, description: opt.description || undefined })))
+                .addOptions(roles.accessories.map(opt => ({ label: opt.label, value: opt.value, description: opt.description || undefined, emoji: opt.emoji ? { id: opt.emoji } : undefined })))
         );
 
         const pcDropdown = new ActionRowBuilder().addComponents(
@@ -58,7 +58,7 @@ module.exports = {
                 .setPlaceholder('اختر ملحق الكمبيوتر الخاص بك')
                 .setMinValues(1)
                 .setMaxValues(2)
-                .addOptions(roles.pcPeripherals.map(opt => ({ label: opt.label, value: opt.value, description: opt.description || undefined })))
+                .addOptions(roles.pcPeripherals.map(opt => ({ label: opt.label, value: opt.value, description: opt.description || undefined, emoji: opt.emoji ? { id: opt.emoji } : undefined })))
         );
 
         await channel.send({

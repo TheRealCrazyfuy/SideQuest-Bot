@@ -1,36 +1,36 @@
 {
   "phones": [
-    { "label": "REDMAGIC 11 Pro", "value": "rm11pro", "roleId": "1503861620349337832" },
-    { "label": "REDMAGIC 11 Air", "value": "rm11air", "roleId": "1503888431175045201" },
-    { "label": "REDMAGIC 10s Pro", "value": "rm10spro", "roleId": "1503888586171486218" },
-    { "label": "REDMAGIC 10 Pro", "value": "rm10pro", "roleId": "1503888649950068847" },
-    { "label": "REDMAGIC 10 Air", "value": "rm10air", "roleId": "1503888729322819755" },
-    { "label": "REDMAGIC 9s Pro", "value": "rm9spro", "roleId": "1503889033913172019" },
-    { "label": "REDMAGIC 9 Pro", "value": "rm9pro", "roleId": "1503889147784466442" },
-    { "label": "REDMAGIC 8s Pro", "value": "rm8spro", "roleId": "1503889199546368152" },
-    { "label": "REDMAGIC 8 Pro", "value": "rm8pro", "roleId": "1503889428488388766" },
-    { "label": "REDMAGIC 7s Pro", "value": "rm7spro", "roleId": "1503889579365630002" },
-    { "label": "REDMAGIC 7/7 Pro", "value": "rm7pro", "roleId": "1503889677239849058" },
-    { "label": "REDMAGIC 6s Pro", "value": "rm6spro", "roleId": "1503889733212700694" },
-    { "label": "REDMAGIC 6/6 Pro", "value": "rm6pro", "roleId": "1503889785650151484" },
-    { "label": "REDMAGIC 6R", "value": "rm6r", "roleId": "1503889980995670036" },
-    { "label": "REDMAGIC 5G/5S", "value": "rm5g", "roleId": "1503890051816362014" },
-    { "label": "REDMAGIC OG", "value": "rmog", "description": "REDMAGIC 1, Mars and 3 series", "roleId": "1503890170745848000" },
-    { "label": "Other", "value": "other", "roleId": "1503890293101957332" },
-    { "label": "Remove all", "value": "removeall", "roleId": null }
+    { "label": "REDMAGIC 11 Pro", "value": "rm11pro", "roleId": "1503861620349337832", "emoji": "1504431773273296936"},
+    { "label": "REDMAGIC 11 Air", "value": "rm11air", "roleId": "1503888431175045201", "emoji": "1504470918641221843"},
+    { "label": "REDMAGIC 10s Pro", "value": "rm10spro", "roleId": "1503888586171486218", "emoji": "1504483482787647538"},
+    { "label": "REDMAGIC 10 Pro", "value": "rm10pro", "roleId": "1503888649950068847", "emoji": "1504483534146899998"},
+    { "label": "REDMAGIC 10 Air", "value": "rm10air", "roleId": "1503888729322819755", "emoji": "1504490018956378193"},
+    { "label": "REDMAGIC 9s Pro", "value": "rm9spro", "roleId": "1503889033913172019", "emoji": "1504484457359474808"},
+    { "label": "REDMAGIC 9 Pro", "value": "rm9pro", "roleId": "1503889147784466442", "emoji": "1504484507984728185"},
+    { "label": "REDMAGIC 8s Pro", "value": "rm8spro", "roleId": "1503889199546368152", "emoji": "1504487204649566408"},
+    { "label": "REDMAGIC 8 Pro", "value": "rm8pro", "roleId": "1503889428488388766", "emoji": "1504487204649566408"},
+    { "label": "REDMAGIC 7s Pro", "value": "rm7spro", "roleId": "1503889579365630002", "emoji": "1504487291555414097"},
+    { "label": "REDMAGIC 7/7 Pro", "value": "rm7pro", "roleId": "1503889677239849058", "emoji": "1504487425685061702"},
+    { "label": "REDMAGIC 6s Pro", "value": "rm6spro", "roleId": "1503889733212700694", "emoji": "1504487712663535676"},
+    { "label": "REDMAGIC 6/6 Pro", "value": "rm6pro", "roleId": "1503889785650151484", "emoji": "1504487843786002542"},
+    { "label": "REDMAGIC 6R", "value": "rm6r", "roleId": "1503889980995670036", "emoji": "1504487933942693888"},
+    { "label": "REDMAGIC 5G/5S", "value": "rm5g", "roleId": "1503890051816362014", "emoji": "1504488000686526515"},
+    { "label": "REDMAGIC OG", "value": "rmog", "description": "REDMAGIC 1, Mars and 3 series", "roleId": "1503890170745848000", "emoji": "1504488570155565076"},
+    { "label": "Other", "value": "other", "roleId": "1503890293101957332"},
+    { "label": "إزالة الكل", "value": "removeall", "roleId": null }
   ],
   "tablets": [
-    { "label": "REDMAGIC Astra", "value": "rmastra", "roleId": "1503890436744413184" },
-    { "label": "REDMAGIC Nova", "value": "rmnova", "roleId": "1503890570874191964" },
-    { "label": "Remove all", "value": "removeall", "roleId": null }
+    { "label": "REDMAGIC Astra", "value": "rmastra", "roleId": "1503890436744413184", "emoji": "1504488685674954833"},
+    { "label": "REDMAGIC Nova", "value": "rmnova", "roleId": "1503890570874191964", "emoji": "1504488792709664909"},
+    { "label": "إزالة الكل", "value": "removeall", "roleId": null }
   ],
   "accessories": [
-    { "label": "REDMAGIC Accessories", "value": "coolers", "description": "includes all normal accessories like coolers etc" ,"roleId": "1503890689774190693" },
-    { "label": "Remove all", "value": "removeall", "roleId": null }
+    { "label": "REDMAGIC Accessories", "value": "coolers", "description": "includes all normal accessories like coolers etc", "roleId": "1503890689774190693"},
+    { "label": "إزالة الكل", "value": "removeall", "roleId": null }
   ],
   "pcPeripherals": [
-    { "label": "REDMAGIC Titan 16 Pro", "value": "redmagictitan16pro", "roleId": "1503890955613245583"},
-    { "label": "REDMAGIC Peripherals", "value": "peripherals",  "description": "PC accesories like the gaming mouse, keyboard, monitor etc", "roleId": "1503891116947411126"},
-    { "label": "Remove all", "value": "removeall", "roleId": null }
+    { "label": "REDMAGIC Titan 16 Pro", "value": "redmagictitan16pro", "roleId": "1503890955613245583", "emoji": "1504488632289984682"},
+    { "label": "REDMAGIC Peripherals", "value": "peripherals", "description": "PC accesories like the gaming mouse, keyboard, monitor etc", "roleId": "1503891116947411126"},
+    { "label": "إزالة الكل", "value": "removeall", "roleId": null }
   ]
 }
