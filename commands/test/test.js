@@ -1,5 +1,6 @@
 const { logStandardMessage, logHeuristicWarning } = require('../../utils/logging');
 const { SlashCommandBuilder, MessageFlags } = require('discord.js');
+const { whitelistedRoleIds } = require('../../config.json');
 
 module.exports = {
     data: new SlashCommandBuilder()
