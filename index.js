@@ -207,7 +207,7 @@ When your issue is resolved, please remember to close the thread by clicking the
 client.on('guildMemberAdd', async member => {
     if (member.guild.id !== heuristicsGuildId) return;
     try {
-        const calculateHeuristicScore = require('./utils/heuristics');
+        const { calculateHeuristicScore } = require('./utils/heuristics');
         const score = await calculateHeuristicScore(member.user, member.client);
         if (score >= 5) {
             logHeuristicWarning(member.user, score, member.client);
