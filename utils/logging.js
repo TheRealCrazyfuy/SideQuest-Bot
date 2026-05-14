@@ -82,10 +82,38 @@ function logThreadClosure(thread, closer, client) {
     }
 }
 
+function logHeuristicWarning(user, score, client) {
+    let scoreString;
+    if (score >= 7) {
+        scoreString = `**:x: ${score}**`;
+    } else if (score >= 5) {
+        scoreString = `**:warning: ${score}**`;
+    } else {
+        scoreString = `**${score}**`;
+    }
+    const row = new EmbedBuilder()
+        .setColor('#FF4500')
+        .setTitle('Risk user detected')
+        .setFields(
+            { name: 'User name', value: user.tag, inline: true },
+            { name: 'User', value: `<@${user.id}>`, inline: true },
+            { name: 'User ID', value: user.id, inline: true },
+            { name: 'Risk Score', value: scoreString, inline: true }
+        )
+        .setFooter({ text: 'Powered by AbejAI analyzer engine (Beta)' })
+        .setThumbnail(user.displayAvatarURL())
+        .setTimestamp();
+    const channel = client.channels.cache.get(config.logChannelId);
+    if (channel) {
+        channel.send({ embeds: [row] });
+    }
+}
+
 module.exports = {
     logStandardMessage,
     logErrorMessage,
     logSetRoles,
     logThreadCreation,
-    logThreadClosure
+    logThreadClosure,
+    logHeuristicWarning
 };

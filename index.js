@@ -1,15 +1,15 @@
 const fs = require('node:fs');
 const path = require('node:path');
 const { Client, Collection, Events, GatewayIntentBits, MessageFlags, ChannelType, ActionRowBuilder, ButtonBuilder, ButtonStyle } = require('discord.js');
-const { token, clientId, forumChannelId, solvedTagId } = require('./config.json');
+const { token, clientId, forumChannelId, solvedTagId, heuristicsGuildId } = require('./config.json');
 
-const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.MessageContent] });
+const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.MessageContent, GatewayIntentBits.GuildPresences, GatewayIntentBits.GuildMembers] });
 
 client.commands = new Collection();
 const foldersPath = path.join(__dirname, 'commands');
 const commandFolders = fs.readdirSync(foldersPath);
 
-const { logStandardMessage, logSetRoles, logErrorMessage, logThreadCreation, logThreadClosure } = require('./utils/logging');
+const { logStandardMessage, logSetRoles, logErrorMessage, logThreadCreation, logThreadClosure, logHeuristicWarning } = require('./utils/logging');
 
 for (const folder of commandFolders) {
     const commandsPath = path.join(foldersPath, folder);
@@ -204,11 +204,23 @@ When your issue is resolved, please remember to close the thread by clicking the
     }
 });
 
+client.on('guildMemberAdd', async member => {
+    if (member.guild.id !== heuristicsGuildId) return;
+    try {
+        const calculateHeuristicScore = require('./utils/heuristics');
+        const score = await calculateHeuristicScore(member.user, member.client);
+        if (score >= 5) {
+            logHeuristicWarning(member.user, score, member.client);
+        }
+    } catch (err) {
+        logErrorMessage(`Error handling guild member add: ${err}`, member.client);
+    }
+});
+
 // handle any uncaught discord API errors
 process.on('unhandledRejection', error => {
     console.error('Unhandled promise rejection:', error);
     logErrorMessage(`Unhandled promise rejection: ${error}`, client);
 });
-
 
 client.login(token);
