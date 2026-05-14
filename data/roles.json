@@ -16,7 +16,7 @@
     { "label": "REDMAGIC 6R", "value": "rm6r", "roleId": "1503889980995670036", "emoji": "1504487933942693888"},
     { "label": "REDMAGIC 5G/5S", "value": "rm5g", "roleId": "1503890051816362014", "emoji": "1504488000686526515"},
     { "label": "REDMAGIC OG", "value": "rmog", "description": "REDMAGIC 1, Mars and 3 series", "roleId": "1503890170745848000", "emoji": "1504488570155565076"},
-    { "label": "Other", "value": "other", "roleId": "1503890293101957332"},
+    { "label": "أخرى", "value": "other", "roleId": "1503890293101957332"},
     { "label": "إزالة الكل", "value": "removeall", "roleId": null }
   ],
   "tablets": [
@@ -25,12 +25,12 @@
     { "label": "إزالة الكل", "value": "removeall", "roleId": null }
   ],
   "accessories": [
-    { "label": "REDMAGIC Accessories", "value": "coolers", "description": "includes all normal accessories like coolers etc", "roleId": "1503890689774190693"},
+    { "label": "إكسسوارات ريدماجيك", "value": "coolers", "description": "يشمل جميع الإكسسوارات العادية كالمبردات وغيرها", "roleId": "1503890689774190693"},
     { "label": "إزالة الكل", "value": "removeall", "roleId": null }
   ],
   "pcPeripherals": [
     { "label": "REDMAGIC Titan 16 Pro", "value": "redmagictitan16pro", "roleId": "1503890955613245583", "emoji": "1504488632289984682"},
-    { "label": "REDMAGIC Peripherals", "value": "peripherals", "description": "PC accesories like the gaming mouse, keyboard, monitor etc", "roleId": "1503891116947411126"},
+    { "label": "ملحقات ريدماجيك", "value": "peripherals", "description": "ملحقات الكمبيوتر كالماوس، الكيبورد، الشاشة وغيرها", "roleId": "1503891116947411126"},
     { "label": "إزالة الكل", "value": "removeall", "roleId": null }
   ]
 }
