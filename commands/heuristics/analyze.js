@@ -1,6 +1,6 @@
 const { SlashCommandBuilder, EmbedBuilder, MessageFlags } = require('discord.js');
 const { calculateHeuristicScore } = require('../../utils/heuristics');
-const { whitelistedRoleIds } = require('../../config.json');
+const { whitelistedRoleIds, heuristicsGuildId } = require('../../config.json');
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -34,6 +34,14 @@ module.exports = {
             stringScore = `**${score}**`;
         }
 
+        const guild = interaction.client.guilds.cache.get(heuristicsGuildId);
+        const cachedMember = guild.members.cache.get(targetUser.id);
+        const member = cachedMember || await guild.members.fetch(user.id);
+
+        const accountAgeInDaysWhenJoined =
+            (member.joinedTimestamp - targetUser.createdTimestamp) / (1000 * 60 * 60 * 24);
+
+
         const row2 = new EmbedBuilder()
             .setColor('#FF4500')
             .setTitle('Risk analysis result')
@@ -41,6 +49,8 @@ module.exports = {
                 { name: 'User name', value: targetUser.tag, inline: true },
                 { name: 'User', value: `<@${targetUser.id}>`, inline: true },
                 { name: 'User ID', value: targetUser.id, inline: true },
+                { name: 'Account age when joined (days)', value: `${Math.floor(accountAgeInDaysWhenJoined)}`, inline: true },
+                { name: 'Account age (days)', value: `${Math.floor((Date.now() - targetUser.createdTimestamp) / (1000 * 60 * 60 * 24))}`, inline: true },
                 { name: 'Risk Score', value: stringScore, inline: true }
             )
             .setFooter({ text: 'Powered by AbejAI analyzer engine (Beta)' })
