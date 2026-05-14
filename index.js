@@ -10,26 +10,26 @@ const foldersPath = path.join(__dirname, 'commands');
 const commandFolders = fs.readdirSync(foldersPath);
 
 for (const folder of commandFolders) {
-	const commandsPath = path.join(foldersPath, folder);
-	const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('.js'));
-	for (const file of commandFiles) {
-		const filePath = path.join(commandsPath, file);
-		const command = require(filePath);
-		// Set a new item in the Collection with the key as the command name and the value as the exported module
-		if ('data' in command && 'execute' in command) {
-			client.commands.set(command.data.name, command);
-		} else {
-			console.log(`[WARNING] The command at ${filePath} is missing a required "data" or "execute" property.`);
-		}
-	}
+    const commandsPath = path.join(foldersPath, folder);
+    const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('.js'));
+    for (const file of commandFiles) {
+        const filePath = path.join(commandsPath, file);
+        const command = require(filePath);
+        // Set a new item in the Collection with the key as the command name and the value as the exported module
+        if ('data' in command && 'execute' in command) {
+            client.commands.set(command.data.name, command);
+        } else {
+            console.log(`[WARNING] The command at ${filePath} is missing a required "data" or "execute" property.`);
+        }
+    }
 }
 
 client.once(Events.ClientReady, readyClient => {
-	console.log(`Ready! Logged in as ${readyClient.user.tag}`);
+    console.log(`Ready! Logged in as ${readyClient.user.tag}`);
 });
 
 client.on(Events.InteractionCreate, async interaction => {
-	if (interaction.isChatInputCommand()) {
+    if (interaction.isChatInputCommand()) {
         const command = interaction.client.commands.get(interaction.commandName);
 
         if (!command) {
@@ -49,13 +49,14 @@ client.on(Events.InteractionCreate, async interaction => {
         }
     }
     else if (interaction.isStringSelectMenu()) {
-
         const rolesData = require('./data/roles.json');
         let options = [];
 
         // Check which menu was used
         if (interaction.customId === 'phoneDropdown') {
             options = rolesData.phones;
+        } else if (interaction.customId === 'tabletDropdown') {
+            options = rolesData.tablets;
         } else if (interaction.customId === 'accessoryDropdown') {
             options = rolesData.accessories;
         } else if (interaction.customId === 'pcDropdown') {
@@ -91,11 +92,15 @@ client.on(Events.InteractionCreate, async interaction => {
                 console.error(`Failed to add role ${roleId}:`, err);
             }
         }
-        await interaction.reply({ content: `Updated your roles <:mora_popcorn:1133350731357896744> `, ephemeral: true });
+        try {
+            await interaction.reply({ content: `Updated your roles <:mora_popcorn:1133350731357896744>\nNote: Please only take the roles of devices you actually own <:Dreamy_Mora:1387802057309819010>`, flags: MessageFlags.Ephemeral });
+        } catch (err) {
+            console.error('Error sending role update confirmation:', err);
+        }
     }
 
 
-	
+
 });
 
 client.login(token);

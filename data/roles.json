@@ -1,33 +1,36 @@
 {
   "phones": [
-    { "label": "REDMAGIC Astra", "value": "rmastra", "roleId": "1389289382485426269" },
-    { "label": "REDMAGIC Nova", "value": "rmnova", "roleId": "1287164838753206405" },
-    { "label": "REDMAGIC 10s Pro", "value": "rm10spro", "roleId": "1376510975112642661" },
-    { "label": "REDMAGIC 10 Pro", "value": "rm10pro", "roleId": "1305946911764648046" },
-    { "label": "REDMAGIC 10 Air", "value": "rm10air", "roleId": "1365447040326303886" },
-    { "label": "REDMAGIC 9s Pro", "value": "rm9spro", "roleId": "1264184933346185257" },
-    { "label": "REDMAGIC 9 Pro", "value": "rm9pro", "roleId": "1181207014064521226" },
-    { "label": "REDMAGIC 8s Pro", "value": "rm8spro", "roleId": "1126705338683506708" },
-    { "label": "REDMAGIC 8 Pro", "value": "rm8pro", "roleId": "1063515373208600577" },
-    { "label": "REDMAGIC 7s Pro", "value": "rm7spro", "roleId": "1004665555195797595" },
-    { "label": "REDMAGIC 7 Pro", "value": "rm7pro", "roleId": "964364858764193812" },
-    { "label": "REDMAGIC 7", "value": "rm7", "roleId": "951474366221262879" },
-    { "label": "REDMAGIC 6s Pro", "value": "rm6spro", "roleId": "897403555714043914" },
-    { "label": "REDMAGIC 6/6Pro", "value": "rm6pro", "roleId": "897403271986176081" },
-    { "label": "REDMAGIC 6R", "value": "rm6r", "roleId": "897403274284634112" },
-    { "label": "REDMAGIC 5G/5S", "value": "rm5g", "roleId": "897403269553471498" },
-    { "label": "REDMAGIC 3/3S", "value": "rm3", "roleId": "897403266500026408" },
-    { "label": "REDMAGIC Mars", "value": "rmmars", "roleId": "897402944218091520" },
-    { "label": "REDMAGIC 1", "value": "rm1", "roleId": "917702694548934658" },
+    { "label": "REDMAGIC 11 Pro", "value": "rm11pro", "roleId": "1503861620349337832" },
+    { "label": "REDMAGIC 11 Air", "value": "rm11air", "roleId": "1503888431175045201" },
+    { "label": "REDMAGIC 10s Pro", "value": "rm10spro", "roleId": "1503888586171486218" },
+    { "label": "REDMAGIC 10 Pro", "value": "rm10pro", "roleId": "1503888649950068847" },
+    { "label": "REDMAGIC 10 Air", "value": "rm10air", "roleId": "1503888729322819755" },
+    { "label": "REDMAGIC 9s Pro", "value": "rm9spro", "roleId": "1503889033913172019" },
+    { "label": "REDMAGIC 9 Pro", "value": "rm9pro", "roleId": "1503889147784466442" },
+    { "label": "REDMAGIC 8s Pro", "value": "rm8spro", "roleId": "1503889199546368152" },
+    { "label": "REDMAGIC 8 Pro", "value": "rm8pro", "roleId": "1503889428488388766" },
+    { "label": "REDMAGIC 7s Pro", "value": "rm7spro", "roleId": "1503889579365630002" },
+    { "label": "REDMAGIC 7/7 Pro", "value": "rm7pro", "roleId": "1503889677239849058" },
+    { "label": "REDMAGIC 6s Pro", "value": "rm6spro", "roleId": "1503889733212700694" },
+    { "label": "REDMAGIC 6/6 Pro", "value": "rm6pro", "roleId": "1503889785650151484" },
+    { "label": "REDMAGIC 6R", "value": "rm6r", "roleId": "1503889980995670036" },
+    { "label": "REDMAGIC 5G/5S", "value": "rm5g", "roleId": "1503890051816362014" },
+    { "label": "REDMAGIC OG", "value": "rmog", "description": "REDMAGIC 1, Mars and 3 series", "roleId": "1503890170745848000" },
+    { "label": "Other", "value": "other", "roleId": "1503890293101957332" },
+    { "label": "Remove all", "value": "removeall", "roleId": null }
+  ],
+  "tablets": [
+    { "label": "REDMAGIC Astra", "value": "rmastra", "roleId": "1503890436744413184" },
+    { "label": "REDMAGIC Nova", "value": "rmnova", "roleId": "1503890570874191964" },
     { "label": "Remove all", "value": "removeall", "roleId": null }
   ],
   "accessories": [
-    { "label": "REDMAGIC Accessories", "value": "coolers", "description": "includes all normal accessories like coolers etc" ,"roleId": "1295219797767884820" },
+    { "label": "REDMAGIC Accessories", "value": "coolers", "description": "includes all normal accessories like coolers etc" ,"roleId": "1503890689774190693" },
     { "label": "Remove all", "value": "removeall", "roleId": null }
   ],
   "pcPeripherals": [
-    { "label": "REDMAGIC Titan 16 Pro", "value": "redmagictitan16pro", "roleId": "1287164601544478730"},
-    { "label": "REDMAGIC Peripherals", "value": "peripherals",  "description": "PC accesories like the gaming mouse, keyboard, monitor etc", "roleId": "1290323123987550218"},
+    { "label": "REDMAGIC Titan 16 Pro", "value": "redmagictitan16pro", "roleId": "1503890955613245583"},
+    { "label": "REDMAGIC Peripherals", "value": "peripherals",  "description": "PC accesories like the gaming mouse, keyboard, monitor etc", "roleId": "1503891116947411126"},
     { "label": "Remove all", "value": "removeall", "roleId": null }
   ]
 }
