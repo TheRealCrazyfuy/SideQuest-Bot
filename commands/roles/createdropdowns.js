@@ -1,7 +1,7 @@
-const { SlashCommandBuilder, ActionRowBuilder, StringSelectMenuBuilder, ModalBuilder, TextDisplayBuilder, MessageFlags, ButtonBuilder, LabelBuilder } = require('discord.js');
+const { SlashCommandBuilder, ActionRowBuilder, StringSelectMenuBuilder, ModalBuilder, TextDisplayBuilder, MessageFlags, ButtonBuilder, LabelBuilder, EmbedBuilder } = require('discord.js');
 const config = require('../../config.json');
 const roles = require('../../data/roles.json');
-const { logStandardMessage, logSetRoles } = require('../../utils/logging');
+const { logStandardMessage, logSetRoles, logErrorMessage } = require('../../utils/logging');
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -127,6 +127,7 @@ module.exports = {
                     await member.roles.remove(roleId);
                 } catch (err) {
                     console.error(`Failed to remove role ${roleId}:`, err);
+                    logErrorMessage(`Error removing role <@&${roleId}> from ${interaction.user.tag}: ${err}`, interaction.client);
                 }
             }
         }
@@ -141,11 +142,23 @@ module.exports = {
                 await member.roles.add(roleId);
             } catch (err) {
                 console.error(`Failed to add role ${roleId}:`, err);
+                logErrorMessage(`Error adding role <@&${roleId}> to ${interaction.user.tag}: ${err}`, interaction.client);
             }
         }
         logSetRoles(interaction.user, roleIdsToAdd, interaction.client);
+
+        const embed = new EmbedBuilder()
+            .setTitle('Your roles have been updated!')
+            .setFields(
+                { name: 'Phones', value: selectedPhoneRoles.length > 0 ? selectedPhoneRoles.map(val => `<@&${rolesData.phones.find(r => r.value === val)?.roleId}>`).join(', ') : 'None', inline: true },
+                { name: 'Tablets', value: selectedTabletRoles.length > 0 ? selectedTabletRoles.map(val => `<@&${rolesData.tablets.find(r => r.value === val)?.roleId}>`).join(', ') : 'None', inline: true },
+                { name: 'Accessories', value: selectedAccessoryRoles.length > 0 ? selectedAccessoryRoles.map(val => `<@&${rolesData.accessories.find(r => r.value === val)?.roleId}>`).join(', ') : 'None', inline: true },
+                { name: 'PC Peripherals', value: selectedPcRoles.length > 0 ? selectedPcRoles.map(val => `<@&${rolesData.pcPeripherals.find(r => r.value === val)?.roleId}>`).join(', ') : 'None', inline: true },
+            )
+            .setFooter({ text: 'Only take roles for devices you actually own!' })
+            .setColor('#00FF00');
         await interaction.reply({
-            content: `Updated your roles <:mora_popcorn:1133350731357896744>\nNote: Please only take the roles of devices you actually own <:Dreamy_Mora:1387802057309819010>`,
+            embeds: [embed],
             flags: MessageFlags.Ephemeral,
         });
     },
