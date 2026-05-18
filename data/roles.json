@@ -21,7 +21,6 @@
     { "label": "Remove all", "value": "removeall", "roleId": null }
   ],
   "tablets": [
-    { "label": "REDMAGIC Astra 2026", "value": "rmastra2026", "roleId": "1504107295347445792" },
     { "label": "REDMAGIC Astra", "value": "rmastra", "roleId": "1389289382485426269" },
     { "label": "REDMAGIC Nova", "value": "rmnova", "roleId": "1287164838753206405" },
     { "label": "Remove all", "value": "removeall", "roleId": null }
