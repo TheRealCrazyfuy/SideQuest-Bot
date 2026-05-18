@@ -52,60 +52,7 @@ client.on(Events.InteractionCreate, async interaction => {
             }
         }
     }
-    else if (interaction.isStringSelectMenu()) {
-        const rolesData = require('./data/roles.json');
-        let options = [];
-
-        // Check which menu was used
-        if (interaction.customId === 'phoneDropdown') {
-            options = rolesData.phones;
-        } else if (interaction.customId === 'tabletDropdown') {
-            options = rolesData.tablets;
-        } else if (interaction.customId === 'accessoryDropdown') {
-            options = rolesData.accessories;
-        } else if (interaction.customId === 'pcDropdown') {
-            options = rolesData.pcPeripherals;
-        }
-
-        const selected = interaction.values;
-        const member = await interaction.guild.members.fetch(interaction.user.id);
-
-        // All possible role IDs for this category
-        const allCategoryRoleIds = options.map(opt => opt.roleId).filter(Boolean);
-
-        // Remove all roles from this category
-        for (const roleId of allCategoryRoleIds) {
-            if (member.roles.cache.has(roleId)) {
-                try {
-                    await member.roles.remove(roleId);
-                } catch (err) {
-                    console.error(`Failed to remove role ${roleId}:`, err);
-                }
-            }
-        }
-
-        // Add the selected roles
-        const roleIds = options
-            .filter(opt => selected.includes(opt.value))
-            .map(opt => opt.roleId)
-            .filter(Boolean);
-        for (const roleId of roleIds) {
-            try {
-                await member.roles.add(roleId);
-            } catch (err) {
-                console.error(`Failed to add role ${roleId}:`, err);
-                logErrorMessage(`Failed to add role ${roleId} to user ${member.id}: ${err}`, interaction.client);
-            }
-        }
-        logSetRoles(member, roleIds, interaction.client);
-        try {
-            await interaction.reply({ content: `Updated your roles <:mora_popcorn:1133350731357896744>\nNote: Please only take the roles of devices you actually own <:Dreamy_Mora:1387802057309819010>`, flags: MessageFlags.Ephemeral });
-        } catch (err) {
-            console.error('Error sending role update confirmation:', err);
-            logErrorMessage(`Error sending role update confirmation to user ${member.id}: ${err}`, interaction.client);
-        }
-
-    } else if (interaction.isButton() && interaction.customId === 'close_thread') {
+    else if (interaction.isButton() && interaction.customId === 'close_thread') {
         // Close the thread
         if (interaction.channel.isThread()) {
             try {
@@ -162,6 +109,22 @@ client.on(Events.InteractionCreate, async interaction => {
             logErrorMessage(`Error closing thread ${interaction.channel.url}: ${err}`, interaction.client);
             console.error('Error closing thread:', err);
             await interaction.reply({ content: 'There was an error closing the thread.', flags: MessageFlags.Ephemeral });
+        }
+    } else if (interaction.isButton() && interaction.customId === 'open_cosmetic_roles_modal') {
+        const command = interaction.client.commands.get('createdropdowns');
+        try {
+            await command.handleButtonInteraction(interaction);
+        } catch (error) {
+            console.error(error);
+            logErrorMessage(`Error handling button interaction for roles modal: ${error}`, interaction.client);
+        }
+    } else if (interaction.isModalSubmit() && interaction.customId === 'cosmetic_roles_modal') {
+        const command = interaction.client.commands.get('createdropdowns');
+        try {
+            await command.handleModalSubmit(interaction);
+        } catch (error) {
+            console.error(error);
+            logErrorMessage(`Error handling modal submit for roles modal: ${error}`, interaction.client);
         }
     }
 
