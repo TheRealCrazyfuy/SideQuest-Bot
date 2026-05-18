@@ -96,6 +96,7 @@ module.exports = {
     },
 
     async handleModalSubmit(interaction) {
+        await interaction.deferReply({ flags: MessageFlags.Ephemeral });
 
         const rolesData = require('../../data/roles.json');
 
@@ -157,9 +158,17 @@ module.exports = {
             )
             .setFooter({ text: 'Only take roles for devices you actually own!' })
             .setColor('#00FF00');
-        await interaction.reply({
-            embeds: [embed],
-            flags: MessageFlags.Ephemeral,
-        });
+
+        try {
+            await interaction.editReply({ embeds: [embed] });
+        } catch (err) {
+            if (err.code === 10062) {
+                console.error('Modal submit response failed because the interaction was no longer valid:', err);
+                logErrorMessage(`Interaction no longer valid when editing reply after modal submit for ${interaction.user.tag}: ${err}`, interaction.client);
+            } else {
+                console.error('Failed to edit reply after modal submit:', err);
+                logErrorMessage(`Error editing reply after modal submit for ${interaction.user.tag}: ${err}`, interaction.client);
+            }
+        }
     },
 };
