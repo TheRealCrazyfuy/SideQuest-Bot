@@ -93,7 +93,7 @@ client.on(Events.InteractionCreate, async interaction => {
             }
         }
         try {
-            await interaction.reply({ content: `تم تحديث أدوارك <:mora_popcorn:1133350731357896744>\nملاحظة: يرجى اختيار أدوار الأجهزة التي تمتلكها فعلاً فقط <:Dreamy_Mora:1387802057309819010>`, flags: MessageFlags.Ephemeral });
+            await interaction.reply({ content: `تم تحديث أدوارك <:mora_popcorn:1506341178323501247>\nملاحظة: يرجى اختيار أدوار الأجهزة التي تمتلكها فعلاً فقط <:Dreamy_Mora:1506341341217554493>`, flags: MessageFlags.Ephemeral });
         } catch (err) {
             console.error('Error sending role update confirmation:', err);
         }
