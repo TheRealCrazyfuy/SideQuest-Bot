@@ -1,6 +1,6 @@
 {
   "phones": [
-    { "label": "REDMAGIC 11s Pro", "value": "rm11spro", "roleId": "1506007108892496085", "emoji": "1506007108892496085"},
+    { "label": "REDMAGIC 11s Pro", "value": "rm11spro", "roleId": "1506341390588711103", "emoji": "1506007108892496085"},
     { "label": "REDMAGIC 11 Pro", "value": "rm11pro", "roleId": "1503861620349337832", "emoji": "1504431773273296936"},
     { "label": "REDMAGIC 11 Air", "value": "rm11air", "roleId": "1503888431175045201", "emoji": "1504470918641221843"},
     { "label": "REDMAGIC 10s Pro", "value": "rm10spro", "roleId": "1503888586171486218", "emoji": "1504483482787647538"},
