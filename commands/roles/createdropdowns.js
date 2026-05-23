@@ -31,8 +31,13 @@ module.exports = {
             .setLabel('Select roles')
             .setStyle('Primary');
 
+        const clearButton = new ButtonBuilder()
+            .setCustomId('clear_roles')
+            .setLabel('Clear roles')
+            .setStyle('Secondary');
+
         const row = new ActionRowBuilder()
-            .addComponents(button);
+            .addComponents(button, clearButton);
 
         await channel.send({
             content: 'Please take your cosmetic Roles here.\nIn case you own more devices, feel free to ask a Mod.', components: [row]
@@ -93,6 +98,33 @@ module.exports = {
 
         await interaction.showModal(modal);
 
+    },
+
+    async handleClearRolesButton(interaction) {
+        await interaction.deferReply({ flags: MessageFlags.Ephemeral });
+        const rolesData = require('../../data/roles.json');
+        const allRoles = [
+            ...rolesData.phones,
+            ...rolesData.tablets,
+            ...rolesData.accessories,
+            ...rolesData.pcPeripherals,
+        ];
+        const allRoleIds = allRoles.map(role => role.roleId).filter(Boolean);
+        const member = interaction.member;
+        for (const roleId of allRoleIds) {
+            if (member.roles.cache.has(roleId)) {
+                try {
+                    await member.roles.remove(roleId);
+                } catch (err) {
+                    console.error(`Failed to remove role ${roleId}:`, err);
+                    logErrorMessage(`Error removing role <@&${roleId}> from ${interaction.user.tag} when clearing roles: ${err}`, interaction.client);
+                }
+            }
+        }
+
+        logSetRoles(interaction.user, [], interaction.client);
+
+        await interaction.editReply({ content: '<:Mora_HEH:1393945102954659880> All roles have been cleared!' });
     },
 
     async handleModalSubmit(interaction) {

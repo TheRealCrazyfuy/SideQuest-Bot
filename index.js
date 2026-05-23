@@ -126,6 +126,14 @@ client.on(Events.InteractionCreate, async interaction => {
             console.error(error);
             logErrorMessage(`Error handling modal submit for roles modal: ${error}`, interaction.client);
         }
+    } else if (interaction.isButton() && interaction.customId === 'clear_roles') {
+        const command = interaction.client.commands.get('createdropdowns');
+        try {
+            await command.handleClearRolesButton(interaction);
+        } catch (error) {
+            console.error(error);
+            logErrorMessage(`Error handling clear roles button interaction: ${error}`, interaction.client);
+        }
     }
 
 });
