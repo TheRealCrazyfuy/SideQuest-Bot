@@ -1,5 +1,5 @@
 const { logStandardMessage, logHeuristicWarning } = require('../../utils/logging');
-const { SlashCommandBuilder, MessageFlags } = require('discord.js');
+const { SlashCommandBuilder, MessageFlags, EmbedBuilder } = require('discord.js');
 const { whitelistedRoleIds } = require('../../config.json');
 
 module.exports = {
@@ -20,6 +20,11 @@ module.exports = {
             subcommand
                 .setName('analyzenewmember')
                 .setDescription('test analyze new member')
+        )
+        .addSubcommand(subcommand =>
+            subcommand
+                .setName('selfroles')
+                .setDescription('check that all selfroles exist and are valid')
         ),
 
     async execute(interaction) {
@@ -42,8 +47,57 @@ module.exports = {
                 logHeuristicWarning(member.user, score, member.client);
                 await interaction.reply({ content: 'Check the logs for the analysis.', flags: MessageFlags.Ephemeral });
                 break;
+            case 'selfroles':
+                await this.checkselfroles(interaction);
+                break;
             default:
                 await interaction.reply({ content: 'Unknown subcommand.', flags: MessageFlags.Ephemeral });
         }
+    },
+
+    async checkselfroles(interaction) {
+        await interaction.deferReply();
+
+        const rolesData = require('./../../data/roles.json');
+        const guild = interaction.guild;
+        const phoneroles = [];
+        const tabletroles = [];
+        const accessorieroles = [];
+        const pcroles = [];
+
+        const categoryMap = {
+            phones: phoneroles,
+            tablets: tabletroles,
+            accessories: accessorieroles,
+            pcPeripherals: pcroles,
+        };
+
+        const roleCategories = {
+            phones: rolesData.phones || [],
+            tablets: rolesData.tablets || [],
+            accessories: rolesData.accessories || [],
+            pcPeripherals: rolesData.pcPeripherals || [],
+        };
+
+        for (const [categoryKey, roleList] of Object.entries(roleCategories)) {
+            for (const roleData of roleList) {
+                const role = guild.roles.cache.get(roleData.roleId);
+                const status = role ? '✅' : '❌';
+                const line = `${status} ${roleData.label || 'Unnamed role'} -> <@&${roleData.roleId}>\n`;
+                categoryMap[categoryKey].push(line);
+            }
+        }
+
+        const embed = new EmbedBuilder()
+            .setTitle('Selfrole Test')
+            .addFields(
+                { name: 'Phone Roles', value: phoneroles.join('\n') || 'No roles found', inline: true },
+                { name: 'Tablet Roles', value: tabletroles.join('\n') || 'No roles found', inline: true },
+                { name: 'Accessory Roles', value: accessorieroles.join('\n') || 'No roles found', inline: true },
+                { name: 'PC Roles', value: pcroles.join('\n') || 'No roles found', inline: true },
+            )
+            .setColor('#fff700');
+
+        await interaction.editReply({ embeds: [embed] });
     }
 };
