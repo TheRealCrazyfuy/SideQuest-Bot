@@ -36,7 +36,6 @@ async function logErrorMessage(error, client) {
 }
 
 async function logSetRoles(member, roles, client) {
-    console.log(roles)
     const roleList = roles.map(role => `<@&${role}>`).join(', ') || 'No roles assigned';
     const row = new EmbedBuilder()
         .setColor('#0000FF')
