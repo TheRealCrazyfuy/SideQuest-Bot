@@ -29,12 +29,14 @@ module.exports = {
         const button = new ButtonBuilder()
             .setCustomId('open_cosmetic_roles_modal')
             .setLabel('Select roles')
-            .setStyle('Primary');
+            .setStyle('Primary')
+            .setEmoji('1174806762231189514');
 
         const clearButton = new ButtonBuilder()
             .setCustomId('clear_roles')
             .setLabel('Clear roles')
-            .setStyle('Secondary');
+            .setStyle('Danger')
+            .setEmoji('1445834660121677886');
 
         const row = new ActionRowBuilder()
             .addComponents(button, clearButton);
