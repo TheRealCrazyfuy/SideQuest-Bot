@@ -28,18 +28,24 @@ module.exports = {
 
         const button = new ButtonBuilder()
             .setCustomId('open_cosmetic_roles_modal')
-            .setLabel('Select roles')
+            .setLabel('Select device roles')
             .setStyle('Primary')
             .setEmoji('1174806762231189514');
 
+        const eventButton = new ButtonBuilder()
+            .setCustomId('open_event_roles_modal')
+            .setLabel('Select event roles')
+            .setStyle('Secondary')
+            .setEmoji('1441539983088287895');
+
         const clearButton = new ButtonBuilder()
             .setCustomId('clear_roles')
-            .setLabel('Clear roles')
+            .setLabel('Clear all roles')
             .setStyle('Danger')
             .setEmoji('1445834660121677886');
 
         const row = new ActionRowBuilder()
-            .addComponents(button, clearButton);
+            .addComponents(button, eventButton, clearButton);
 
         await channel.send({
             content: 'Please take your cosmetic Roles here.\nIn case you own more devices, feel free to ask a Mod.', components: [row]
@@ -102,6 +108,30 @@ module.exports = {
 
     },
 
+    async handleEventButtonInteraction(interaction) {
+        const modal = new ModalBuilder()
+            .setCustomId('event_roles_modal')
+            .setTitle('Select your event roles');
+
+        const infoText = new TextDisplayBuilder()
+            .setContent('You can select your event roles below.\n:information_source: If you selected roles before, you will have to select them again or they will be cleared.');
+
+        const gameNightDropdown = new StringSelectMenuBuilder()
+            .setRequired(false)
+            .setCustomId('gameNightDropdown')
+            .setPlaceholder('Choose event roles')
+            .setMinValues(0)
+            .setMaxValues(2)
+            .addOptions(roles.gameNightEvent.map(opt => ({ label: opt.label, value: opt.value, description: opt.description || undefined })));
+
+        modal.addTextDisplayComponents(infoText);
+        modal.addLabelComponents(
+            new LabelBuilder().setLabel('You can choose up to 2 game night event roles').setStringSelectMenuComponent(gameNightDropdown)
+        );
+
+        await interaction.showModal(modal);
+    },
+
     async handleClearRolesButton(interaction) {
         await interaction.deferReply({ flags: MessageFlags.Ephemeral });
         const rolesData = require('../../data/roles.json');
@@ -110,6 +140,7 @@ module.exports = {
             ...rolesData.tablets,
             ...rolesData.accessories,
             ...rolesData.pcPeripherals,
+            ...rolesData.gameNightEvent,
         ];
         const allRoleIds = allRoles.map(role => role.roleId).filter(Boolean);
         const member = interaction.member;
@@ -202,6 +233,59 @@ module.exports = {
             } else {
                 console.error('Failed to edit reply after modal submit:', err);
                 logErrorMessage(`Error editing reply after modal submit for ${interaction.user.tag}: ${err}`, interaction.client);
+            }
+        }
+    },
+
+    async handleEventModalSubmit(interaction) {
+        await interaction.deferReply({ flags: MessageFlags.Ephemeral });
+        const rolesData = require('../../data/roles.json');
+        const selectedEventRoles = interaction.fields.getStringSelectValues('gameNightDropdown') || [];
+
+        const allEventRoles = rolesData.gameNightEvent || [];
+        const allEventRoleIds = allEventRoles.map(role => role.roleId).filter(Boolean);
+        const member = interaction.member;
+        for (const roleId of allEventRoleIds) {
+            if (member.roles.cache.has(roleId)) {
+                try {
+                    await member.roles.remove(roleId);
+                } catch (err) {
+                    console.error(`Failed to remove role ${roleId}:`, err);
+                    logErrorMessage(`Error removing event role <@&${roleId}> from ${interaction.user.tag}: ${err}`, interaction.client);
+                }
+            }
+
+        }
+
+        const eventRoleIdsToAdd = allEventRoles
+            .filter(role => selectedEventRoles.includes(role.value))
+            .map(role => role.roleId)
+            .filter(Boolean);
+
+        for (const roleId of eventRoleIdsToAdd) {
+            try {
+                await member.roles.add(roleId);
+            } catch (err) {
+                console.error(`Failed to add role ${roleId}:`, err);
+                logErrorMessage(`Error adding event role <@&${roleId}> to ${interaction.user.tag}: ${err}`, interaction.client);
+            }
+        }
+        logSetRoles(interaction.user, eventRoleIdsToAdd, interaction.client);
+        const embed = new EmbedBuilder()
+            .setTitle('Your event roles have been updated!')
+            .setFields(
+                { name: 'Event roles', value: selectedEventRoles.length > 0 ? selectedEventRoles.map(val => `<@&${rolesData.gameNightEvent.find(r => r.value === val)?.roleId}>`).join(', ') : 'None', inline: true },
+            )
+            .setColor('#00FF00');
+        try {
+            await interaction.editReply({ embeds: [embed] });
+        } catch (err) {
+            if (err.code === 10062) {
+                console.error('Modal submit response failed because the interaction was no longer valid:', err);
+                logErrorMessage(`Interaction no longer valid when editing reply after event modal submit for ${interaction.user.tag}: ${err}`, interaction.client);
+            } else {
+                console.error('Failed to edit reply after event modal submit:', err);
+                logErrorMessage(`Error editing reply after event modal submit for ${interaction.user.tag}: ${err}`, interaction.client);
             }
         }
     },

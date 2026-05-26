@@ -134,6 +134,22 @@ client.on(Events.InteractionCreate, async interaction => {
             console.error(error);
             logErrorMessage(`Error handling clear roles button interaction: ${error}`, interaction.client);
         }
+    } else if (interaction.isButton() && interaction.customId === 'open_event_roles_modal') {
+        const command = interaction.client.commands.get('createdropdowns');
+        try {
+            await command.handleEventButtonInteraction(interaction);
+        } catch (error) {
+            console.error(error);
+            logErrorMessage(`Error handling event roles button interaction: ${error}`, interaction.client);
+        }
+    } else if (interaction.isModalSubmit() && interaction.customId === 'event_roles_modal') {
+        const command = interaction.client.commands.get('createdropdowns');
+        try {
+            await command.handleEventModalSubmit(interaction);
+        } catch (error) {
+            console.error(error);
+            logErrorMessage(`Error handling event roles modal submit interaction: ${error}`, interaction.client);
+        }
     }
 
 });
