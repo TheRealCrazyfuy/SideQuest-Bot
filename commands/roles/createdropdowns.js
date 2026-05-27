@@ -160,6 +160,7 @@ module.exports = {
         await interaction.editReply({ content: '<:Mora_HEH:1393945102954659880> All roles have been cleared!' });
     },
 
+    // TODO: Refactor the modal submit handlers
     async handleModalSubmit(interaction) {
         await interaction.deferReply({ flags: MessageFlags.Ephemeral });
 
