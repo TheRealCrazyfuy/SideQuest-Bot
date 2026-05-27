@@ -126,7 +126,7 @@ module.exports = {
 
         modal.addTextDisplayComponents(infoText);
         modal.addLabelComponents(
-            new LabelBuilder().setLabel('You can choose up to 2 game night event roles').setStringSelectMenuComponent(gameNightDropdown)
+            new LabelBuilder().setLabel('You can choose up to 2 event roles').setStringSelectMenuComponent(gameNightDropdown)
         );
 
         await interaction.showModal(modal);
