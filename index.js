@@ -172,7 +172,7 @@ Please be aware, that the Mods arent Customer Service
 Our Customer Service can be contacted via email to support@redmagic.gg
 Bug report page here: https://redmagic.gg/pages/redmagic-product-experience-feedback
 
-Dont forget to read through our dedicated https://discord.com/channels/897390969744424980/1241039607747973271, which answers the most common Questions.
+Dont forget to read through our dedicated https://discord.com/channels/897390969744424980/1510612644610965566, which answers the most common Questions.
 
 When your issue is resolved, please remember to close the thread by clicking the \`Close Thread\` button below or using the \`/close\` command, thank you.
             `
