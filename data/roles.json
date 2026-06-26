@@ -20,6 +20,7 @@
     { "label": "Other", "value": "other", "roleId": "973471738543349781" }
   ],
   "tablets": [
+    { "label": "REDMAGIC Astra 2", "value": "rmastra2", "roleId": "1504107295347445792" },
     { "label": "REDMAGIC Astra", "value": "rmastra", "roleId": "1389289382485426269" },
     { "label": "REDMAGIC Nova", "value": "rmnova", "roleId": "1287164838753206405" }
   ],
