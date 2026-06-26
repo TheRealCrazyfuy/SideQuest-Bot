@@ -1,4 +1,4 @@
-const { SlashCommandBuilder, ActionRowBuilder, StringSelectMenuBuilder, ModalBuilder, TextDisplayBuilder, MessageFlags, ButtonBuilder, LabelBuilder, EmbedBuilder } = require('discord.js');
+const { SlashCommandBuilder, StringSelectMenuBuilder, ModalBuilder, TextDisplayBuilder, MessageFlags, LabelBuilder, EmbedBuilder, ContainerBuilder } = require('discord.js');
 const config = require('../../config.json');
 const roles = require('../../data/roles.json');
 const { logStandardMessage, logSetRoles, logErrorMessage } = require('../../utils/logging');
@@ -26,30 +26,75 @@ module.exports = {
             return interaction.reply({ content: 'Can not find the channel smh.', flags: MessageFlags.Ephemeral });
         }
 
-        const button = new ButtonBuilder()
-            .setCustomId('open_cosmetic_roles_modal')
-            .setLabel('Select device roles')
-            .setStyle('Primary')
-            .setEmoji('1174806762231189514');
+        const messageContainer = new ContainerBuilder()
+            .setAccentColor(0xff1100)
+            .addTextDisplayComponents((textDisplay) =>
+                textDisplay.setContent(
+                    '## Take your roles here <:Mora_Yippe:1506369967900069950>',
+                ),
+            )
+            .addTextDisplayComponents((textDisplay) =>
+                textDisplay.setContent(
+                    'Here you can __take your roles for your devices and events__. Feel free to check them out!',
+                ),
+            )
+            .addSeparatorComponents((separator) => separator)
+            .addSectionComponents((section) =>
+                section
+                    .addTextDisplayComponents(
+                        (textDisplay) =>
+                            textDisplay.setContent(
+                                '**Device roles** are cosmetic roles to show off your devices. Please only take the roles of devices you actually own.',
+                            ),
+                        (textDisplay) => textDisplay.setContent(':warning: **Only take the roles of devices you actually own!**'),
+                    )
+                    .setButtonAccessory((button) =>
+                        button.setCustomId('open_cosmetic_roles_modal')
+                            .setLabel('Device roles')
+                            .setStyle('Primary')
+                            .setEmoji({ id: '1441539983088287895' }),
+                    ),
+            )
+            .addSeparatorComponents((separator) => separator)
+            .addSectionComponents((section) =>
+                section
+                    .addTextDisplayComponents(
+                        (textDisplay) =>
+                            textDisplay.setContent(
+                                '**Event roles** are roles we use to notify you about upcoming server events.',
+                            ),
+                    )
+                    .setButtonAccessory((button) =>
+                        button.setCustomId('open_event_roles_modal')
+                            .setLabel('Event roles')
+                            .setStyle('Secondary')
+                            .setEmoji({ id: '1174806762231189514' }),
+                    ),
+            )
+            .addSeparatorComponents((separator) => separator)
+            .addSectionComponents((section) =>
+                section
+                    .addTextDisplayComponents(
+                        (textDisplay) =>
+                            textDisplay.setContent(
+                                '**You can also clear all your roles here.**',
+                            ),
+                    )
+                    .setButtonAccessory((button) =>
+                        button.setCustomId('clear_roles')
+                            .setLabel('Clear roles')
+                            .setStyle('Danger')
+                            .setEmoji({ id: '1445834660121677886' }),
+                    ),
+            )
+            .addSeparatorComponents((separator) => separator)
+            .addTextDisplayComponents((textDisplay) =>
+                textDisplay.setContent(
+                    '*If you find any issues with the roles, please contact a Mod.* <:Mora_Cool:898162287351824404>',
+                ),
+            )
 
-        const eventButton = new ButtonBuilder()
-            .setCustomId('open_event_roles_modal')
-            .setLabel('Select event roles')
-            .setStyle('Secondary')
-            .setEmoji('1441539983088287895');
-
-        const clearButton = new ButtonBuilder()
-            .setCustomId('clear_roles')
-            .setLabel('Clear all roles')
-            .setStyle('Danger')
-            .setEmoji('1445834660121677886');
-
-        const row = new ActionRowBuilder()
-            .addComponents(button, eventButton, clearButton);
-
-        await channel.send({
-            content: 'Please take your cosmetic Roles here.\nIn case you own more devices, feel free to ask a Mod.', components: [row]
-        });
+        await channel.send({ content: ' ', components: [messageContainer], flags: MessageFlags.IsComponentsV2 });
 
         await interaction.reply({ content: 'Done!', flags: MessageFlags.Ephemeral });
 
