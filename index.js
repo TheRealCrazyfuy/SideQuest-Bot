@@ -134,21 +134,21 @@ client.on(Events.InteractionCreate, async interaction => {
             console.error(error);
             logErrorMessage(`Error handling clear roles button interaction: ${error}`, interaction.client);
         }
-    } else if (interaction.isButton() && interaction.customId === 'open_event_roles_modal') {
+    } else if (interaction.isButton() && interaction.customId === 'open_notification_roles_modal') {
         const command = interaction.client.commands.get('createdropdowns');
         try {
-            await command.handleEventButtonInteraction(interaction);
+            await command.handleNotificationButtonInteraction(interaction);
         } catch (error) {
             console.error(error);
-            logErrorMessage(`Error handling event roles button interaction: ${error}`, interaction.client);
+            logErrorMessage(`Error handling notification roles button interaction: ${error}`, interaction.client);
         }
-    } else if (interaction.isModalSubmit() && interaction.customId === 'event_roles_modal') {
+    } else if (interaction.isModalSubmit() && interaction.customId === 'notification_roles_modal') {
         const command = interaction.client.commands.get('createdropdowns');
         try {
-            await command.handleEventModalSubmit(interaction);
+            await command.handleNotificationModalSubmit(interaction);
         } catch (error) {
             console.error(error);
-            logErrorMessage(`Error handling event roles modal submit interaction: ${error}`, interaction.client);
+            logErrorMessage(`Error handling notification roles modal submit interaction: ${error}`, interaction.client);
         }
     }
 

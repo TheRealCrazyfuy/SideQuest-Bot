@@ -34,5 +34,12 @@
   "gameNightEvent": [
     { "label": "Game Night", "value": "gamenight", "description": "Sign up for game night pings","roleId": "1407810304817107127"},
     { "label": "Movie Night", "value": "movienight",  "description": "Sign up for movie night pings", "roleId": "1407810413856428124"}
+  ],
+  "languageRoles": [
+    { "label": "German", "value": "german",  "description": "German language role", "roleId": "1562029714397331526"},
+    { "label": "Spanish", "value": "spanish",  "description": "Spanish notification role", "roleId": "1562029844513161247"},
+    { "label": "French", "value": "french",  "description": "French notification role", "roleId": "1562029910653018172"},
+    { "label": "Italian", "value": "italian",  "description": "Italian notification role", "roleId": "1562029952285675560"},
+    { "label": "Arab", "value": "arab",  "description": "Arabic notification role", "roleId": "1562030221065064559"}
   ]
 }

@@ -65,6 +65,7 @@ module.exports = {
         const accessorieroles = [];
         const pcroles = [];
         const gameNightRoles = [];
+        const languageRoles = [];
 
         const categoryMap = {
             phones: phoneroles,
@@ -72,6 +73,7 @@ module.exports = {
             accessories: accessorieroles,
             pcPeripherals: pcroles,
             gameNightEvent: gameNightRoles,
+            languageRoles: languageRoles,
         };
 
         const roleCategories = {
@@ -80,6 +82,7 @@ module.exports = {
             accessories: rolesData.accessories || [],
             pcPeripherals: rolesData.pcPeripherals || [],
             gameNightEvent: rolesData.gameNightEvent || [],
+            languageRoles: rolesData.languageRoles || [],
         };
 
         for (const [categoryKey, roleList] of Object.entries(roleCategories)) {
@@ -99,6 +102,7 @@ module.exports = {
                 { name: 'Accessory Roles', value: accessorieroles.join('\n') || 'No roles found', inline: true },
                 { name: 'PC Roles', value: pcroles.join('\n') || 'No roles found', inline: true },
                 { name: 'Event Roles', value: gameNightRoles.join('\n') || 'No roles found', inline: true },
+                { name: 'Language Roles', value: languageRoles.join('\n') || 'No roles found', inline: true }
             )
             .setColor('#fff700');
 

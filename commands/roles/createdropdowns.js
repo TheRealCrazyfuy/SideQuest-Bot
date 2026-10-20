@@ -61,12 +61,12 @@ module.exports = {
                     .addTextDisplayComponents(
                         (textDisplay) =>
                             textDisplay.setContent(
-                                '**Event roles** are roles we use to notify you about upcoming server events.',
+                                '**Notification roles** are roles we use to notify you about server events.',
                             ),
                     )
                     .setButtonAccessory((button) =>
-                        button.setCustomId('open_event_roles_modal')
-                            .setLabel('Event roles')
+                        button.setCustomId('open_notification_roles_modal')
+                            .setLabel('Notification roles')
                             .setStyle('Secondary')
                             .setEmoji({ id: '1174806762231189514' }),
                     ),
@@ -153,13 +153,13 @@ module.exports = {
 
     },
 
-    async handleEventButtonInteraction(interaction) {
+    async handleNotificationButtonInteraction(interaction) {
         const modal = new ModalBuilder()
-            .setCustomId('event_roles_modal')
-            .setTitle('Select your event roles');
+            .setCustomId('notification_roles_modal')
+            .setTitle('Select your notification roles');
 
         const infoText = new TextDisplayBuilder()
-            .setContent('You can select your event roles below.\n:information_source: If you selected roles before, you will have to select them again or they will be cleared.');
+            .setContent('You can select your notification roles below.\n:information_source: If you selected roles before, you will have to select them again or they will be cleared.');
 
         const gameNightDropdown = new StringSelectMenuBuilder()
             .setRequired(false)
@@ -169,9 +169,17 @@ module.exports = {
             .setMaxValues(2)
             .addOptions(roles.gameNightEvent.map(opt => ({ label: opt.label, value: opt.value, description: opt.description || undefined })));
 
+        const languageRolesDropdown = new StringSelectMenuBuilder()
+            .setRequired(false)
+            .setCustomId('languageRolesDropdown')
+            .setPlaceholder('Choose language roles')
+            .setMaxValues(5)
+            .addOptions(roles.languageRoles.map(opt => ({ label: opt.label, value: opt.value, description: opt.description || undefined })));
+
         modal.addTextDisplayComponents(infoText);
         modal.addLabelComponents(
-            new LabelBuilder().setLabel('You can choose up to 2 event roles').setStringSelectMenuComponent(gameNightDropdown)
+            new LabelBuilder().setLabel('Server event notifications').setStringSelectMenuComponent(gameNightDropdown),
+            new LabelBuilder().setLabel('Language notifications').setStringSelectMenuComponent(languageRolesDropdown),
         );
 
         await interaction.showModal(modal);
@@ -186,6 +194,7 @@ module.exports = {
             ...rolesData.accessories,
             ...rolesData.pcPeripherals,
             ...rolesData.gameNightEvent,
+            ...rolesData.languageRoles,
         ];
         const allRoleIds = allRoles.map(role => role.roleId).filter(Boolean);
         const member = interaction.member;
@@ -283,21 +292,24 @@ module.exports = {
         }
     },
 
-    async handleEventModalSubmit(interaction) {
+    async handleNotificationModalSubmit(interaction) {
         await interaction.deferReply({ flags: MessageFlags.Ephemeral });
         const rolesData = require('../../data/roles.json');
         const selectedEventRoles = interaction.fields.getStringSelectValues('gameNightDropdown') || [];
+        const selectedLanguageRoles = interaction.fields.getStringSelectValues('languageRolesDropdown') || [];
 
         const allEventRoles = rolesData.gameNightEvent || [];
         const allEventRoleIds = allEventRoles.map(role => role.roleId).filter(Boolean);
+        const allLanguageRoles = rolesData.languageRoles || [];
+        const allLanguageRoleIds = allLanguageRoles.map(role => role.roleId).filter(Boolean);
         const member = interaction.member;
-        for (const roleId of allEventRoleIds) {
+        for (const roleId of [...allEventRoleIds, ...allLanguageRoleIds]) {
             if (member.roles.cache.has(roleId)) {
                 try {
                     await member.roles.remove(roleId);
                 } catch (err) {
                     console.error(`Failed to remove role ${roleId}:`, err);
-                    logErrorMessage(`Error removing event role <@&${roleId}> from ${interaction.user.tag}: ${err}`, interaction.client);
+                    logErrorMessage(`Error removing notification role <@&${roleId}> from ${interaction.user.tag}: ${err}`, interaction.client);
                 }
             }
 
@@ -307,20 +319,26 @@ module.exports = {
             .filter(role => selectedEventRoles.includes(role.value))
             .map(role => role.roleId)
             .filter(Boolean);
+        const languageRoleIdsToAdd = allLanguageRoles
+            .filter(role => selectedLanguageRoles.includes(role.value))
+            .map(role => role.roleId)
+            .filter(Boolean);
 
-        for (const roleId of eventRoleIdsToAdd) {
+        const notificationRoleIdsToAdd = [...eventRoleIdsToAdd, ...languageRoleIdsToAdd];
+        for (const roleId of notificationRoleIdsToAdd) {
             try {
                 await member.roles.add(roleId);
             } catch (err) {
                 console.error(`Failed to add role ${roleId}:`, err);
-                logErrorMessage(`Error adding event role <@&${roleId}> to ${interaction.user.tag}: ${err}`, interaction.client);
+                logErrorMessage(`Error adding notification role <@&${roleId}> to ${interaction.user.tag}: ${err}`, interaction.client);
             }
         }
-        logSetRoles(interaction.user, eventRoleIdsToAdd, interaction.client);
+        logSetRoles(interaction.user, notificationRoleIdsToAdd, interaction.client);
         const embed = new EmbedBuilder()
-            .setTitle('Your event roles have been updated!')
+            .setTitle('Your notification roles have been updated!')
             .setFields(
-                { name: 'Event roles', value: selectedEventRoles.length > 0 ? selectedEventRoles.map(val => `<@&${rolesData.gameNightEvent.find(r => r.value === val)?.roleId}>`).join(', ') : 'None', inline: true },
+                { name: 'Notification roles', value: selectedEventRoles.length > 0 ? selectedEventRoles.map(val => `<@&${rolesData.gameNightEvent.find(r => r.value === val)?.roleId}>`).join(', ') : 'None', inline: true },
+                { name: 'Language roles', value: selectedLanguageRoles.length > 0 ? selectedLanguageRoles.map(val => `<@&${rolesData.languageRoles.find(r => r.value === val)?.roleId}>`).join(', ') : 'None', inline: true }
             )
             .setColor('#00FF00');
         try {
