@@ -36,7 +36,7 @@
     { "label": "Movie Night", "value": "movienight",  "description": "Sign up for movie night pings", "roleId": "1407810413856428124"}
   ],
   "languageRoles": [
-    { "label": "German", "value": "german",  "description": "German language role", "roleId": "1562029714397331526"},
+    { "label": "German", "value": "german",  "description": "German notification role", "roleId": "1562029714397331526"},
     { "label": "Spanish", "value": "spanish",  "description": "Spanish notification role", "roleId": "1562029844513161247"},
     { "label": "French", "value": "french",  "description": "French notification role", "roleId": "1562029910653018172"},
     { "label": "Italian", "value": "italian",  "description": "Italian notification role", "roleId": "1562029952285675560"},
