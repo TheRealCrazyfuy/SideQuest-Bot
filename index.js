@@ -1,21 +1,17 @@
 const fs = require('node:fs');
 const path = require('node:path');
 const { Client, Collection, Events, GatewayIntentBits, MessageFlags, ChannelType, ActionRowBuilder, ButtonBuilder, ButtonStyle } = require('discord.js');
-const { token, forumChannelId, solvedTagId } = require('./config.json');
-const Fuse = require('fuse.js');
+const { token, clientId, forumChannelId, solvedTagId, heuristicsGuildId } = require('./config.json');
+
+const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMembers] });
+
 const { createVerificationModal, handleVerificationResponse } = require('./utils/user_verifications');
-const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.MessageContent] });
 
 client.commands = new Collection();
 const foldersPath = path.join(__dirname, 'commands');
 const commandFolders = fs.readdirSync(foldersPath);
 
-const helpReplies = require('./data/helpreplies.json');
-const { logStandardMessage, logSetRoles, logErrorMessage, logThreadCreation, logThreadClosure } = require('./utils/logging');
-const fuse = new Fuse(helpReplies, {
-    keys: ['keywords', 'name', 'reply'],
-    threshold: 0.6 // decrease threshold for more strict matching
-});
+const { logStandardMessage, logSetRoles, logErrorMessage, logThreadCreation, logThreadClosure, logHeuristicWarning } = require('./utils/logging');
 
 for (const folder of commandFolders) {
     const commandsPath = path.join(foldersPath, folder);
@@ -30,24 +26,6 @@ for (const folder of commandFolders) {
             console.log(`[WARNING] The command at ${filePath} is missing a required "data" or "execute" property.`);
         }
     }
-}
-
-function searchHelpTopics(fuse, content, threadName, limit = 4) {
-    const text = (content + ' ' + threadName).toLowerCase();
-
-    let results = fuse.search(text, { limit });
-    let uniqueResults = [];
-    const seen = new Set();
-
-    for (const result of results) {
-        if (!seen.has(result.item.name)) {
-            seen.add(result.item.name);
-            uniqueResults.push(result);
-        }
-        if (uniqueResults.length >= limit) break;
-    }
-
-    return uniqueResults.slice(0, limit).map(r => r.item);
 }
 
 client.once(Events.ClientReady, readyClient => {
@@ -76,94 +54,7 @@ client.on(Events.InteractionCreate, async interaction => {
             }
         }
     }
-    else if (interaction.isStringSelectMenu()) {
-        const rolesData = require('./data/roles.json');
-        let options = [];
-
-        // Check which menu was used
-        if (interaction.customId === 'phoneDropdown') {
-            options = rolesData.phones;
-        } else if (interaction.customId === 'tabletDropdown') {
-            options = rolesData.tablets;
-        } else if (interaction.customId === 'accessoryDropdown') {
-            options = rolesData.accessories;
-        } else if (interaction.customId === 'pcDropdown') {
-            options = rolesData.pcPeripherals;
-        }
-
-        const selected = interaction.values;
-        const member = await interaction.guild.members.fetch(interaction.user.id);
-
-        // All possible role IDs for this category
-        const allCategoryRoleIds = options.map(opt => opt.roleId).filter(Boolean);
-
-        // Remove all roles from this category
-        for (const roleId of allCategoryRoleIds) {
-            if (member.roles.cache.has(roleId)) {
-                try {
-                    await member.roles.remove(roleId);
-                } catch (err) {
-                    console.error(`Failed to remove role ${roleId}:`, err);
-                }
-            }
-        }
-
-        // Add the selected roles
-        const roleIds = options
-            .filter(opt => selected.includes(opt.value))
-            .map(opt => opt.roleId)
-            .filter(Boolean);
-        for (const roleId of roleIds) {
-            try {
-                await member.roles.add(roleId);
-            } catch (err) {
-                console.error(`Failed to add role ${roleId}:`, err);
-                logErrorMessage(`Failed to add role ${roleId} to user ${member.id}: ${err}`, interaction.client);
-            }
-        }
-        logSetRoles(member, roleIds, interaction.client);
-        await interaction.reply({ content: `Updated your roles <:mora_popcorn:1133350731357896744> `, ephemeral: true });
-    } else if (interaction.isAutocomplete()) {
-        const command = interaction.client.commands.get(interaction.commandName);
-
-        if (!command) {
-            console.error(`No command matching ${interaction.commandName} was found.`);
-            return;
-        }
-
-        try {
-            await command.autocomplete(interaction);
-        } catch (error) {
-            console.error(error);
-        }
-    } else if (interaction.isButton() && interaction.customId.startsWith('forum_help_')) {
-        // Find the thread and the possibleHelpTopics again
-        const idx = parseInt(interaction.customId.replace('forum_help_', ''), 10);
-
-        // Fetch the thread's starter message to get the content
-        let starterMessage;
-        try {
-            starterMessage = await interaction.channel.fetchStarterMessage();
-        } catch (e) {
-            console.error('Error fetching starter message:', e);
-            await interaction.reply({ content: 'Sorry the initial thread message got deleted.', flags: MessageFlags.Ephemeral });
-            return;
-        }
-        const content = starterMessage ? starterMessage.content.toLowerCase() : '';
-        const threadName = interaction.channel.name.toLowerCase();
-
-        // Use Fuse to get up to 4 best matches
-        const possibleHelpTopics = searchHelpTopics(fuse, content, threadName, 4);
-
-        const topic = possibleHelpTopics[idx];
-        if (topic) {
-            logStandardMessage(`Provided help topic "${topic.name}" to user <@${interaction.user.id}> in thread "${interaction.channel.url}".`, interaction.client);
-            await interaction.reply({ content: topic.reply, flags: MessageFlags.Ephemeral });
-        } else {
-            await interaction.reply({ content: 'Help topic not found.', flags: MessageFlags.Ephemeral });
-        }
-        return;
-    } else if (interaction.isButton() && interaction.customId === 'close_thread') {
+    else if (interaction.isButton() && interaction.customId === 'close_thread') {
         // Close the thread
         if (interaction.channel.isThread()) {
             try {
@@ -183,7 +74,13 @@ client.on(Events.InteractionCreate, async interaction => {
                 await interaction.reply({ content: 'There was an error closing the thread.', flags: MessageFlags.Ephemeral });
             }
         } else {
-            await interaction.reply({ content: 'This command can only be used in a thread <:Mora_Scream:1388103624181158020>.', flags: MessageFlags.Ephemeral });
+            try {
+                await interaction.reply({ content: 'This command can only be used in a thread <:Mora_Scream:1388103624181158020>.', flags: MessageFlags.Ephemeral });
+            } catch (err) {
+                console.error('Error sending not a thread message:', err);
+                logErrorMessage(`Error sending not a thread message: ${err}`, interaction.client);
+            }
+
         }
     } else if (interaction.isButton() && interaction.customId === 'confirm_close_thread') {
         try {
@@ -215,6 +112,46 @@ client.on(Events.InteractionCreate, async interaction => {
             console.error('Error closing thread:', err);
             await interaction.reply({ content: 'There was an error closing the thread.', flags: MessageFlags.Ephemeral });
         }
+    } else if (interaction.isButton() && interaction.customId === 'open_cosmetic_roles_modal') {
+        const command = interaction.client.commands.get('createdropdowns');
+        try {
+            await command.handleButtonInteraction(interaction);
+        } catch (error) {
+            console.error(error);
+            logErrorMessage(`Error handling button interaction for roles modal: ${error}`, interaction.client);
+        }
+    } else if (interaction.isModalSubmit() && interaction.customId === 'cosmetic_roles_modal') {
+        const command = interaction.client.commands.get('createdropdowns');
+        try {
+            await command.handleModalSubmit(interaction);
+        } catch (error) {
+            console.error(error);
+            logErrorMessage(`Error handling modal submit for roles modal: ${error}`, interaction.client);
+        }
+    } else if (interaction.isButton() && interaction.customId === 'clear_roles') {
+        const command = interaction.client.commands.get('createdropdowns');
+        try {
+            await command.handleClearRolesButton(interaction);
+        } catch (error) {
+            console.error(error);
+            logErrorMessage(`Error handling clear roles button interaction: ${error}`, interaction.client);
+        }
+    } else if (interaction.isButton() && interaction.customId === 'open_notification_roles_modal') {
+        const command = interaction.client.commands.get('createdropdowns');
+        try {
+            await command.handleNotificationButtonInteraction(interaction);
+        } catch (error) {
+            console.error(error);
+            logErrorMessage(`Error handling notification roles button interaction: ${error}`, interaction.client);
+        }
+    } else if (interaction.isModalSubmit() && interaction.customId === 'notification_roles_modal') {
+        const command = interaction.client.commands.get('createdropdowns');
+        try {
+            await command.handleNotificationModalSubmit(interaction);
+        } catch (error) {
+            console.error(error);
+            logErrorMessage(`Error handling notification roles modal submit interaction: ${error}`, interaction.client);
+        }
     } else if (interaction.isButton() && interaction.customId === 'verify_button') {
         await createVerificationModal(interaction);
         return;
@@ -243,7 +180,7 @@ Please be aware, that the Mods arent Customer Service
 Our Customer Service can be contacted via email to support@redmagic.gg
 Bug report page here: https://redmagic.gg/pages/redmagic-product-experience-feedback
 
-Dont forget to read through our dedicated https://discord.com/channels/897390969744424980/1241039607747973271, which answers the most common Questions.
+Dont forget to read through our dedicated https://discord.com/channels/897390969744424980/1510612644610965566, which answers the most common Questions.
 
 When your issue is resolved, please remember to close the thread by clicking the \`Close Thread\` button below or using the \`/close\` command, thank you.
             `
@@ -262,5 +199,23 @@ When your issue is resolved, please remember to close the thread by clicking the
     }
 });
 
+client.on('guildMemberAdd', async member => {
+    if (member.guild.id !== heuristicsGuildId) return;
+    try {
+        const { calculateHeuristicScore } = require('./utils/heuristics');
+        const score = await calculateHeuristicScore(member.user, member.client);
+        if (score >= 5) {
+            logHeuristicWarning(member.user, score, member.client);
+        }
+    } catch (err) {
+        logErrorMessage(`Error handling guild member add: ${err}`, member.client);
+    }
+});
+
+// handle any uncaught discord API errors
+process.on('unhandledRejection', error => {
+    console.error('Unhandled promise rejection:', error);
+    logErrorMessage(`Unhandled promise rejection: ${error}`, client);
+});
 
 client.login(token);
