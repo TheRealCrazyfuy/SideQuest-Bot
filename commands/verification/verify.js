@@ -21,7 +21,7 @@ module.exports = {
 
             const label_modal = new LabelBuilder()
                 .setLabel('Input the verification code')
-                .setDescription('The code is hidden in the rules channel. ')
+                .setDescription('The secret code is hidden in the Rules channel. ')
                 .setTextInputComponent(user_input);
 
             modal.addLabelComponents(label_modal);
@@ -29,8 +29,8 @@ module.exports = {
 
             await interaction.showModal(modal);
         } catch (error) {
-            console.error('Error creating verification message:', error);
-            await interaction.reply({ content: 'There was an error creating the verification message.', flags: MessageFlags.Ephemeral });
+            console.error('Error creating verification modal:', error);
+            await interaction.reply({ content: '<:Mora_Bruh:1242419194906022010> There was an error creating the verification modal.', flags: MessageFlags.Ephemeral });
         }
     },
 
@@ -40,7 +40,7 @@ module.exports = {
             const correctAnswer = verificationCode;
             const member = await interaction.guild.members.fetch(interaction.user.id);
 
-            if (userResponse.trim() == correctAnswer) {
+            if (userResponse.trim().toLowerCase() === correctAnswer.toLowerCase()) {
                 if (member.roles.cache.has(verificationRoleId)) {
                     await interaction.reply({ content: 'You found a secret! Take a cookie :cookie:', flags: MessageFlags.Ephemeral });
                     return;
@@ -58,7 +58,7 @@ module.exports = {
         } catch (error) {
             logErrorMessage(`Error processing verification modal for user ${interaction.user.tag} <@${interaction.user.id}>: ${error}`, interaction.client);
             console.error('Error processing verification modal:', error);
-            await interaction.reply({ content: 'There was an error processing your verification.', flags: MessageFlags.Ephemeral });
+            await interaction.reply({ content: '<:Mora_Bruh:1242419194906022010> There was an error processing your verification.', flags: MessageFlags.Ephemeral });
         }
     }
 }
