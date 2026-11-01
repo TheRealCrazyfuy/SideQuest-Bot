@@ -5,8 +5,6 @@ const { token, clientId, forumChannelId, solvedTagId, heuristicsGuildId } = requ
 
 const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMembers] });
 
-const { createVerificationModal, handleVerificationResponse } = require('./utils/user_verifications');
-
 client.commands = new Collection();
 const foldersPath = path.join(__dirname, 'commands');
 const commandFolders = fs.readdirSync(foldersPath);
@@ -152,11 +150,14 @@ client.on(Events.InteractionCreate, async interaction => {
             console.error(error);
             logErrorMessage(`Error handling notification roles modal submit interaction: ${error}`, interaction.client);
         }
-    } else if (interaction.isButton() && interaction.customId === 'verify_button') {
-        await createVerificationModal(interaction);
-        return;
-    } else if (interaction.isModalSubmit() && interaction.customId.startsWith('verification_modal_')) {
-        await handleVerificationResponse(interaction);
+    } else if (interaction.isModalSubmit() && interaction.customId === 'verification_modal') {
+        const command = interaction.client.commands.get('verify');
+        try {
+            await command.handleVerificationResponse(interaction);
+        } catch (error) {
+            console.error(error);
+            logErrorMessage(`Error handling verification modal submit interaction: ${error}`, interaction.client);
+        }
         return;
     }
 
