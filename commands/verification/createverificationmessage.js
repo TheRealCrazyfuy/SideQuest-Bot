@@ -30,7 +30,7 @@ module.exports = {
             const embed = new EmbedBuilder()
                 .setTitle('<:Redmagic:1061836445255483412> To unlock access to the chat channels you must verify.')
                 .setDescription('There\'s a secret code hidden in the <#897394944656945162> channel that you must find, then you can click the button below and input the code to become verified.')
-                .setFooter({ text: '<:Mora_OH_BOY:1387802040629203087> Protected by Mora' })
+                .setFooter({ text: 'Protected by Mora', iconURL: 'https://cdn.discordapp.com/emojis/1393945102954659880.webp?size=96&quality=lossless' })
                 .setColor('#FFA500');
 
             await interaction.channel.send({
