@@ -14,7 +14,7 @@ module.exports = {
         ),
     async execute(interaction) {
         if (!interaction.member.permissions.has('ManageRoles')) {
-            return interaction.reply({ content: `Good try, but you cannot use this command <a:myredmagicreaction:1313432136367472681> `, flags: MessageFlags.Ephemeral });
+            return interaction.reply({ content: `Good try, but you cannot use this command <:MyhonestRMreaction:1313074261929492480> `, flags: MessageFlags.Ephemeral });
         }
 
         try {
