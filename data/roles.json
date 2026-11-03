@@ -33,14 +33,15 @@
     { "label": "REDMAGIC Peripherals", "value": "peripherals",  "description": "PC accesories like the gaming mouse, keyboard, monitor etc", "roleId": "1290323123987550218"}
   ],
   "gameNightEvent": [
-    { "label": "Game Night", "value": "gamenight", "description": "Sign up for game night pings","roleId": "1407810304817107127"},
-    { "label": "Movie Night", "value": "movienight",  "description": "Sign up for movie night pings", "roleId": "1407810413856428124"}
+    { "label": "News", "value": "news", "description": "Redmagic news","roleId": "1566738790507216930", "emoji": "📰"},
+    { "label": "Game Night", "value": "gamenight", "description": "Sign up for game night pings","roleId": "1407810304817107127", "emoji": "🎮"},
+    { "label": "Movie Night", "value": "movienight",  "description": "Sign up for movie night pings", "roleId": "1407810413856428124", "emoji": "🎬"}
   ],
   "languageRoles": [
-    { "label": "German", "value": "german",  "description": "German notification role", "roleId": "1562029714397331526"},
-    { "label": "Spanish", "value": "spanish",  "description": "Spanish notification role", "roleId": "1562029844513161247"},
-    { "label": "French", "value": "french",  "description": "French notification role", "roleId": "1562029910653018172"},
-    { "label": "Italian", "value": "italian",  "description": "Italian notification role", "roleId": "1562029952285675560"},
-    { "label": "Arab", "value": "arab",  "description": "Arabic notification role", "roleId": "1562030221065064559"}
+    { "label": "German", "value": "german",  "description": "German notification role", "roleId": "1562029714397331526", "emoji": "🇩🇪"},
+    { "label": "Spanish", "value": "spanish",  "description": "Spanish notification role", "roleId": "1562029844513161247", "emoji": "🇪🇸"},
+    { "label": "French", "value": "french",  "description": "French notification role", "roleId": "1562029910653018172", "emoji": "🇫🇷"},
+    { "label": "Italian", "value": "italian",  "description": "Italian notification role", "roleId": "1562029952285675560", "emoji": "🇮🇹"},
+    { "label": "Arab", "value": "arab",  "description": "Arabic notification role", "roleId": "1562030221065064559", "emoji": "🇸🇦"}
   ]
 }

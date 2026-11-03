@@ -115,7 +115,7 @@ module.exports = {
             .setPlaceholder('Choose a phone')
             .setMinValues(0)
             .setMaxValues(3)
-            .addOptions(roles.phones.map(opt => ({ label: opt.label, value: opt.value, description: opt.description || undefined })));
+            .addOptions(roles.phones.map(opt => ({ label: opt.label, value: opt.value, description: opt.description || undefined, emoji: opt.emoji || undefined })));
 
         const tabletDropdown = new StringSelectMenuBuilder()
             .setRequired(false)
@@ -123,7 +123,7 @@ module.exports = {
             .setPlaceholder('Choose a tablet')
             .setMinValues(0)
             .setMaxValues(2)
-            .addOptions(roles.tablets.map(opt => ({ label: opt.label, value: opt.value, description: opt.description || undefined })));
+            .addOptions(roles.tablets.map(opt => ({ label: opt.label, value: opt.value, description: opt.description || undefined, emoji: opt.emoji || undefined })));
 
         const accessoryDropdown = new StringSelectMenuBuilder()
             .setRequired(false)
@@ -131,7 +131,7 @@ module.exports = {
             .setPlaceholder('Choose an accessory')
             .setMinValues(0)
             .setMaxValues(1)
-            .addOptions(roles.accessories.map(opt => ({ label: opt.label, value: opt.value, description: opt.description || undefined })));
+            .addOptions(roles.accessories.map(opt => ({ label: opt.label, value: opt.value, description: opt.description || undefined, emoji: opt.emoji || undefined })));
 
         const pcDropdown = new StringSelectMenuBuilder()
             .setRequired(false)
@@ -139,7 +139,7 @@ module.exports = {
             .setPlaceholder('Choose a PC peripheral')
             .setMinValues(0)
             .setMaxValues(2)
-            .addOptions(roles.pcPeripherals.map(opt => ({ label: opt.label, value: opt.value, description: opt.description || undefined })));
+            .addOptions(roles.pcPeripherals.map(opt => ({ label: opt.label, value: opt.value, description: opt.description || undefined, emoji: opt.emoji || undefined })));
 
         modal.addTextDisplayComponents(infoText);
         modal.addLabelComponents(
@@ -164,17 +164,17 @@ module.exports = {
         const gameNightDropdown = new StringSelectMenuBuilder()
             .setRequired(false)
             .setCustomId('gameNightDropdown')
-            .setPlaceholder('Choose event roles')
+            .setPlaceholder('Choose notification roles')
             .setMinValues(0)
-            .setMaxValues(2)
-            .addOptions(roles.gameNightEvent.map(opt => ({ label: opt.label, value: opt.value, description: opt.description || undefined })));
+            .setMaxValues(3)
+            .addOptions(roles.gameNightEvent.map(opt => ({ label: opt.label, value: opt.value, description: opt.description || undefined, emoji: opt.emoji || undefined })));
 
         const languageRolesDropdown = new StringSelectMenuBuilder()
             .setRequired(false)
             .setCustomId('languageRolesDropdown')
             .setPlaceholder('Choose language roles')
             .setMaxValues(5)
-            .addOptions(roles.languageRoles.map(opt => ({ label: opt.label, value: opt.value, description: opt.description || undefined })));
+            .addOptions(roles.languageRoles.map(opt => ({ label: opt.label, value: opt.value, description: opt.description || undefined, emoji: opt.emoji || undefined })));
 
         modal.addTextDisplayComponents(infoText);
         modal.addLabelComponents(
