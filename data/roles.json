@@ -1,5 +1,6 @@
 {
   "phones": [
+    { "label": "REDMAGIC 12 Pro", "value": "rm12pro", "roleId": "1560565104616149072" },
     { "label": "REDMAGIC 11s Pro", "value": "rm11spro", "roleId": "1504106015933858023" },
     { "label": "REDMAGIC 11 Pro", "value": "rm11pro", "roleId": "1431737274512441395" },
     { "label": "REDMAGIC 11 Air", "value": "rm11air", "roleId": "1463173435722305628" },
