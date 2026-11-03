@@ -16,7 +16,7 @@ module.exports = {
     async execute(interaction) {
 
         if (!interaction.member.permissions.has('ManageRoles')) {
-            return interaction.reply({ content: `Good try, but you can't use this bot <a:myredmagicreaction:1313432136367472681> `, flags: MessageFlags.Ephemeral });
+            return interaction.reply({ content: `Good try, but you can't use this bot <:MyhonestRMreaction:1313074261929492480> `, flags: MessageFlags.Ephemeral });
         }
 
         const targetChannelId = config.reactRolesChannelId;

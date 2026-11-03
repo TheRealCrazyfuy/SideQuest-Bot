@@ -8,5 +8,7 @@
     "whitelistedRoleIds": [
         "12345678910",
         "12345678910"
-    ]
+    ],
+    "verificationRoleId": "12345678910",
+    "verificationCode": "123456"
 }

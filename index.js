@@ -150,6 +150,23 @@ client.on(Events.InteractionCreate, async interaction => {
             console.error(error);
             logErrorMessage(`Error handling notification roles modal submit interaction: ${error}`, interaction.client);
         }
+    } else if (interaction.isButton() && interaction.customId === 'verification_button') {
+        const command = interaction.client.commands.get('verify');
+        try {
+            await command.execute(interaction);
+        } catch (error) {
+            console.error(error);
+            logErrorMessage(`Error handling verification button interaction: ${error}`, interaction.client);
+        }
+    } else if (interaction.isModalSubmit() && interaction.customId === 'verification_modal') {
+        const command = interaction.client.commands.get('verify');
+        try {
+            await command.handleVerificationResponse(interaction);
+        } catch (error) {
+            console.error(error);
+            logErrorMessage(`Error handling verification modal submit interaction: ${error}`, interaction.client);
+        }
+        return;
     }
 
 });
