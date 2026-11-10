@@ -29,7 +29,7 @@
     { "label": "REDMAGIC Accessories", "value": "coolers", "description": "includes all normal accessories like coolers etc" ,"roleId": "1295219797767884820", "emoji": "🔌" }
   ],
   "pcPeripherals": [
-    { "label": "REDMAGIC Titan 16 Pro", "value": "redmagictitan16pro", "roleId": "1287164601544478730"},
+    { "label": "REDMAGIC Titan 16 Pro", "value": "redmagictitan16pro", "roleId": "1287164601544478730", "emoji": "🖥️" },
     { "label": "REDMAGIC Peripherals", "value": "peripherals",  "description": "PC accesories like the gaming mouse, keyboard, monitor etc", "roleId": "1290323123987550218", "emoji": "🖱️" }
   ],
   "gameNightEvent": [
