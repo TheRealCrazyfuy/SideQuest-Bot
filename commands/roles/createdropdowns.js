@@ -172,8 +172,8 @@ module.exports = {
         const languageRolesDropdown = new StringSelectMenuBuilder()
             .setRequired(false)
             .setCustomId('languageRolesDropdown')
-            .setPlaceholder('Choose language roles')
-            .setMaxValues(5)
+            .setPlaceholder('Choose language role')
+            .setMaxValues(1)
             .addOptions(roles.languageRoles.map(opt => ({ label: opt.label, value: opt.value, description: opt.description || undefined, emoji: opt.emoji || undefined })));
 
         modal.addTextDisplayComponents(infoText);
