@@ -40,6 +40,30 @@ module.exports = {
             const correctAnswer = verificationCode;
             const member = await interaction.guild.members.fetch(interaction.user.id);
 
+            // shhhh
+            if (userResponse.trim().toLowerCase() === "meow".toLowerCase()) {
+                await interaction.reply({ content: '<a:Catwide:1305776086595932160>', flags: MessageFlags.Ephemeral });
+                return;
+            } else if (userResponse.trim().toLowerCase() === "gw".toLowerCase() || userResponse.trim().toLowerCase() === "gamerwolf".toLowerCase()) {
+                await interaction.reply({ content: '<:Noted:923040094737276999>', flags: MessageFlags.Ephemeral });
+                return;
+            } else if (userResponse.trim().toLowerCase() === "edit".toLowerCase()) {
+                await interaction.reply({ content: 'https://www.youtube.com/watch?v=ZLmvFOpRkvs', flags: MessageFlags.Ephemeral });
+                return;
+            } else if (userResponse.trim().toLowerCase() === "bugmagic".toLowerCase()) {
+                await interaction.reply({ content: 'https://raw.githubusercontent.com/TheRealCrazyfuy/bugmagic.xyz/refs/heads/main/BugMagic.png', flags: MessageFlags.Ephemeral });
+                return;
+            } else if (userResponse.trim().toLowerCase() === "cat".toLowerCase()) {
+                await interaction.reply({ content: 'https://cdn.discordapp.com/attachments/1340801866250063872/1492248449670709278/togif.gif', flags: MessageFlags.Ephemeral });
+                return;
+            } else if (userResponse.trim().toLowerCase() === "fam".toLowerCase()) {
+                await interaction.reply({ content: 'Damn you almost got it, keep trying! <:Mora_Grin:1506369931095183504>', flags: MessageFlags.Ephemeral });
+                return;
+            } else if (userResponse.trim().toLowerCase() === "free phone".toLowerCase()) {
+                await interaction.reply({ content: 'https://klipy.com/gifs/smg4-mario-150', flags: MessageFlags.Ephemeral });
+                return;
+            }
+
             if (userResponse.trim().toLowerCase() === correctAnswer.toLowerCase()) {
                 if (member.roles.cache.has(verificationRoleId)) {
                     await interaction.reply({ content: 'You found a secret! Take a cookie :cookie:', flags: MessageFlags.Ephemeral });
